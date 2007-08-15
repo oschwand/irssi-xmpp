@@ -1,3 +1,5 @@
+/* $Id: xmpp-rosters.h,v 1.2 2007/08/15 12:44:14 cdidier Exp $ */
+
 #ifndef __XMPP_ROSTER_H
 #define __XMPP_ROSTER_H
 

@@ -1,4 +1,6 @@
 /*
+ * $Id: xmpp-queries.c,v 1.4 2007/08/15 12:44:14 cdidier Exp $
+ *
  * Copyright (C) 2007 Colin DIDIER
  *
  * This program is free software; you can redistribute it and/or modify

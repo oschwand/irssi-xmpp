@@ -1,4 +1,6 @@
 /*
+ * $Id: xmpp-protocol.c,v 1.2 2007/08/15 12:44:14 cdidier Exp $
+ *
  * Copyright (C) 2007 Colin DIDIER
  *
  * This program is free software; you can redistribute it and/or modify

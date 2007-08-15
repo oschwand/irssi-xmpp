@@ -1,3 +1,5 @@
+/* $Id: xmpp-commands.h,v 1.3 2007/08/15 12:44:14 cdidier Exp $ */
+
 #ifndef __XMPP_COMMANDS_H
 #define __XMPP_COMMANDS_H
 

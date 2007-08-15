@@ -1,3 +1,5 @@
+/* $Id: xmpp-servers.h,v 1.2 2007/08/15 12:44:14 cdidier Exp $ */
+
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
 

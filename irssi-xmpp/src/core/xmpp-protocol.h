@@ -1,3 +1,5 @@
+/* $Id: xmpp-protocol.h,v 1.2 2007/08/15 12:44:14 cdidier Exp $ */
+
 #ifndef __XMPP_PROTOCOL_H
 #define __XMPP_PROTOCOL_H
 
