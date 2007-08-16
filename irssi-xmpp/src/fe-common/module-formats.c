@@ -1,4 +1,6 @@
 /*
+ * $Id: module-formats.c,v 1.2 2007/08/16 15:33:57 cdidier Exp $
+ *
  * Copyright (C) 2007 Colin DIDIER
  *
  * This program is free software; you can redistribute it and/or modify

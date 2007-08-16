@@ -1,3 +1,5 @@
+/* $Id: module-formats.h,v 1.2 2007/08/16 15:33:57 cdidier Exp $ */
+
 #include "formats.h"
 
 enum {
