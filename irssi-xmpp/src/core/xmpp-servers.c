@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.6 2007/08/18 16:21:01 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.7 2007/08/18 17:51:37 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -219,12 +219,14 @@ xmpp_server_close_cb(LmConnection *connection, LmDisconnectReason reason,
         msg = "Unknown error";
     }
 
-    if (msg)
-        signal_emit("server quit", 2, server, msg);
-
     /* do reconnect here ! */
 
-    signal_emit("server disconnected", 1, server);
+    if (server->connected) {
+        if (msg)
+            signal_emit("server quit", 2, server, msg);
+        signal_emit("server disconnected", 1, server);
+    } else
+      signal_emit("server connect failed", 2, server, msg);
 }
 
 static void
