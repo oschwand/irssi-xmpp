@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.2 2007/08/15 12:44:14 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.3 2007/08/18 15:41:10 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -66,22 +66,6 @@ avoid_recode:
 }
 
 gchar *
-xmpp_jid_get_username(const gchar *jid)
-{
-   gchar *pos = g_utf8_strchr(jid, -1, '@');
-   if (pos)
-       return g_strndup(jid, pos - jid);
-   else {
-        /* if server unspecified, strip ressource part */
-        pos = g_utf8_strchr(jid, -1, '/');
-        if (pos)
-            return g_strndup(jid, pos - jid);
-        else
-            return g_strdup(jid);
-    }
-}
-
-gchar *
 xmpp_jid_get_ressource(const gchar *jid)
 {
     gchar *pos = g_utf8_strchr(jid, -1, '/');
@@ -99,6 +83,16 @@ xmpp_jid_strip_ressource(const gchar *jid)
         return g_strndup(jid, pos - jid);
     else
         return g_strdup(jid);
+}
+
+gchar *
+xmpp_jid_get_username(const gchar *jid)
+{
+   gchar *pos = g_utf8_strchr(jid, -1, '@');
+   if (pos)
+       return g_strndup(jid, pos - jid);
+   else
+       return xmpp_jid_strip_ressource(jid);
 }
 
 gboolean

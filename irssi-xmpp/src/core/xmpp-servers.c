@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.4 2007/08/15 12:44:14 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.5 2007/08/18 15:41:10 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -121,14 +121,19 @@ xmpp_server_init_connect(SERVER_CONNECT_REC *conn)
     if (server->ressource == NULL)
         server->ressource = g_strdup("irssi-xmpp");
 
-    server->connrec->nick = xmpp_jid_get_username(str);
+    server->connrec->username = xmpp_jid_get_username(str);
 
     /* store the full jid */
     if (xmpp_jid_have_address(str))
         server->connrec->realname = xmpp_jid_strip_ressource(str);
     else
         server->connrec->realname = g_strdup_printf("%s@%s",
-            server->connrec->nick, server->connrec->address);
+            server->connrec->username, server->connrec->address);
+
+    if (settings_get_bool("xmpp_set_nick_as_username"))
+        server->connrec->nick = g_strdup(server->connrec->username);
+    else
+        server->connrec->nick = g_strdup(server->connrec->realname);
 
     g_free(str);
 
@@ -279,7 +284,7 @@ xmpp_server_open_cb(LmConnection *connection, gboolean success,
     if (!success)
         goto err_open;
 
-    if (!lm_connection_authenticate(connection, server->connrec->nick,
+    if (!lm_connection_authenticate(connection, server->connrec->username,
                 server->connrec->password, server->ressource,
                 (LmResultFunction) xmpp_server_auth_cb, server, NULL, &error))
         goto err_open;
