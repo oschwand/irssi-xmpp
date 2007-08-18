@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters.c,v 1.2 2007/08/15 12:44:14 cdidier Exp $
+ * $Id: xmpp-rosters.c,v 1.3 2007/08/18 14:35:54 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -36,7 +36,8 @@ const gchar *xmpp_presence_show[] = {
     "dnd",
     "away",
     "+",
-    "chat"
+    "chat",
+    NULL
 };
 
 const gchar *xmpp_subscription[] = {
@@ -44,7 +45,8 @@ const gchar *xmpp_subscription[] = {
     "none",
     "to",
     "from",
-    "both"
+    "both",
+    NULL
 };
 
 const gchar *xmpp_service_name = "Agents/Transports";
