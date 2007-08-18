@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.5 2007/08/18 15:41:10 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.6 2007/08/18 16:21:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -212,14 +212,15 @@ xmpp_server_close_cb(LmConnection *connection, LmDisconnectReason reason,
         msg = "Connection hung up";
         break;
     case LM_DISCONNECT_REASON_ERROR:
-        msg = "Connection lost";
+        msg = NULL;
         break;
     case LM_DISCONNECT_REASON_UNKNOWN:
     default:
         msg = "Unknown error";
     }
 
-    signal_emit("server quit", 2, server, msg);
+    if (msg)
+        signal_emit("server quit", 2, server, msg);
 
     /* do reconnect here ! */
 

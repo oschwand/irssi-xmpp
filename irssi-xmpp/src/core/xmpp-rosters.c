@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters.c,v 1.3 2007/08/18 14:35:54 cdidier Exp $
+ * $Id: xmpp-rosters.c,v 1.4 2007/08/18 16:21:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -149,6 +149,9 @@ xmpp_find_user_from_groups(GSList *groups, const gchar *jid,
     XmppRosterGroup **group)
 {
     GSList *group_list, *group_tmp, *user_list = NULL;
+
+    if (groups == NULL)
+        return NULL;
 
     group_list = groups;
     while (!user_list && group_list) {
