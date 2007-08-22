@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.7 2007/08/22 19:23:10 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.8 2007/08/22 20:00:34 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -51,7 +51,8 @@ static void
 cmd_away(const char *data, XMPP_SERVER_REC *server)
 {
     gchar **str, **prefix;
-    gchar *show, *reason = NULL;
+    gchar *show;
+    const gchar *reason = NULL;
     gboolean have_prefix = FALSE, default_mode = FALSE;
 
     CMD_XMPP_SERVER(server);
@@ -100,7 +101,8 @@ parse_cmd_away:
         } else {
             default_mode = TRUE;
             show = (gchar *) settings_get_str("xmpp_default_away_mode");
-            reason = prefix[0];
+//            reason = prefix[0];
+            reason = data;
             goto parse_cmd_away;
         }
 
