@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-settings.c,v 1.1 2007/08/22 19:25:06 cdidier Exp $
+ * $Id: xmpp-settings.c,v 1.2 2007/08/22 19:50:38 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -24,11 +24,27 @@
 
 #include "xmpp-servers.h"
 #include "xmpp-rosters.h"
+#include "xmpp-protocol.h"
 
 void
 read_settings(void)
 {
-    g_debug("ok");
+    GSList *tmp;
+    XMPP_SERVER_REC *server;
+    
+    for (tmp = servers; tmp != NULL; tmp = servers->next) {
+
+        server = XMPP_SERVER(tmp->data);
+        if (server == NULL)
+            continue;
+
+        /* update priority */
+        if (server->priority != settings_get_int("xmpp_priority")) {
+            server->priority = settings_get_int("xmpp_priority");
+            xmpp_set_presence(server, server->show, server->away_reason);
+        }
+
+    }
 }
 
 void
