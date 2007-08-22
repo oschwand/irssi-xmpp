@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.4 2007/08/22 18:20:50 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.5 2007/08/22 18:31:03 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -366,7 +366,7 @@ xmpp_handle_presence(LmMessageHandler *handler, LmConnection *connection,
         else
             priority = NULL;
 
-        xmpp_roster_update_presence(server, jid, show, status, priority);
+        xmpp_roster_presence_update(server, jid, show, status, priority);
 
     }
 

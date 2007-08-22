@@ -1,4 +1,4 @@
-/* $Id: xmpp-rosters.h,v 1.2 2007/08/15 12:44:14 cdidier Exp $ */
+/* $Id: xmpp-rosters.h,v 1.3 2007/08/22 18:31:03 cdidier Exp $ */
 
 #ifndef __XMPP_ROSTER_H
 #define __XMPP_ROSTER_H
@@ -51,8 +51,10 @@ gint    xmpp_sort_user_func(gconstpointer, gconstpointer);
 XmppRosterUser *xmpp_find_user_from_groups(GSList *, const gchar *, 
     XmppRosterGroup **);
 gboolean        xmpp_roster_show_user(XmppRosterUser *);
+
 void    xmpp_roster_update(XMPP_SERVER_REC *, LmMessageNode *);
-void    xmpp_roster_update_presence(XMPP_SERVER_REC *, const gchar *,
+
+void    xmpp_roster_presence_update(XMPP_SERVER_REC *, const gchar *,
     const gchar *, const gchar *, const gchar *);
 void    xmpp_roster_presence_error(XMPP_SERVER_REC *, const gchar *);
 void    xmpp_roster_presence_unavailable(XMPP_SERVER_REC *, const gchar *,
