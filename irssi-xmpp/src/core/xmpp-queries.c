@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-queries.c,v 1.4 2007/08/15 12:44:14 cdidier Exp $
+ * $Id: xmpp-queries.c,v 1.5 2007/08/22 18:20:50 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -61,7 +61,7 @@ xmpp_query_create(const char *server_tag, const char *nick, int automatic)
         if (rec_tmp != NULL) {
             g_free(rec->name);
             g_free(rec);
-            signal_emit("xmpp event raise query", 2, server, rec_tmp);
+            signal_emit("xmpp window raise query", 2, server, rec_tmp);
             return NULL;
         }
     }

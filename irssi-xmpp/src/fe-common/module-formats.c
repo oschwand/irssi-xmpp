@@ -1,5 +1,5 @@
 /*
- * $Id: module-formats.c,v 1.2 2007/08/16 15:33:57 cdidier Exp $
+ * $Id: module-formats.c,v 1.3 2007/08/22 18:20:50 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -43,6 +43,10 @@ FORMAT_REC fecommon_xmpp_formats[] = {
     { "suscribed", "You can see {nick $0} presence now.", 1 , { 0 } },
     { "unsuscribe", "{nick $0} doesn't want to see your presence anymore.", 1 , { 0 } },
     { "unsuscribed", "{nick $0} doesn't want you to see his/her presence anymore.", 1 , { 0 } },
+
+    /* ---- */
+    { NULL, "Message", 0 },
+    { "message_not_delivered", "Cannot deliver message to: {nick $0}", 1,  { 0 } },
 
     /* ---- */
     { NULL, "Misc", 0 },

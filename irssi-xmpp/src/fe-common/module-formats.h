@@ -1,4 +1,4 @@
-/* $Id: module-formats.h,v 1.2 2007/08/16 15:33:57 cdidier Exp $ */
+/* $Id: module-formats.h,v 1.3 2007/08/22 18:20:50 cdidier Exp $ */
 
 #include "formats.h"
 
@@ -24,6 +24,10 @@ enum {
     XMPPTXT_UNSUBSCRIBED,
 
     XMPPTXT_FILL_3,
+
+    XMPPTXT_MESSAGE_NOT_DELIVERED,
+
+    XMPPTXT_FILL_4,
 
     XMPPTXT_DEFAULT_EVENT,
     XMPPTXT_DEFAULT_ERROR
