@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.6 2007/08/22 18:20:50 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.7 2007/08/22 19:23:10 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -431,15 +431,6 @@ xmpp_commands_init(void)
 
     command_set_options("connect", "+xmppnet");
 	command_set_options("server add", "-xmppnet");
-
-    settings_add_int("xmpp", "xmpp_priority", 0);
-    settings_add_bool("xmpp", "xmpp_send_version", TRUE);
-    settings_add_str("xmpp", "xmpp_default_away_mode", "away");
-    settings_add_bool("xmpp", "xmpp_set_nick_as_username", FALSE);
-    settings_add_bool("xmpp", "roster_show_offline", TRUE);
-    settings_add_bool("xmpp", "roster_show_offline_unsuscribed", TRUE);
-    settings_add_str("xmpp", "roster_default_group", "General");
-    settings_add_bool("xmpp", "roster_add_send_subscribe", TRUE);
 }
 
 void
