@@ -1,4 +1,4 @@
-/* $Id: xmpp-protocol.h,v 1.3 2007/08/23 20:41:41 cdidier Exp $ */
+/* $Id: xmpp-protocol.h,v 1.4 2007/08/23 21:56:50 cdidier Exp $ */
 
 #ifndef __XMPP_PROTOCOL_H
 #define __XMPP_PROTOCOL_H
@@ -11,12 +11,12 @@
 __BEGIN_DECLS
 gchar   *xmpp_recode(const gchar *, const int);
 
-gchar	*xmpp_jid_get_username(const gchar *);
-gchar	*xmpp_jid_get_ressource(const gchar *);
-gchar	*xmpp_jid_strip_ressource(const gchar *);
-gboolean xmpp_jid_have_ressource(const gchar *);
-gboolean xmpp_jid_have_address(const gchar *);
-gboolean xmpp_priority_out_of_bound(const int);
+gchar		*xmpp_jid_get_username(const gchar *);
+gchar		*xmpp_jid_get_ressource(const gchar *);
+gchar		*xmpp_jid_strip_ressource(const gchar *);
+gboolean	 xmpp_jid_have_ressource(const gchar *);
+gboolean	 xmpp_jid_have_address(const gchar *);
+gboolean	 xmpp_priority_out_of_bound(const int);
 
 void     xmpp_send_message_chat(XMPP_SERVER_REC *, const gchar *,
 	     const gchar *);
