@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-settings.c,v 1.2 2007/08/22 19:50:38 cdidier Exp $
+ * $Id: xmpp-settings.c,v 1.3 2007/08/23 18:41:06 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -32,7 +32,7 @@ read_settings(void)
     GSList *tmp;
     XMPP_SERVER_REC *server;
     
-    for (tmp = servers; tmp != NULL; tmp = servers->next) {
+    for (tmp = servers; tmp != NULL; tmp = tmp->next) {
 
         server = XMPP_SERVER(tmp->data);
         if (server == NULL)
