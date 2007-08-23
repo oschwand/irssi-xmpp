@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-settings.c,v 1.4 2007/08/23 21:56:50 cdidier Exp $
+ * $Id: xmpp-settings.c,v 1.5 2007/08/23 22:20:34 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -60,11 +60,11 @@ xmpp_settings_init(void)
 	settings_add_str("xmpp", "roster_default_group", "General");
 	settings_add_bool("xmpp", "roster_add_send_subscribe", TRUE);
 
-	signal_add("setup changed", (SIGNAL_FUNC) read_settings);
+	signal_add("setup changed", (SIGNAL_FUNC)read_settings);
 }
 
 void
 xmpp_settings_deinit(void)
 {
-	signal_remove("setup changed", (SIGNAL_FUNC) read_settings);
+	signal_remove("setup changed", (SIGNAL_FUNC)read_settings);
 }
