@@ -1,4 +1,4 @@
-/* $Id: xmpp-commands.h,v 1.4 2007/08/18 14:35:54 cdidier Exp $ */
+/* $Id: xmpp-commands.h,v 1.5 2007/08/23 19:17:03 cdidier Exp $ */
 
 #ifndef __XMPP_COMMANDS_H
 #define __XMPP_COMMANDS_H
@@ -44,7 +44,9 @@ extern const gchar *xmpp_command_roster[];
             cmd_return_error(CMDERR_NOT_CONNECTED);                            \
         } G_STMT_END
 
+__BEGIN_DECLS
 void xmpp_commands_init(void);
 void xmpp_commands_deinit(void);
+__END_DECLS
 
 #endif
