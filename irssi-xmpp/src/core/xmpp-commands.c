@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.9 2007/08/22 21:15:40 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.10 2007/08/23 17:43:32 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -95,7 +95,7 @@ parse_cmd_away:
         xmpp_set_presence(server, XMPP_PRESENCE_AWAY, reason);
 
     else {
-        reason = show;
+        reason = (str_prefixed != NULL) ? str[1] : data;
         show = settings_get_str("xmpp_default_away_mode");
         default_mode = TRUE;
 
