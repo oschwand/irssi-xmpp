@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-rosters.c,v 1.4 2007/08/25 15:18:01 cdidier Exp $
+ * $Id: fe-xmpp-rosters.c,v 1.5 2007/08/25 19:53:07 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -23,13 +23,12 @@
 #include "settings.h"
 #include "signals.h"
 #include "levels.h"
+#include "printtext.h"
+#include "themes.h"
 
 #include "xmpp.h"
 #include "xmpp-servers.h"
 #include "xmpp-rosters.h"
-
-#include "printtext.h"
-#include "themes.h"
 
 static void
 event_roster_group(XMPP_SERVER_REC *server, const char *group)

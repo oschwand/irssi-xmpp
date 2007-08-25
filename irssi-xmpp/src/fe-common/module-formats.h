@@ -1,4 +1,4 @@
-/* $Id: module-formats.h,v 1.4 2007/08/25 15:18:01 cdidier Exp $ */
+/* $Id: module-formats.h,v 1.5 2007/08/25 19:53:07 cdidier Exp $ */
 
 #include "formats.h"
 
@@ -26,6 +26,8 @@ enum {
 	XMPPTXT_FILL_3,
 
 	XMPPTXT_MESSAGE_NOT_DELIVERED,
+	XMPPTXT_PRESENCE_CHANGE,
+	XMPPTXT_PRESENCE_CHANGE_REASON,
 
 	XMPPTXT_FILL_4,
 

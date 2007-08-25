@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters.c,v 1.9 2007/08/25 18:01:32 cdidier Exp $
+ * $Id: xmpp-rosters.c,v 1.10 2007/08/25 19:55:36 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -541,7 +541,8 @@ xmpp_roster_presence_unavailable(XMPP_SERVER_REC *server,
 	if (ressource == NULL)
 		return;
 
-	signal_emit("xmpp jid presence unavailable", 2, server, full_jid);
+	signal_emit("xmpp jid presence change", 4, server, full_jid,
+	    XMPP_PRESENCE_UNAVAILABLE, status);
 
 	user->ressources = g_slist_remove(user->ressources, ressource);
 	xmpp_roster_cleanup_ressource(ressource, NULL);
