@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-queries.c,v 1.6 2007/08/25 19:53:07 cdidier Exp $
+ * $Id: fe-xmpp-queries.c,v 1.7 2007/08/25 20:41:47 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -36,10 +36,8 @@ const char *fe_xmpp_presence_show[] = {
 	"is now away: do not disturb",
 	"is now away",
 	"is now online",
-	"is now ready for chat",
-	NULL
+	"is now ready for chat"
 };
-#define SHOW_LEN 6
 
 static void
 event_presence_change(XMPP_SERVER_REC *server, const char *full_jid,
@@ -50,7 +48,7 @@ event_presence_change(XMPP_SERVER_REC *server, const char *full_jid,
 
 	g_return_if_fail(server != NULL);
 	g_return_if_fail(full_jid != NULL);
-	g_return_if_fail(0 <= show && show <= SHOW_LEN);
+	g_return_if_fail(0 <= show && show < XMPP_PRESENCE_SHOW_LEN);
 
 	rec = xmpp_query_find(server, full_jid);
 	if (rec == NULL)
