@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters.c,v 1.10 2007/08/25 19:55:36 cdidier Exp $
+ * $Id: xmpp-rosters.c,v 1.11 2007/08/25 20:04:12 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -221,7 +221,6 @@ xmpp_find_ressource_from_user(XmppRosterUser *user, char *ressource)
 	GSList *ressource_list;
 
 	g_return_val_if_fail(user != NULL, NULL);
-	g_return_val_if_fail(ressource != NULL, NULL);
 
 	ressource_list = g_slist_find_custom(user->ressources, ressource,
 		(GCompareFunc)xmpp_find_ressource_func);
