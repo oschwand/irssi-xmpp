@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.3 2007/08/23 21:56:50 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.4 2007/08/25 15:18:01 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -31,9 +31,9 @@ struct _XMPP_SERVER_REC {
 	#include "server-rec.h"
 
 	LmConnection	*lmconn;
-	gchar		*ressource;
-	gint		 priority;
-	gint		 show;
+	char		*ressource;
+	int		 priority;
+	int		 show;
 
 	GSList		*roster;
 };
