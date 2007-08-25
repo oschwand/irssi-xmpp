@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.8 2007/08/25 15:18:01 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.9 2007/08/25 18:04:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -108,7 +108,7 @@ xmpp_jid_get_username(const char *jid)
 gboolean
 xmpp_jid_have_ressource(const char *jid)
 {
-	g_return_val_if_fail(jid != NULL, NULL);
+	g_return_val_if_fail(jid != NULL, FALSE);
 
 	return (g_utf8_strchr(jid, -1, '/') != NULL) ? TRUE : FALSE;
 }
@@ -116,7 +116,7 @@ xmpp_jid_have_ressource(const char *jid)
 gboolean
 xmpp_jid_have_address(const char *jid)
 {
-	g_return_val_if_fail(jid != NULL, NULL);
+	g_return_val_if_fail(jid != NULL, FALSE);
 
 	return (g_utf8_strchr(jid, -1, '@') != NULL) ? TRUE : FALSE;
 }
