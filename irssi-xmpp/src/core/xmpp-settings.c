@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-settings.c,v 1.5 2007/08/23 22:20:34 cdidier Exp $
+ * $Id: xmpp-settings.c,v 1.6 2007/08/25 20:40:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -40,9 +40,9 @@ read_settings(void)
 
 		/* update priority */
 		if (server->priority != settings_get_int("xmpp_priority")) {
-			server->priority = settings_get_int("xmpp_priority");
 			xmpp_set_presence(server, server->show,
-			    server->away_reason);
+			    server->away_reason,
+			    settings_get_int("xmpp_priority"));
 		}
 
 	}
