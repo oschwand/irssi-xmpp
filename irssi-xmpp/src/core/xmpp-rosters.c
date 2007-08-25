@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters.c,v 1.8 2007/08/25 15:18:01 cdidier Exp $
+ * $Id: xmpp-rosters.c,v 1.9 2007/08/25 18:01:32 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -107,9 +107,9 @@ xmpp_sort_user_func(gconstpointer user1_pointer, gconstpointer user2_pointer)
 	if (ressources1_list == ressources2_list
 	    || (user1->error == TRUE && user2->error == TRUE))
 		goto by_name;
-	if (user1->error != NULL || ressources1_list == NULL)
+	if (user1->error || ressources1_list == NULL)
 		return 1;
-	if (user2->error == NULL || ressources2_list != NULL)
+	if (user2->error || ressources2_list == NULL)
 		return -1;
 
 	fisrt_ressources1 = (XmppRosterRessource *)ressources1_list->data;

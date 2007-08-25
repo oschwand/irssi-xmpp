@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.12 2007/08/25 15:18:01 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.13 2007/08/25 18:05:46 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -137,7 +137,7 @@ cmd_roster_show_groups(gpointer data, gpointer user_data)
        
 	show_group = FALSE;
 	user_list = group->users;
-	while (show_group == NULL && user_list != NULL) {
+	while (!show_group && user_list != NULL) {
 		if (xmpp_roster_show_user((XmppRosterUser *)user_list->data))
 			show_group = TRUE;
 
