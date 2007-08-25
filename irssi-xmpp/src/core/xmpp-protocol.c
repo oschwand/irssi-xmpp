@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.9 2007/08/25 18:04:01 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.10 2007/08/25 19:56:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -199,7 +199,6 @@ xmpp_set_presence(XMPP_SERVER_REC *server, const int show, const char *status)
 		server->show = XMPP_PRESENCE_AVAILABLE;
 		g_free_and_null(server->away_reason);
 	}
-
 
 	/* away */
 	if (lm_message_node_get_child(msg->node, "show") != NULL) {

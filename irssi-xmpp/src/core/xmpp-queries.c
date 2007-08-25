@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-queries.c,v 1.7 2007/08/25 15:18:01 cdidier Exp $
+ * $Id: xmpp-queries.c,v 1.8 2007/08/25 19:56:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -27,7 +27,6 @@
 #include "xmpp-servers.h"
 #include "xmpp-protocol.h"
 #include "xmpp-rosters.h"
-
 
 QUERY_REC *
 xmpp_query_create(const char *server_tag, const char *nick, int automatic)
