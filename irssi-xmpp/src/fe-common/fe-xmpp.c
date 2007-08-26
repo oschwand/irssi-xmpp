@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp.c,v 1.7 2007/08/26 00:10:41 cdidier Exp $
+ * $Id: fe-xmpp.c,v 1.8 2007/08/26 14:55:16 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -30,6 +30,7 @@
 #include "xmpp-servers.h"
 
 #include "xmpp-completion.h"
+#include "fe-xmpp-composing.h"
 #include "fe-xmpp-rosters.h"
 #include "fe-xmpp-queries.h"
 
@@ -87,7 +88,7 @@ fe_xmpp_init(void)
 	 signal_add("xmpp debug", (SIGNAL_FUNC)event_debug);
 #endif
 
-	//fe_xmpp_composing_init();
+	fe_xmpp_composing_init();
 	fe_xmpp_rosters_init();
 	fe_xmpp_queries_init();
 	xmpp_completion_init();
@@ -105,7 +106,7 @@ fe_xmpp_deinit(void)
 	signal_remove("xmpp debug", (SIGNAL_FUNC)event_debug);
 #endif
 
-	//fe_xmpp_composing_deinit();
+	fe_xmpp_composing_deinit();
 	fe_xmpp_rosters_deinit();
 	fe_xmpp_queries_deinit();
 	xmpp_completion_deinit();
