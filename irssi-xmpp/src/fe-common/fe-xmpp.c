@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp.c,v 1.8 2007/08/26 14:55:16 cdidier Exp $
+ * $Id: fe-xmpp.c,v 1.9 2007/08/26 22:09:39 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -26,7 +26,6 @@
 #include "printtext.h"
 #include "themes.h"
 
-#include "xmpp.h"
 #include "xmpp-servers.h"
 
 #include "xmpp-completion.h"
