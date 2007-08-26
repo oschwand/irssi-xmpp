@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.11 2007/08/25 20:40:40 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.12 2007/08/26 00:10:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -247,6 +247,23 @@ xmpp_set_presence(XMPP_SERVER_REC *server, const int show, const char *status,
 
 	lm_connection_send(server->lmconn, msg, NULL);
 	lm_message_unref(msg);
+}
+
+void
+xmpp_send_composing(XMPP_SERVER_REC *server, const char *full_jid)
+{
+	char *str = g_strdup_printf("%d", time(NULL));
+	signal_emit("xmpp jid presence change", 4, server, full_jid,
+	    5, str);
+	g_free(str);
+}
+
+void xmpp_send_stop_composing(XMPP_SERVER_REC *server, const char *full_jid)
+{
+	char *str = g_strdup_printf("%d", time(NULL));
+	signal_emit("xmpp jid presence change", 4, server, full_jid,
+	    1, str);
+	g_free(str);
 }
 
 /*

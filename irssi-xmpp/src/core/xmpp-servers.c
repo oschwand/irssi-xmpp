@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.10 2007/08/25 15:18:01 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.11 2007/08/26 00:10:41 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -428,7 +428,7 @@ xmpp_servers_init(void)
 void
 xmpp_servers_deinit(void)
 {
-	signal_remove("server connected", (SIGNAL_FUNC) sig_connected);
+	signal_remove("server connected", (SIGNAL_FUNC)sig_connected);
 	signal_remove("server disconnected",
 	    (SIGNAL_FUNC)sig_server_disconnected);
 	signal_remove("server connect failed",
