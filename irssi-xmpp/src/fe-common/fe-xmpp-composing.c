@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-composing.c,v 1.2 2007/08/26 14:55:16 cdidier Exp $
+ * $Id: fe-xmpp-composing.c,v 1.3 2007/08/26 16:14:47 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -28,6 +28,9 @@
 #include "settings.h"
 #include "special-vars.h"
 
+#include "fe-xmpp-composing.h"
+
+#include "xmpp-servers.h"
 #include "xmpp-queries.h"
 #include "xmpp-rosters.h"
 #include "xmpp-protocol.h"
