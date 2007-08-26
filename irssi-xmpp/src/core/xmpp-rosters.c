@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters.c,v 1.13 2007/08/26 16:14:47 cdidier Exp $
+ * $Id: xmpp-rosters.c,v 1.14 2007/08/26 17:33:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -303,8 +303,6 @@ static XmppRosterRessource *
 xmpp_roster_create_ressource(const char *name)
 {
 	XmppRosterRessource *ressource;
-
-	g_return_val_if_fail(name != NULL, NULL);
 
 	ressource = g_new(XmppRosterRessource, 1);
 
