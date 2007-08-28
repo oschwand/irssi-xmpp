@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.12 2007/08/27 17:48:20 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.13 2007/08/28 18:40:28 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -27,6 +27,7 @@
 #include "xmpp-servers.h"
 #include "xmpp-protocol.h"
 #include "xmpp-rosters.h"
+#include "xmpp-tools.h"
 
 static void
 channels_join(SERVER_REC *server, const char *channel, int automatic)
