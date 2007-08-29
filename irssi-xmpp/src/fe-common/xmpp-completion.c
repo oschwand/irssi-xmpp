@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-completion.c,v 1.5 2007/08/26 17:03:52 cdidier Exp $
+ * $Id: xmpp-completion.c,v 1.6 2007/08/29 07:43:06 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -23,9 +23,9 @@
 #include "window-items.h"
 
 #include "xmpp-servers.h"
-#include "xmpp-protocol.h"
 #include "xmpp-rosters.h"
 #include "xmpp-commands.h"
+#include "xmpp-tools.h"
 
 #include <string.h>
 

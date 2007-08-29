@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-composing.c,v 1.5 2007/08/26 22:09:38 cdidier Exp $
+ * $Id: fe-xmpp-composing.c,v 1.6 2007/08/29 07:43:06 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -36,7 +36,7 @@
 #include "xmpp-servers.h"
 #include "xmpp-queries.h"
 #include "xmpp-rosters.h"
-#include "xmpp-protocol.h"
+#include "xmpp-tools.h"
 
 #define KEY_TAB 9
 #define KEY_RETURN 10

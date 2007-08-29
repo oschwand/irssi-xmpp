@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.14 2007/08/28 18:40:28 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.15 2007/08/29 07:43:06 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -65,10 +65,10 @@ xmpp_send_message_chat(XMPP_SERVER_REC *server, const char *to_jid,
 }
 
 gboolean
-xmpp_presence_changed(const int show, const int old_chow, const gchar *status,
+xmpp_presence_changed(const int show, const int old_show, const gchar *status,
     const gchar *old_status, const int priority, const int old_priority)
 {
-	if ((show != old_chow)
+	if ((show != old_show)
 	    || (status == NULL && old_status != NULL)
 	    || (status != NULL && old_status == NULL)
 	    || (status != NULL && old_status != NULL
