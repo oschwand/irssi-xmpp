@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.13 2007/08/28 18:40:28 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.14 2007/08/29 08:59:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -28,6 +28,12 @@
 #include "xmpp-protocol.h"
 #include "xmpp-rosters.h"
 #include "xmpp-tools.h"
+
+gboolean
+xmpp_server_is_alive(XMPP_SERVER_REC *server)
+{
+	return (server != NULL && g_slist_find(servers, server) != NULL);
+}
 
 static void
 channels_join(SERVER_REC *server, const char *channel, int automatic)
