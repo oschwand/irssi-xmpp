@@ -1,5 +1,5 @@
 /*
- * $Id: text-xmpp-composing.c,v 1.1 2007/09/30 12:12:36 cdidier Exp $
+ * $Id: text-xmpp-composing.c,v 1.1 2007/10/05 09:09:10 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *

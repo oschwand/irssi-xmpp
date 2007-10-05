@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp.c,v 1.11 2007/09/30 12:12:36 cdidier Exp $
+ * $Id: fe-xmpp.c,v 1.12 2007/10/05 09:09:10 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -33,7 +33,6 @@
 #include "fe-xmpp-rosters.h"
 #include "fe-xmpp-whois.h"
 #include "xmpp-completion.h"
-#include "text-xmpp-composing.h"
 
 static void
 event_server_status(XMPP_SERVER_REC *server, const char *msg)
@@ -70,7 +69,6 @@ fe_xmpp_init(void)
 	fe_xmpp_rosters_init();
 	fe_xmpp_whois_init();
 	xmpp_completion_init();
-	text_xmpp_composing_init();
 
 	module_register("xmpp", "fe");
 }
@@ -88,7 +86,6 @@ fe_xmpp_deinit(void)
 	fe_xmpp_rosters_deinit();
 	fe_xmpp_whois_deinit();
 	xmpp_completion_deinit();
-	text_xmpp_composing_deinit();
 
 	theme_unregister();
 }

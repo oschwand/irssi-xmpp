@@ -1,4 +1,4 @@
-/* $Id: text-xmpp-composing.h,v 1.1 2007/09/30 12:12:36 cdidier Exp $ */
+/* $Id: text-xmpp-composing.h,v 1.1 2007/10/05 09:09:10 cdidier Exp $ */
 
 #ifndef __TEXT_XMPP_COMPOSING_H
 #define __TEXT_XMPP_COMPOSING_H
