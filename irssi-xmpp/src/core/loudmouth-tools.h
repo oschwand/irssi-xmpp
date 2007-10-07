@@ -1,4 +1,4 @@
-/* $Id:*/
+/* $Id: loudmouth-tools.h,v 1.2 2007/10/07 15:48:06 cdidier Exp $ */
 
 #ifndef __LOUDMOUTH_TOOLS_H
 #define __LOUDMOUTH_TOOLS_H

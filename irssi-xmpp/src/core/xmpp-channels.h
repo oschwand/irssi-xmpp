@@ -1,4 +1,4 @@
-/* $Id:*/
+/* $Id: xmpp-channels.h,v 1.3 2007/10/07 15:48:06 cdidier Exp $ */
 
 #ifndef __XMPP_CHANNELS_H
 #define __XMPP_CHANNELS_H

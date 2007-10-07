@@ -1,4 +1,4 @@
-/* $Id:*/
+/* $Id: fe-xmpp-messages.h,v 1.2 2007/10/07 15:45:19 cdidier Exp $ */
 
 #ifndef __FE_XMPP_MESSAGES_H
 #define __FE_XMPP_MESSAGES_H
