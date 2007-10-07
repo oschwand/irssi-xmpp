@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-queries.c,v 1.8 2007/09/30 12:12:36 cdidier Exp $
+ * $Id: fe-xmpp-queries.c,v 1.9 2007/10/07 15:43:31 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -75,7 +75,7 @@ sig_query_raise(XMPP_SERVER_REC *server, QUERY_REC *query)
 	if (window != active_win)
 		window_set_active(window);
 
-	window_item_set_active(active_win, (WI_ITEM_REC *) query);
+	window_item_set_active(active_win, (WI_ITEM_REC *)query);
 }
 
 void

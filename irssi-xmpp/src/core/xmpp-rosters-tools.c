@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters-tools.c,v 1.1 2007/09/30 12:12:36 cdidier Exp $
+ * $Id: xmpp-rosters-tools.c,v 1.2 2007/10/07 15:43:31 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -225,9 +225,9 @@ xmpp_show_user(XMPP_ROSTER_USER_REC *user)
 	g_return_val_if_fail(user != NULL, FALSE);
 
 	return (user->resources != NULL &&
-	    (user->subscription == XMPP_SUBSCRIPTION_BOTH ||
+	    user->subscription == XMPP_SUBSCRIPTION_BOTH) ||
 	    (user->subscription != XMPP_SUBSCRIPTION_BOTH &&
-	    settings_get_bool("roster_show_offline_unsuscribed"))))
+	    settings_get_bool("roster_show_offline_unsuscribed"))
 	    || settings_get_bool("roster_show_offline");
 }
 

@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-completion.c,v 1.7 2007/09/30 12:12:36 cdidier Exp $
+ * $Id: xmpp-completion.c,v 1.8 2007/10/07 15:43:31 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -75,7 +75,7 @@ static GList *
 get_nicks(XMPP_SERVER_REC *server, const char *nick)
 {
 	GSList *group_list, *user_list;
-	GList *list, *next_list;
+	GList *list;
 	XMPP_ROSTER_USER_REC *user;
 	gchar *jid, *resource;
 	int len;
@@ -129,7 +129,6 @@ sig_complete_word(GList **list, WINDOW_REC *window, const char *word,
     const char *linestart, int *want_space)
 {
 	XMPP_SERVER_REC *server;
-
 
 	g_return_if_fail(list != NULL);
 	g_return_if_fail(window != NULL);
