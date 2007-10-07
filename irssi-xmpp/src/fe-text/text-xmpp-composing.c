@@ -1,5 +1,5 @@
 /*
- * $Id: text-xmpp-composing.c,v 1.1 2007/10/05 09:09:10 cdidier Exp $
+ * $Id: text-xmpp-composing.c,v 1.2 2007/10/07 18:50:05 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -24,7 +24,9 @@
 #include "module-formats.h"
 #include "signals.h"
 #include "window-items.h"
-#include "fe-text/statusbar.h"
+
+/* in include/irssi/src/fe-text */
+#include "statusbar.h"
 
 #include "xmpp-servers.h"
 #include "xmpp-queries.h"
