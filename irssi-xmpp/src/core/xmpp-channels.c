@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.2 2007/10/07 15:43:31 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.3 2007/10/07 16:16:57 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -508,7 +508,8 @@ nick_mode(XMPP_SERVER_REC *server, XMPP_CHANNEL_REC *channel,
 
 	set_modes(nick, affiliation, role);
 
-	/* event */
+	signal_emit("message xmpp channel mode", 5, server, channel, nick->nick,
+	    affiliation, role);
 }
 
 static void

@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-messages.c,v 1.1 2007/09/30 12:12:36 cdidier Exp $
+ * $Id: fe-xmpp-messages.c,v 1.2 2007/10/07 16:16:57 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -151,6 +151,24 @@ out:
 	g_free(addr);
 }
 
+static void
+sig_channel_mode(XMPP_SERVER_REC *server, XMPP_CHANNEL_REC *channel,
+    const char *nick, const char *affiliation, const char *role)
+{
+	char *mode;
+
+	g_return_if_fail(server != NULL);
+	g_return_if_fail(channel != NULL);
+	g_return_if_fail(nick != NULL);
+
+	mode = g_strconcat("+", affiliation, "/+", role, " ", nick,  NULL);
+
+	printformat_module(IRC_MODULE_NAME, server, channel->name, MSGLEVEL_MODES,
+	    IRCTXT_CHANMODE_CHANGE, channel->name, mode, channel->name);
+
+	g_free(mode);
+}
+
 void
 fe_xmpp_messages_init(void)
 {
@@ -158,6 +176,7 @@ fe_xmpp_messages_init(void)
 	signal_add("message xmpp own_action", (SIGNAL_FUNC)sig_own_action);
 	signal_add("message xmpp error", (SIGNAL_FUNC)sig_error);
 	signal_add("message xmpp channel nick", (SIGNAL_FUNC)sig_channel_nick);
+	signal_add("message xmpp channel mode", (SIGNAL_FUNC)sig_channel_mode);
 }
 
 void
@@ -168,4 +187,5 @@ fe_xmpp_messages_deinit(void)
 	signal_remove("message xmpp error", (SIGNAL_FUNC)sig_error);
 	signal_remove("message xmpp channel nick",
 	    (SIGNAL_FUNC)sig_channel_nick);
+	signal_remove("message xmpp channel mode", (SIGNAL_FUNC)sig_channel_mode);
 }
