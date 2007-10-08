@@ -1,4 +1,4 @@
-/* $Id: xmpp-channels.h,v 1.4 2007/10/08 16:46:40 cdidier Exp $ */
+/* $Id: xmpp-channels.h,v 1.5 2007/10/08 19:44:31 cdidier Exp $ */
 
 #ifndef __XMPP_CHANNELS_H
 #define __XMPP_CHANNELS_H
@@ -21,7 +21,6 @@ struct _XMPP_CHANNEL_REC {
 	#include "channel-rec.h"
 
 	char	*nick;
-	char	*oldnick;
 
 	gboolean non_anonymous; /* status code 100 */
 	gboolean logging; /* status code 170 */
