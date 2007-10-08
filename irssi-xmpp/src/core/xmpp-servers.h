@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.6 2007/09/30 12:12:36 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.7 2007/10/08 16:46:40 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -29,6 +29,8 @@ struct _XMPP_SERVER_CONNECT_REC {
 #define STRUCT_SERVER_CONNECT_REC XMPP_SERVER_CONNECT_REC
 struct _XMPP_SERVER_REC {
 	#include "server-rec.h"
+
+	char		*orignick;
 
 	char		*resource;
 	int		 show;

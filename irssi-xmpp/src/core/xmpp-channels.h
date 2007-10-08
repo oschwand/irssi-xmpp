@@ -1,4 +1,4 @@
-/* $Id: xmpp-channels.h,v 1.3 2007/10/07 15:48:06 cdidier Exp $ */
+/* $Id: xmpp-channels.h,v 1.4 2007/10/08 16:46:40 cdidier Exp $ */
 
 #ifndef __XMPP_CHANNELS_H
 #define __XMPP_CHANNELS_H
@@ -31,7 +31,7 @@ struct _XMPP_CHANNEL_REC {
 
 __BEGIN_DECLS
 CHANNEL_REC	*xmpp_channel_create(XMPP_SERVER_REC *, const char *,
-		     const char *, int);
+		     const char *, int, const char *);
 void		 xmpp_channel_send_message(XMPP_SERVER_REC *, const char *,
 		     const char *);
 

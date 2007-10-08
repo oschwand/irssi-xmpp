@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.16 2007/10/08 15:08:31 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.17 2007/10/08 16:46:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -165,6 +165,7 @@ xmpp_server_init_connect(SERVER_CONNECT_REC *conn)
 	server->roster = NULL;
 
 	server_connect_init((SERVER_REC *)server);
+	server->orignick = g_strdup(server->nick);
 
 	/* init loudmouth connection structure */
 	server->lmconn = lm_connection_new(NULL);

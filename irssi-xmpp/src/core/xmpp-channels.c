@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.5 2007/10/07 21:46:38 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.6 2007/10/08 16:46:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -35,7 +35,7 @@
 
 CHANNEL_REC *
 xmpp_channel_create(XMPP_SERVER_REC *server, const char *name,
-    const char *visible_name, int automatic)
+    const char *visible_name, int automatic, const char *nick)
 {
 	XMPP_CHANNEL_REC *rec;
 
@@ -45,7 +45,7 @@ xmpp_channel_create(XMPP_SERVER_REC *server, const char *name,
 	rec = g_new0(XMPP_CHANNEL_REC, 1);
 	rec->chat_type = XMPP_PROTOCOL;
 
-	rec->nick = NULL;
+	rec->nick = g_strdup(nick);
 	rec->oldnick = NULL;
 
 	channel_init((CHANNEL_REC *)rec, (SERVER_REC *)server, name,
@@ -226,11 +226,12 @@ channels_join(XMPP_SERVER_REC *server, const char *data, int automatic)
 	for (tmp = chanlist; *tmp != NULL; tmp++) {
 		channel = xmpp_channel_find(server, *tmp);
 		if (channel == NULL) {
-			channel = (XMPP_CHANNEL_REC *)
-			    xmpp_channel_create(server, *tmp, NULL, automatic);
+			
+			/* extract nick */
 
-			/* set your nick */
-			channel->nick = g_strdup(server->connrec->username);
+			channel = (XMPP_CHANNEL_REC *)
+			    xmpp_channel_create(server, *tmp, NULL, automatic,
+			    server->connrec->username);
 
 			send_join(server, channel);
 		}

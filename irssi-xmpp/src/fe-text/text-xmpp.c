@@ -1,5 +1,5 @@
 /*
- * $Id: text-xmpp.c,v 1.2 2007/10/08 15:38:13 cdidier Exp $
+ * $Id: text-xmpp.c,v 1.3 2007/10/08 16:46:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -22,11 +22,13 @@
 #include "modules.h"
 
 #include "text-xmpp-composing.h"
+#include "text-xmpp-nick.h"
 
 void
 text_xmpp_init(void)
 {
 	text_xmpp_composing_init();
+/*	text_xmpp_nick_init();*/
 
 	module_register("xmpp", "text");
 }
@@ -35,4 +37,5 @@ void
 text_xmpp_deinit(void)
 {
 	text_xmpp_composing_deinit();
+/*	text_xmpp_nick_deinit();*/
 }
