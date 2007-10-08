@@ -1,5 +1,5 @@
 /*
- * $Id: text-xmpp-composing.c,v 1.2 2007/10/07 18:50:05 cdidier Exp $
+ * $Id: text-xmpp-composing.c,v 1.3 2007/10/08 15:38:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -85,7 +85,8 @@ event_message_sent(XMPP_SERVER_REC *server, const char *message,
 }
 
 void
-text_xmpp_composing_init(void) {
+text_xmpp_composing_init(void)
+{
 	statusbar_item_register("xmpp_composing", NULL, item_xmpp_composing);
 
 	signal_add("window changed", (SIGNAL_FUNC)xmpp_composing_update);
