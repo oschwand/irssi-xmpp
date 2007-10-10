@@ -1,5 +1,5 @@
 /*
- * $Id: text-xmpp-nick.c,v 1.3 2007/10/10 16:45:42 cdidier Exp $
+ * $Id: text-xmpp-nick.c,v 1.4 2007/10/10 17:21:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -91,35 +91,25 @@ sig_nick_changed(XMPP_SERVER_REC *server, XMPP_CHANNEL_REC *channel)
 static void
 sig_channel_joined(XMPP_CHANNEL_REC *channel)
 {
-	XMPP_SERVER_REC *server;
-
 	g_return_if_fail(channel != NULL);
 
 	if (!IS_XMPP_CHANNEL(channel))
 		return;
 
-	if (XMPP_CHANNEL(active_win->active) == channel) {
-		server = XMPP_SERVER(active_win->active->server);
-		if (server != NULL)
-			update_nick_statusbar(server, channel);
-	}
+	if (XMPP_CHANNEL(active_win->active) == channel)
+		update_nick_statusbar(channel->server, channel);
 }
 
 static void
 sig_channel_destroyed(XMPP_CHANNEL_REC *channel)
 {
-	XMPP_SERVER_REC *server;
-
 	g_return_if_fail(channel != NULL);
 
 	if (!IS_XMPP_CHANNEL(channel))
 		return;
 
-	if (XMPP_CHANNEL(active_win->active) == channel) {
-		server = XMPP_SERVER(active_win->active->server);
-		if (server != NULL)
-			update_nick_statusbar(server, NULL);
-	}
+	if (XMPP_CHANNEL(active_win->active) == channel)
+			update_nick_statusbar(channel->server, NULL);
 }
 
 void
