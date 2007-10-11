@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.18 2007/10/11 17:58:37 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.19 2007/10/11 18:00:18 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -223,12 +223,16 @@ cmd_away(const char *data, XMPP_SERVER_REC *server)
 static void
 cmd_quote(const char *data, XMPP_SERVER_REC *server)
 {
+	char *recoded;
+
 	CMD_XMPP_SERVER(server);
 
 	if (*data == '\0')
 		return;
 
-	lm_connection_send_raw(server->lmconn, data, NULL);
+	recoded = xmpp_recode_out(data);
+	lm_connection_send_raw(server->lmconn, recoded, NULL);
+	g_free(recoded);
 }
 
 static void
