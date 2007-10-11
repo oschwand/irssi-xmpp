@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.17 2007/10/10 17:18:38 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.18 2007/10/11 17:58:37 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -281,6 +281,25 @@ cmd_roster(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 	} else
 		command_runsub(xmpp_commands[XMPP_COMMAND_ROSTER], data,
 		    server, item);
+}
+
+/* SYNTAX: ROSTER ALL */
+static void
+cmd_roster_all(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
+{
+	gboolean oldvalue;
+
+	CMD_XMPP_SERVER(server);
+	
+	oldvalue = settings_get_bool("roster_show_offline");
+
+	if (!oldvalue)
+		settings_set_bool("roster_show_offline", TRUE);
+
+	signal_emit("command roster", 3, "", server, item);
+
+	if (!oldvalue)
+		settings_set_bool("roster_show_offline", oldvalue);
 }
 
 /* SYNTAX: ROSTER ADD <jid> */
@@ -763,6 +782,7 @@ xmpp_commands_init(void)
 	command_bind_xmpp("away", NULL, (SIGNAL_FUNC)cmd_away);
 	command_bind_xmpp("quote", NULL, (SIGNAL_FUNC)cmd_quote);
 	command_bind_xmpp("roster", NULL, (SIGNAL_FUNC)cmd_roster);
+	command_bind_xmpp("roster all", NULL, (SIGNAL_FUNC)cmd_roster_all);
 	command_bind_xmpp("roster add", NULL, (SIGNAL_FUNC)cmd_roster_add);
 	command_bind_xmpp("roster remove", NULL,
 	    (SIGNAL_FUNC)cmd_roster_remove);
@@ -800,6 +820,7 @@ xmpp_commands_deinit(void)
 	command_unbind("away", (SIGNAL_FUNC)cmd_away);
 	command_unbind("quote", (SIGNAL_FUNC)cmd_quote);
 	command_unbind("roster", (SIGNAL_FUNC)cmd_roster);
+	command_unbind("roster all", (SIGNAL_FUNC)cmd_roster_all);
 	command_unbind("roster add", (SIGNAL_FUNC)cmd_roster_add);
 	command_unbind("roster remove", (SIGNAL_FUNC)cmd_roster_remove);
 	command_unbind("roster name", (SIGNAL_FUNC)cmd_roster_name);
