@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.10 2007/10/11 18:26:48 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.11 2007/10/12 08:55:26 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -215,6 +215,8 @@ channels_join(XMPP_SERVER_REC *server, const char *data, int automatic)
 
 	g_return_if_fail(server != NULL);
 	g_return_if_fail(data != NULL);
+
+	g_debug("ok");
 
 	if (!xmpp_server_is_alive(server) || *data == '\0')
 		return;
