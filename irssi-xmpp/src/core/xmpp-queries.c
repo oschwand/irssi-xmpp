@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-queries.c,v 1.11 2007/10/07 15:43:31 cdidier Exp $
+ * $Id: xmpp-queries.c,v 1.12 2007/10/15 11:56:14 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -64,7 +64,7 @@ xmpp_query_create(const char *server_tag, const char *data, int automatic)
 	}
 	
 	if (rec->name == NULL)
-		rec->name = xmpp_get_full_jid(server, data);
+		rec->name = xmpp_rosters_get_full_jid(server->roster, data);
 
 	if (rec->name != NULL) {
 		/* test if the query already exist */

@@ -1,12 +1,15 @@
-/* $Id: loudmouth-tools.h,v 1.2 2007/10/07 15:48:06 cdidier Exp $ */
+/* $Id: loudmouth-tools.h,v 1.3 2007/10/15 11:56:14 cdidier Exp $ */
 
 #ifndef __LOUDMOUTH_TOOLS_H
 #define __LOUDMOUTH_TOOLS_H
+
+#include "xmpp-servers.h"
 
 __BEGIN_DECLS
 GSList	*lm_message_node_find_childs(LmMessageNode *, const char *);
 gboolean lm_message_nodes_attribute_found(GSList *, const char *, const char *,
 	     LmMessageNode **);
+gboolean lm_send(XMPP_SERVER_REC *, LmMessage *, GError **);
 __END_DECLS
 
 #endif

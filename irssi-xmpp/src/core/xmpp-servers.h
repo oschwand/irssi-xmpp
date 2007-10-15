@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.8 2007/10/08 19:44:31 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.9 2007/10/15 11:56:14 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -7,6 +7,7 @@
 #include "servers.h"
 
 #include "loudmouth/loudmouth.h"
+#include "loudmouth-tools.h"
 
 /* returns XMPP_SERVER_REC if it's XMPP server, NULL if it isn't */
 #define XMPP_SERVER(server)						\

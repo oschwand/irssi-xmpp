@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.18 2007/10/08 19:44:31 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.19 2007/10/15 11:56:14 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -276,7 +276,7 @@ xmpp_server_auth_cb(LmConnection *connection, gboolean success,
 	query = lm_message_node_add_child(lm_message_get_node(msg), "query",
 	    NULL);
 	lm_message_node_set_attribute(query, "xmlns", "jabber:iq:roster");
-	lm_connection_send(server->lmconn, msg, NULL);
+	lm_send(server, msg, NULL);
 	lm_message_unref(msg);
 
 	/* set presence available */
@@ -290,7 +290,7 @@ xmpp_server_auth_cb(LmConnection *connection, gboolean success,
 	    priority);
 	g_free(priority);
 
-	lm_connection_send(server->lmconn, msg, NULL);
+	lm_send(server, msg, NULL);
 	lm_message_unref(msg);
 	
 	server->show = XMPP_PRESENCE_AVAILABLE;
@@ -460,7 +460,7 @@ sig_server_quit(XMPP_SERVER_REC *server, char *reason)
 	lm_message_node_add_child(msg->node, "status", status_recoded);
 	g_free(status_recoded);
 
-	lm_connection_send(server->lmconn, msg, NULL);
+	lm_send(server, msg, NULL);
 	lm_message_unref(msg);
 }
 

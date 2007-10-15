@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-queries.c,v 1.9 2007/10/07 15:43:31 cdidier Exp $
+ * $Id: fe-xmpp-queries.c,v 1.10 2007/10/15 11:56:14 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -27,16 +27,7 @@
 
 #include "xmpp-queries.h"
 #include "xmpp-rosters.h"
-
-const char *fe_xmpp_presence_show[] = {
-	"error",
-	"Offline",
-	"Not Available",
-	"Busy",
-	"Away",
-	"Available",
-	"Free for Chat"
-};
+#include "fe-xmpp-status.h"
 
 static void
 sig_presence_changed(XMPP_SERVER_REC *server, const char *full_jid,

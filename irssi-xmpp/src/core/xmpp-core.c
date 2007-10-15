@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-core.c,v 1.7 2007/09/30 12:12:36 cdidier Exp $
+ * $Id: xmpp-core.c,v 1.8 2007/10/15 11:56:14 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -29,6 +29,7 @@
 #include "xmpp-servers.h"
 #include "xmpp-channels.h"
 #include "xmpp-commands.h"
+#include "xmpp-nicklist.h"
 #include "xmpp-protocol.h"
 #include "xmpp-queries.h"
 #include "xmpp-rosters.h"
@@ -93,6 +94,7 @@ xmpp_core_init(void)
 
 	xmpp_channels_init();
 	xmpp_commands_init();
+	xmpp_nicklist_init();
 	xmpp_protocol_init();
 	xmpp_rosters_init();
 	xmpp_servers_init();
@@ -106,6 +108,7 @@ xmpp_core_deinit(void)
 {
 	xmpp_channels_deinit();
 	xmpp_commands_deinit();
+	xmpp_nicklist_deinit();
 	xmpp_protocol_deinit();
 	xmpp_rosters_deinit();
 	xmpp_servers_deinit();

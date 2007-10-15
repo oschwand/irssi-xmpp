@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-completion.c,v 1.8 2007/10/07 15:43:31 cdidier Exp $
+ * $Id: xmpp-completion.c,v 1.9 2007/10/15 11:56:14 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -50,7 +50,7 @@ get_resources(XMPP_SERVER_REC *server, const char *nick,
 
 	list = NULL;
 
-	user = xmpp_find_user(server, nick, NULL);
+	user = xmpp_rosters_find_user(server->roster, nick, NULL);
 	if (user == NULL)
 		return NULL;
 
