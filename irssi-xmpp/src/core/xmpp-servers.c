@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.19 2007/10/15 11:56:14 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.20 2007/10/15 16:02:37 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -168,6 +168,7 @@ xmpp_server_init_connect(SERVER_CONNECT_REC *conn)
 	lm_connection_set_server(server->lmconn, server->connrec->address);
 	lm_connection_set_port(server->lmconn, server->connrec->port);
 	lm_connection_set_jid(server->lmconn, server->user);
+	lm_connection_set_keep_alive_rate(server->lmconn, 30);
 
 	server_connect_init((SERVER_REC *)server);
 	return (SERVER_REC *)server;
