@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters-tools.c,v 1.3 2007/10/15 11:56:14 cdidier Exp $
+ * $Id: xmpp-rosters-tools.c,v 1.4 2007/10/17 17:51:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -107,7 +107,7 @@ find_group_from_user(XMPP_SERVER_REC *server, XMPP_ROSTER_USER_REC *user)
 {
 	GSList *group_list, *group_list_found;
 
-	g_return_val_if_fail(server != NULL, NULL);
+	g_return_val_if_fail(IS_XMPP_SERVER(server), NULL);
 
 	group_list = server->roster;
 	group_list_found = NULL;

@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-ping.c,v 1.1 2007/10/17 16:54:47 cdidier Exp $
+ * $Id: xmpp-ping.c,v 1.2 2007/10/17 17:51:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -89,7 +89,7 @@ sig_handle_ping(XMPP_SERVER_REC *server, const char *from, const char *id)
 static int
 check_ping_func(void)
 {
-	GSList *tmp;
+	GSList *tmp, *next;
 	XMPP_SERVER_REC *server;
 	time_t now;
 	int lag_check_time, max_lag;
@@ -101,18 +101,19 @@ check_ping_func(void)
 		return 1;
 
 	now = time(NULL);
-	for (tmp = servers; tmp != NULL; tmp = tmp->next) {
+	for (tmp = servers; tmp != NULL; tmp = next) {
 		server = XMPP_SERVER(tmp->data);
 
-		if (server != NULL &&
+		next = tmp->next;
+		if (server == NULL ||
 		    !(server->features & XMPP_SERVERS_FEATURE_PING))
-			return 1;
+			continue;
 
 		if (server->lag_sent.tv_sec != 0) {
 			/* waiting for lag reply */
 			if (max_lag > 1 &&
 			    (now - server->lag_sent.tv_sec) > max_lag) {
-				/* too much lag, disconnect */
+				/* too much lag - disconnect */
 				signal_emit("server lag disconnect", 1,
 				    server);
 				server->connection_lost = TRUE;
