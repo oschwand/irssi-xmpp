@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.14 2007/10/17 17:51:01 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.15 2007/10/17 18:04:49 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -164,7 +164,7 @@ send_join(XMPP_SERVER_REC *server, XMPP_CHANNEL_REC *channel)
 	lm_message_unref(msg);
 }
 
-static void
+void
 xmpp_channels_join(XMPP_SERVER_REC *server, const char *data, int automatic)
 {
 	XMPP_CHANNEL_REC *channel;

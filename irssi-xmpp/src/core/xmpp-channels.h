@@ -1,4 +1,4 @@
-/* $Id: xmpp-channels.h,v 1.6 2007/10/15 11:56:14 cdidier Exp $ */
+/* $Id: xmpp-channels.h,v 1.7 2007/10/17 18:04:49 cdidier Exp $ */
 
 #ifndef __XMPP_CHANNELS_H
 #define __XMPP_CHANNELS_H
@@ -58,6 +58,7 @@ enum {
 __BEGIN_DECLS
 CHANNEL_REC	*xmpp_channel_create(XMPP_SERVER_REC *, const char *,
 		     const char *, int, const char *);
+void		 xmpp_channels_join(XMPP_SERVER_REC *, const char *, int);
 void		 xmpp_channel_send_message(XMPP_SERVER_REC *, const char *,
 		     const char *);
 
