@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.20 2007/10/15 11:56:14 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.21 2007/10/17 14:38:52 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -761,6 +761,7 @@ handle_presence(LmMessageHandler *handler, LmConnection *connection,
 			    lm_message_nodes_attribute_found(x, "xmlns",
 			    XMLNS_MUC_USER, &child) && child != NULL) {
 
+				/* in <X> */
 				if ((subchild = lm_message_node_get_child(
 				    child, "status")) != NULL) {
 					status =
@@ -770,16 +771,19 @@ handle_presence(LmMessageHandler *handler, LmConnection *connection,
 					    subchild, "code");
 				}
 
+				/* in <x> */
 				if ((subchild = lm_message_node_get_child(
 				    child, "item")) != NULL)
 					item_nick = xmpp_recode_in(
 					    lm_message_node_get_attribute(
 					    subchild, "nick"));
 
+				/* in <item> */
 				if ((child = lm_message_node_get_child(
 				    subchild, "reason")) != NULL)
 					reason = xmpp_recode_in(child->value);
 
+				/* in <item */
 				if ((child = lm_message_node_get_child(
 				    subchild, "actor")) != NULL)
 					actor = xmpp_recode_in(
@@ -789,6 +793,7 @@ handle_presence(LmMessageHandler *handler, LmConnection *connection,
 			g_slist_free(x);
 			
 			if (status_code != NULL) {
+
 			 	if (g_ascii_strcasecmp(status_code,
 				    "303") == 0 && item_nick != NULL)
 					signal_emit("xmpp channel nick",
