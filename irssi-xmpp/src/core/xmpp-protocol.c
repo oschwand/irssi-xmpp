@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.24 2007/10/17 18:54:24 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.25 2007/10/17 22:07:36 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -861,7 +861,7 @@ handle_presence(LmMessageHandler *handler, LmConnection *connection,
 				    subchild, "actor")) != NULL)
 					actor = xmpp_recode_in(
 					    lm_message_node_get_attribute(
-					    subchild, "jid"));
+					    child, "jid"));
 			}
 			g_slist_free(x);
 			
