@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.16 2007/10/18 13:33:34 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.17 2007/10/18 18:32:59 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -53,8 +53,8 @@ xmpp_channel_create(XMPP_SERVER_REC *server, const char *name,
 	rec->features = 0;
 	rec->error = FALSE;
 
-	channel_init((CHANNEL_REC *)rec, (SERVER_REC *)server, name,
-	    visible_name, automatic);
+	channel_init((CHANNEL_REC *)rec, SERVER(server), name, visible_name,
+	    automatic);
 
 	return (CHANNEL_REC *)rec;
 }

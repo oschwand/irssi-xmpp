@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-core.c,v 1.10 2007/10/18 13:19:43 cdidier Exp $
+ * $Id: xmpp-core.c,v 1.11 2007/10/18 18:32:59 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -88,8 +88,7 @@ xmpp_core_init(void)
 	rec->server_connect = xmpp_server_connect;
 	rec->channel_create = (CHANNEL_REC *(*)(SERVER_REC *, const char *,
 	    const char *, int))xmpp_channel_create;
-	rec->query_create = (QUERY_REC *(*)(const char *, const char *, int))
-	    xmpp_query_create;
+	rec->query_create = xmpp_query_create;
 
 	chat_protocol_register(rec);
 	g_free(rec);
