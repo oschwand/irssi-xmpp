@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.15 2007/10/17 18:04:49 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.16 2007/10/18 13:33:34 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -569,8 +569,11 @@ next:
 	if (!channel->joined && channel->ownnick != NULL) {
 		channel->names_got = TRUE;
 		channel->joined = TRUE;
+
 		signal_emit("channel joined", 1, channel);
 		signal_emit("channel sync", 1, channel);
+
+		channel_send_autocommands(CHANNEL(channel));
 	}
 }
 
