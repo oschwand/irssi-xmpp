@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-raw.c,v 1.1 2007/10/15 11:58:18 cdidier Exp $
+ * $Id: fe-xmpp-raw.c,v 1.2 2007/10/19 20:18:47 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -35,6 +35,8 @@ get_raw_window(XMPP_SERVER_REC *server)
 	WINDOW_REC *window;
 	char *name;
 
+	g_return_val_if_fail(IS_XMPP_SERVER(server), NULL);
+
 	name = g_strconcat("(raw:", (server->connrec->chatnet == NULL ||
 	    *server->connrec->chatnet == '\0') ? server->jid :
 	    server->connrec->chatnet, ")", NULL);
@@ -53,17 +55,31 @@ get_raw_window(XMPP_SERVER_REC *server)
 static void
 sig_raw_in(XMPP_SERVER_REC *server, const char *msg)
 {
-	WINDOW_REC *window = get_raw_window(server);
-	printtext_window(window, MSGLEVEL_CRAP, "RECV[%d]:", strlen(msg));
-	printtext_window(window, MSGLEVEL_CRAP, msg);
+	WINDOW_REC *window;
+
+	g_return_if_fail(IS_XMPP_SERVER(server));
+	g_return_if_fail(msg != NULL);
+
+	window = get_raw_window(server);
+	if (window != NULL) {
+		printtext_window(window, MSGLEVEL_CRAP, "RECV[%d]:", strlen(msg));
+		printtext_window(window, MSGLEVEL_CRAP, msg);
+	}
 }
 
 static void
 sig_raw_out(XMPP_SERVER_REC *server, const char *msg)
 {
-	WINDOW_REC *window = get_raw_window(server);
-	printtext_window(window, MSGLEVEL_CRAP, "SEND[%d]:", strlen(msg));
-	printtext_window(window, MSGLEVEL_CRAP, msg);
+	WINDOW_REC *window;
+
+	g_return_if_fail(IS_XMPP_SERVER(server));
+	g_return_if_fail(msg != NULL);
+
+	window = get_raw_window(server);
+	if (window != NULL) {
+		printtext_window(window, MSGLEVEL_CRAP, "SEND[%d]:", strlen(msg));
+		printtext_window(window, MSGLEVEL_CRAP, msg);
+	}
 }
 
 void
