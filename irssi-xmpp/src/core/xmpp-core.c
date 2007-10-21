@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-core.c,v 1.11 2007/10/18 18:32:59 cdidier Exp $
+ * $Id: xmpp-core.c,v 1.12 2007/10/21 16:46:27 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -109,13 +109,15 @@ xmpp_core_init(void)
 void
 xmpp_core_deinit(void) 
 {
+	/* deinit servers first to disconnecet servers before unloading */
+	xmpp_servers_deinit();
+
 	xmpp_channels_deinit();
 	xmpp_commands_deinit();
 	xmpp_nicklist_deinit();
 	xmpp_ping_deinit();
 	xmpp_protocol_deinit();
 	xmpp_rosters_deinit();
-	xmpp_servers_deinit();
 	xmpp_session_deinit();
 	xmpp_settings_deinit();
 
