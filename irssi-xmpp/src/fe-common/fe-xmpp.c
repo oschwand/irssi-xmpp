@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp.c,v 1.15 2007/10/15 11:56:14 cdidier Exp $
+ * $Id: fe-xmpp.c,v 1.16 2007/10/21 14:37:43 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -28,7 +28,6 @@
 #include "signals.h"
 #include "themes.h"
 
-#include "fe-xmpp-commands.h"
 #include "fe-xmpp-composing.h"
 #include "fe-xmpp-messages.h"
 #include "fe-xmpp-queries.h"
@@ -67,7 +66,6 @@ fe_xmpp_init(void)
 	signal_add("xmpp server status", (SIGNAL_FUNC)sig_server_status);
 	signal_add("server add fill", (SIGNAL_FUNC)sig_server_add_fill);
 
-	fe_xmpp_commands_init();
 	fe_xmpp_composing_init();
 	fe_xmpp_messages_init();
 	fe_xmpp_queries_init();
@@ -95,7 +93,6 @@ fe_xmpp_deinit(void)
 	signal_remove("xmpp server status", (SIGNAL_FUNC)sig_server_status);
 	signal_remove("server add fill", (SIGNAL_FUNC)sig_server_add_fill);
 
-	fe_xmpp_commands_deinit();
 	fe_xmpp_composing_deinit();
 	fe_xmpp_messages_deinit();
 	fe_xmpp_queries_deinit();
