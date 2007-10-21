@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.28 2007/10/19 20:18:47 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.29 2007/10/21 15:52:55 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -1050,11 +1050,16 @@ sig_server_disconnected(XMPP_SERVER_REC *server)
 		return;
 
 	/* unregister handlers */
-	lm_message_handler_invalidate(server->hmessage);
+	if (lm_message_handler_is_valid(server->hmessage))
+		lm_message_handler_invalidate(server->hmessage);
 	lm_message_handler_unref(server->hmessage);
-	lm_message_handler_invalidate(server->hpresence);
+
+	if (lm_message_handler_is_valid(server->hpresence))
+		lm_message_handler_invalidate(server->hpresence);
 	lm_message_handler_unref(server->hpresence);
-	lm_message_handler_invalidate(server->hiq);
+
+	if (lm_message_handler_is_valid(server->hiq))
+		lm_message_handler_invalidate(server->hiq);
 	lm_message_handler_unref(server->hiq);
 }
 
