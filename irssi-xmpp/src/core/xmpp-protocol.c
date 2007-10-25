@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.30 2007/10/21 16:46:27 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.31 2007/10/25 11:02:15 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -122,7 +122,8 @@ own_presence(XMPP_SERVER_REC *server, const int show, const char *status,
 	case XMPP_PRESENCE_XA:
 		show_str = xmpp_presence_show[XMPP_PRESENCE_XA];
 		break;
-
+	
+	case XMPP_PRESENCE_AVAILABLE:
 	default:
 		/* unaway */
 		if (server->usermode_away)
@@ -130,18 +131,17 @@ own_presence(XMPP_SERVER_REC *server, const int show, const char *status,
 
 		show_str = NULL;
 		server->show = XMPP_PRESENCE_AVAILABLE;
-		g_free_and_null(server->away_reason);
 	}
-
 
 	/* away */
 	if (show_str != NULL) {
 		signal_emit("event 306", 2, server, server->nick);
 
 		server->show = show;
-		g_free(server->away_reason);
-		server->away_reason = g_strdup(status);
 	}
+
+	g_free(server->away_reason);
+	server->away_reason = g_strdup(status);
 
 	status_recoded = xmpp_recode_out(server->away_reason);
 	if (!xmpp_priority_out_of_bound(priority))
