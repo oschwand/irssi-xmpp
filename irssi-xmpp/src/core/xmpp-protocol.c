@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.32 2007/10/27 18:50:30 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.33 2007/10/27 18:58:43 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -535,7 +535,7 @@ handle_message(LmMessageHandler *handler, LmConnection *connection,
 
 		break;
 
-	case LM_MESSAGE_TYPE_UNKNOWN:
+	case LM_MESSAGE_SUB_TYPE_NORMAL:
 	case LM_MESSAGE_SUB_TYPE_CHAT:
 		/* XEP-0022: Message Events */
 		child = lm_message_node_get_child(msg->node, "x");
