@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-composing.c,v 1.8 2007/09/30 12:12:36 cdidier Exp $
+ * $Id: fe-xmpp-composing.c,v 1.9 2007/11/19 13:14:26 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -127,7 +127,7 @@ sig_window_changed(WINDOW_REC *new_window, WINDOW_REC *old_window)
 		goto stop;
 
 	query = XMPP_QUERY(active_win->active);
-	if (query == NULL || !xmpp_jid_have_resource(query->name))
+	if (query == NULL || !xmpp_have_resource(query->name))
 		goto stop;
 
 	if (!keylog_active) {

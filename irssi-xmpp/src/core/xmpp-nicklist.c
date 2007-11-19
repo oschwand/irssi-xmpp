@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-nicklist.c,v 1.1 2007/10/15 11:57:09 cdidier Exp $
+ * $Id: xmpp-nicklist.c,v 1.2 2007/11/19 13:14:26 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -138,6 +138,12 @@ xmpp_nicklist_rename(XMPP_CHANNEL_REC *channel, XMPP_NICK_REC *nick,
 	nick_hash_add(CHANNEL(channel), NICK(nick));
 
 	signal_emit("nicklist changed", 3, channel, nick, oldnick);
+
+	if (strcmp(oldnick, channel->nick) == 0) {
+		nicklist_set_own(CHANNEL(channel), NICK(nick));
+		g_free(channel->nick);
+		channel->nick = g_strdup(newnick);
+	}
 }
 
 int

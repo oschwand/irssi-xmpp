@@ -1,4 +1,4 @@
-/* $Id: module-formats.h,v 1.7 2007/10/15 11:56:14 cdidier Exp $ */
+/* $Id: module-formats.h,v 1.8 2007/11/19 13:14:26 cdidier Exp $ */
 
 #include "formats.h"
 
@@ -30,9 +30,11 @@ enum {
 
 	XMPPTXT_FILL_4,
 
-	XMPPTXT_CHANNEL_JOINERROR,
+	XMPPTXT_QUERY_AKA,
 
 	XMPPTXT_FILL_5,
+
+	XMPPTXT_CHANNEL_JOINERROR,
 
 	XMPPTXT_FILL_6,
 

@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.11 2007/10/17 17:51:01 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.12 2007/11/19 13:14:26 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -25,6 +25,11 @@
 
 struct _XMPP_SERVER_CONNECT_REC {
 	#include "server-connect-rec.h"
+
+	GSList		*channels_list;
+	int		 show;
+	int		 priority;
+	gboolean	 default_priority;
 };
 
 typedef enum {
