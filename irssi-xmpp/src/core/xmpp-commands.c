@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.26 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.27 2007/11/20 17:10:22 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -731,7 +731,7 @@ cmd_me(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 
 	CMD_XMPP_SERVER(server);
 
-	if (!IS_XMPP_ITEM(item) || !xmpp_server_is_alive(server))
+	if (!IS_XMPP_ITEM(item))
 		return;
 
 	target = window_item_get_target(item);

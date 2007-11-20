@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.34 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.35 2007/11/20 17:10:22 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -26,21 +26,12 @@
 #include "recode.h"
 #include "settings.h"
 #include "signals.h"
-/*#include "servers-reconnect.h"*/
 
 #include "xmpp-servers.h"
 #include "xmpp-channels.h"
 #include "xmpp-protocol.h"
 #include "xmpp-rosters.h"
 #include "xmpp-tools.h"
-
-gboolean
-xmpp_server_is_alive(XMPP_SERVER_REC *server)
-{
-	return (server != NULL
-	    && g_slist_find(servers, server) != NULL
-	    && server->connected);
-}
 
 static int
 isnickflag_func(char flag)
@@ -226,7 +217,7 @@ xmpp_server_close_cb(LmConnection *connection, LmDisconnectReason reason,
 	const char *msg;
 
 	server = XMPP_SERVER(user_data);
-	if (server == NULL)
+	if (server == NULL || !server->connected)
 		return;
 
 	/* normal disconnection */

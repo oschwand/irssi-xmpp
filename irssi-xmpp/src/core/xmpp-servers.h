@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.12 2007/11/19 13:14:26 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.13 2007/11/20 17:10:22 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -61,7 +61,6 @@ struct _XMPP_SERVER_REC {
 };
 
 __BEGIN_DECLS
-gboolean	 xmpp_server_is_alive(XMPP_SERVER_REC *);
 SERVER_REC	*xmpp_server_init_connect(SERVER_CONNECT_REC *);
 void		 xmpp_server_connect(SERVER_REC *);
 

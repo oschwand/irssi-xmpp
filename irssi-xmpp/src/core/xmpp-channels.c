@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.19 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.20 2007/11/20 17:10:22 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -113,7 +113,7 @@ send_nick(XMPP_SERVER_REC *server, XMPP_CHANNEL_REC *channel,
 	g_return_if_fail(IS_XMPP_SERVER(server));
 	g_return_if_fail(channel != NULL);
 
-	if (!xmpp_server_is_alive(server))
+	if (!server->connected)
 		return;
 
 	room = g_strconcat(channel->name, "/", nick, NULL);
@@ -156,7 +156,7 @@ send_join(XMPP_SERVER_REC *server, XMPP_CHANNEL_REC *channel)
 	g_return_if_fail(IS_XMPP_SERVER(server));
 	g_return_if_fail(channel != NULL);
 
-	if (!xmpp_server_is_alive(server))
+	if (!server->connected)
 		return;
 
 	send_nick(server, channel, channel->nick);
@@ -172,7 +172,7 @@ xmpp_channels_join(XMPP_SERVER_REC *server, const char *data, int automatic)
 	g_return_if_fail(IS_XMPP_SERVER(server));
 	g_return_if_fail(data != NULL);
 
-	if (!xmpp_server_is_alive(server) || *data == '\0')
+	if (!server->connected || *data == '\0')
 		return;
 
 	if (!cmd_get_params(data, &free_arg, 2 | PARAM_FLAG_GETREST,
@@ -207,7 +207,7 @@ send_part(XMPP_SERVER_REC *server, XMPP_CHANNEL_REC *channel,
 	g_return_if_fail(IS_XMPP_SERVER(server));
 	g_return_if_fail(channel != NULL);
 
-	if (!xmpp_server_is_alive(server))
+	if (!server->connected)
 		return;
 
 	room = g_strconcat(channel->name, "/", channel->nick, NULL);
