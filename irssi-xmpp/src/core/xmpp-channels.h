@@ -1,4 +1,4 @@
-/* $Id: xmpp-channels.h,v 1.7 2007/10/17 18:04:49 cdidier Exp $ */
+/* $Id: xmpp-channels.h,v 1.8 2007/11/22 14:35:08 cdidier Exp $ */
 
 #ifndef __XMPP_CHANNELS_H
 #define __XMPP_CHANNELS_H
@@ -36,9 +36,7 @@ struct _XMPP_CHANNEL_REC {
 	#include "channel-rec.h"
 
 	char	*nick;
-
 	XMPP_CHANNELS_FEATURES	features;
-	gboolean		error;
 
 	time_t	 composing_time;
 };

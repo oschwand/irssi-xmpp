@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.34 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.35 2007/11/22 14:35:08 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -708,8 +708,8 @@ handle_presence(LmMessageHandler *handler, LmConnection *connection,
 					signal_emit("xmpp channel joinerror", 2,
 					    channel, XMPP_CHANNELS_ERROR_NOT_ON_MEMBERS_LIST);
 				else if (g_ascii_strcasecmp(code, "409") == 0)
-					signal_emit("xmpp channel nick in use",
-					    2, channel, nick);
+					signal_emit("xmpp channel joinerror", 2,
+					    channel, XMPP_CHANNELS_ERROR_NICK_IN_USE);
 				else if (g_ascii_strcasecmp(code, "503") == 0)
 					signal_emit("xmpp channel joinerror", 2,
 					    channel, XMPP_CHANNELS_ERROR_MAXIMUM_USERS_REACHED);

@@ -1,5 +1,5 @@
 /*
- * $Id: module-formats.c,v 1.8 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: module-formats.c,v 1.9 2007/11/22 14:35:08 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -58,7 +58,7 @@ FORMAT_REC fecommon_xmpp_formats[] = {
 	/* ---- */
 	{ NULL, "Channel", 0 },
 
-	{ "joinerror", "Cannot join to channel {channel $0} {comment $1}", 1, { 0 } },
+	{ "joinerror", "Cannot join to room {channel $0} {comment $1}", 2, { 0, 0 } },
 
 	/* ---- */
 	{ NULL, "Presence", 0 },

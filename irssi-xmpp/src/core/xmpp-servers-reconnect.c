@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers-reconnect.c,v 1.1 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: xmpp-servers-reconnect.c,v 1.2 2007/11/22 14:35:08 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -44,9 +44,9 @@ save_channels(XMPP_SERVER_REC *server, XMPP_SERVER_CONNECT_REC *conn)
 	for (tmp = server->channels; tmp != NULL; tmp = tmp->next) {
 		channel = tmp->data;
 
-		if (channel->nick != NULL)
+		if (channel->key != NULL)
 			str = g_strdup_printf("\"%s/%s\" \"%s\"",
-			    channel->name, channel->nick, channel->nick);
+			    channel->name, channel->nick, channel->key);
 		else
 			str = g_strdup_printf("\"%s/%s\"", channel->name,
 			    channel->nick);
