@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-messages.c,v 1.7 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: fe-xmpp-messages.c,v 1.8 2007/11/23 10:21:54 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -170,7 +170,7 @@ sig_nick_in_use(XMPP_CHANNEL_REC *channel, const char *nick)
 	g_return_if_fail(channel != NULL);
 	g_return_if_fail(nick != NULL);
 
-	if (!IS_XMPP_SERVER(channel->server) || !channel->joined)
+	if (!IS_XMPP_CHANNEL(channel) || !channel->joined)
 		return;
 
 	printformat_module(IRC_MODULE_NAME, channel->server, channel->name,
