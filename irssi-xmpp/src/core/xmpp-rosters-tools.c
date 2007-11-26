@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters-tools.c,v 1.5 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: xmpp-rosters-tools.c,v 1.6 2007/11/26 12:55:07 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -175,7 +175,6 @@ find_username(GSList *groups, const char *name, XMPP_ROSTER_GROUP_REC **group)
 	return user_list ? (XMPP_ROSTER_USER_REC *)user_list->data : NULL;
 }
 
-
 XMPP_ROSTER_RESOURCE_REC *
 xmpp_rosters_find_resource(XMPP_ROSTER_USER_REC *user, const char *resource)
 {
@@ -184,7 +183,21 @@ xmpp_rosters_find_resource(XMPP_ROSTER_USER_REC *user, const char *resource)
 	g_return_val_if_fail(user != NULL, NULL);
 
 	resource_list = g_slist_find_custom(user->resources, resource,
-		(GCompareFunc)find_resource_func);
+	    (GCompareFunc)find_resource_func);
+
+	return resource_list ?
+	    (XMPP_ROSTER_RESOURCE_REC *)resource_list->data : NULL;
+}
+
+XMPP_ROSTER_RESOURCE_REC *
+xmpp_rosters_find_own_resource(XMPP_SERVER_REC *server, const char *resource)
+{
+	GSList *resource_list;
+
+	g_return_val_if_fail(server != NULL, NULL);
+
+	resource_list = g_slist_find_custom(server->resources, resource,
+	    (GCompareFunc)find_resource_func);
 
 	return resource_list ?
 	    (XMPP_ROSTER_RESOURCE_REC *)resource_list->data : NULL;

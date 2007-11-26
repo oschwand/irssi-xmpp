@@ -1,5 +1,5 @@
 /*
- * $Id: loudmouth-tools.c,v 1.3 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: loudmouth-tools.c,v 1.4 2007/11/26 12:55:07 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -27,6 +27,12 @@
 
 #include "xmpp-servers.h"
 #include "xmpp-tools.h"
+
+const char *
+lm_tools_get_xmlns(LmMessageNode *node, const char *name)
+{
+	return NULL;
+}
 
 LmMessageNode *
 lm_tools_message_node_find(LmMessageNode *node, const char *name,

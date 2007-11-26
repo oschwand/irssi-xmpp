@@ -1,4 +1,4 @@
-/* $Id: xmpp-tools.h,v 1.3 2007/11/19 13:14:26 cdidier Exp $ */
+/* $Id: xmpp-tools.h,v 1.4 2007/11/26 12:55:07 cdidier Exp $ */
 
 #ifndef __XMPP_TOOLS_H
 #define __XMPP_TOOLS_H
@@ -17,7 +17,6 @@ char	*xmpp_extract_resource(const char *);
 char	*xmpp_strip_resource(const char *);
 char	*xmpp_extract_user(const char *);
 char	*xmpp_extract_host(const char *);
-void	 xmpp_jid_extract(char *, char **, char **, char **);
 gboolean xmpp_have_host(const char *);
 gboolean xmpp_have_resource(const char *);
 gboolean xmpp_priority_out_of_bound(const int);

@@ -1,4 +1,4 @@
-/* $Id: xmpp-rosters-tools.h,v 1.4 2007/11/19 13:14:26 cdidier Exp $ */
+/* $Id: xmpp-rosters-tools.h,v 1.5 2007/11/26 12:55:07 cdidier Exp $ */
 
 #ifndef __XMPP_ROSTER_TOOLS_H
 #define __XMPP_ROSTER_TOOLS_H
@@ -9,6 +9,8 @@ __BEGIN_DECLS
 XMPP_ROSTER_USER_REC	 *xmpp_rosters_find_user(GSList *, const char *,
 			     XMPP_ROSTER_GROUP_REC **);
 XMPP_ROSTER_RESOURCE_REC *xmpp_rosters_find_resource(XMPP_ROSTER_USER_REC *,
+			      const char *);
+XMPP_ROSTER_RESOURCE_REC *xmpp_rosters_find_own_resource(XMPP_SERVER_REC *,
 			      const char *);
 gboolean	 xmpp_rosters_show_user(XMPP_ROSTER_USER_REC *);
 void		 xmpp_rosters_reorder(XMPP_ROSTER_GROUP_REC *);

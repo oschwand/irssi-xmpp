@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.13 2007/11/20 17:10:22 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.14 2007/11/26 12:55:07 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -8,6 +8,8 @@
 
 #include "loudmouth/loudmouth.h"
 #include "loudmouth-tools.h"
+
+#define XMPP_PROXY_HTTP "http"
 
 /* returns XMPP_SERVER_REC if it's XMPP server, NULL if it isn't */
 #define XMPP_SERVER(server)						\
@@ -52,9 +54,10 @@ struct _XMPP_SERVER_REC {
 	gboolean	 default_priority;
 	char		*ping_id;
 	XMPP_SERVERS_FEATURES features;
+	GSList		*resources;
 	GSList		*roster;
 
-	LmConnection	*lmconn;
+	LmConnection	 *lmconn;
 	LmMessageHandler *hmessage;
 	LmMessageHandler *hpresence;
 	LmMessageHandler *hiq;

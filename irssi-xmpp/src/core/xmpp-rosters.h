@@ -1,4 +1,4 @@
-/* $Id: xmpp-rosters.h,v 1.8 2007/09/30 12:12:36 cdidier Exp $ */
+/* $Id: xmpp-rosters.h,v 1.9 2007/11/26 12:55:07 cdidier Exp $ */
 
 #ifndef __XMPP_ROSTER_H
 #define __XMPP_ROSTER_H
@@ -11,6 +11,7 @@ enum {
 	XMPP_PRESENCE_AWAY,
 	XMPP_PRESENCE_AVAILABLE,
 	XMPP_PRESENCE_CHAT,
+	XMPP_PRESENCE_ONLINE_STR,
 	XMPP_PRESENCE_SHOW_LEN
 };
 extern const char *xmpp_presence_show[];
