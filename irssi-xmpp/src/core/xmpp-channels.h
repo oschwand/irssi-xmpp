@@ -1,10 +1,16 @@
-/* $Id: xmpp-channels.h,v 1.8 2007/11/22 14:35:08 cdidier Exp $ */
+/* $Id: xmpp-channels.h,v 1.9 2007/12/03 21:38:01 cdidier Exp $ */
 
 #ifndef __XMPP_CHANNELS_H
 #define __XMPP_CHANNELS_H
 
 #include "channels.h"
 #include "xmpp-servers.h"
+
+#define XMPP_CHANNEL_SETUP(chansetup) \
+	PROTO_CHECK_CAST(CHANNEL_SETUP(chansetup), CHANNEL_SETUP_REC, chat_type, "XMPP")
+
+#define IS_XMPP_CHANNEL_SETUP(chansetup) \
+	(XMPP_CHANNEL_SETUP(chansetup) ? TRUE : FALSE)
 
 /* Returns XMPP_CHANNEL_REC if it's XMPP channel, NULL if it isn't. */
 #define XMPP_CHANNEL(channel) 					\

@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers-reconnect.c,v 1.2 2007/11/22 14:35:08 cdidier Exp $
+ * $Id: xmpp-servers-reconnect.c,v 1.3 2007/12/03 21:38:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -66,7 +66,7 @@ restore_channels(XMPP_SERVER_REC *server)
 
 	for (tmp = server->connrec->channels_list; tmp != NULL;
 	    tmp = tmp->next) {
-		xmpp_channels_join(server, tmp->data, TRUE);
+		xmpp_channels_join(server, tmp->data, FALSE);
 		g_free(tmp->data);
 	}
 	g_slist_free(server->connrec->channels_list);
