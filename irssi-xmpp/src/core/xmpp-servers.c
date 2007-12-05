@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.36 2007/11/26 12:55:07 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.37 2007/12/05 16:47:18 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -514,7 +514,8 @@ xmpp_servers_init(void)
 	    (SIGNAL_FUNC)sig_server_connect_failed);
 	signal_add("server quit", (SIGNAL_FUNC)sig_server_quit);
 
-	settings_add_bool("xmpp", "xmpp_set_nick_as_username", FALSE);
+	settings_add_bool("xmpp_lookandfeel", "xmpp_set_nick_as_username",
+	    FALSE);
 	settings_add_bool("xmpp_proxy", "xmpp_use_proxy", FALSE);
 	settings_add_str("xmpp_proxy", "xmpp_proxy_type", "http");
 	settings_add_str("xmpp_proxy", "xmpp_proxy_address", NULL);

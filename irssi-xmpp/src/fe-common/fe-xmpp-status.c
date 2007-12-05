@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-status.c,v 1.2 2007/10/19 20:18:47 cdidier Exp $
+ * $Id: fe-xmpp-status.c,v 1.3 2007/12/05 16:47:18 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -140,7 +140,7 @@ fe_xmpp_status_init(void)
 	signal_add("server connecting", (SIGNAL_FUNC)sig_server_connecting);
 	signal_add("setup changed", (SIGNAL_FUNC)sig_setup_changed);
 
-	settings_add_bool("xmpp", "xmpp_status_window", FALSE);
+	settings_add_bool("xmpp_lookandfeel", "xmpp_status_window", FALSE);
 
 	if (settings_get_bool("xmpp_status_window"))
 		signal_add("xmpp presence changed",

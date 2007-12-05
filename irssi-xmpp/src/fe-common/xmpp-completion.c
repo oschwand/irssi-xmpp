@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-completion.c,v 1.15 2007/11/26 12:55:08 cdidier Exp $
+ * $Id: xmpp-completion.c,v 1.16 2007/12/05 16:47:18 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -188,12 +188,6 @@ sig_complete_command_roster_group(GList **list, WINDOW_REC *window,
 	}
 	g_strfreev(tmp);
 }
-
-#define XMPP_CHANNEL_SETUP(chansetup) \
-	PROTO_CHECK_CAST(CHANNEL_SETUP(chansetup), CHANNEL_SETUP_REC, chat_type, "XMPP")
-
-#define IS_XMPP_CHANNEL_SETUP(chansetup) \
-	(XMPP_CHANNEL_SETUP(chansetup) ? TRUE : FALSE)
 
 static GList *
 get_channels(XMPP_SERVER_REC *server, const char *word)

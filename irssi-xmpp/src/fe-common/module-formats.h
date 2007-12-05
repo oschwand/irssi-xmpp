@@ -1,4 +1,4 @@
-/* $Id: module-formats.h,v 1.9 2007/11/26 12:55:08 cdidier Exp $ */
+/* $Id: module-formats.h,v 1.10 2007/12/05 16:47:18 cdidier Exp $ */
 
 #include "formats.h"
 
@@ -46,7 +46,8 @@ enum {
 	XMPPTXT_FILL_7,
 
 	XMPPTXT_DEFAULT_EVENT,
-	XMPPTXT_DEFAULT_ERROR
+	XMPPTXT_DEFAULT_ERROR,
+	XMPPTXT_TIMESTAMP
 };
 
 extern FORMAT_REC fecommon_xmpp_formats[];

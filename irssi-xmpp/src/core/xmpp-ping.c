@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-ping.c,v 1.2 2007/10/17 17:51:01 cdidier Exp $
+ * $Id: xmpp-ping.c,v 1.3 2007/12/05 16:47:18 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -32,6 +32,7 @@
 
 /*
  * XEP-0199: XMPP Ping
+ * and lagmeter
  */
 
 static int timeout_tag;
