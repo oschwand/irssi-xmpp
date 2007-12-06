@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.14 2007/11/26 12:55:07 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.15 2007/12/06 11:18:35 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -65,7 +65,7 @@ struct _XMPP_SERVER_REC {
 
 __BEGIN_DECLS
 SERVER_REC	*xmpp_server_init_connect(SERVER_CONNECT_REC *);
-void		 xmpp_server_connect(SERVER_REC *);
+void		 xmpp_server_connect(XMPP_SERVER_REC *);
 
 void        	xmpp_servers_init(void);
 void		xmpp_servers_deinit(void);

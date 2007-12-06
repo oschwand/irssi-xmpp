@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-core.c,v 1.13 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: xmpp-core.c,v 1.14 2007/12/06 11:18:35 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -97,7 +97,7 @@ xmpp_core_init(void)
 	rec->destroy_server_connect = destroy_server_connect;
 
 	rec->server_init_connect = xmpp_server_init_connect;
-	rec->server_connect = xmpp_server_connect;
+	rec->server_connect = (void (*)(SERVER_REC *))xmpp_server_connect;
 	rec->channel_create = (CHANNEL_REC *(*)(SERVER_REC *, const char *,
 	    const char *, int))xmpp_channel_create;
 	rec->query_create = xmpp_query_create;
