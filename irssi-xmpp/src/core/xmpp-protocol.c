@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.38 2007/12/05 16:47:18 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.39 2007/12/08 16:51:34 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -766,6 +766,12 @@ handle_iq(LmMessageHandler *handler, LmConnection *connection,
 		    g_ascii_strcasecmp(xmlns, XMLNS_VERSION) == 0)
 			version_send(server, jid,
 			    lm_message_node_get_attribute(msg->node, "id"));
+
+		/* service-unavailable */
+		else {
+		/* <service-unavailable/> */
+		}
+
 		break;
 
 	case LM_MESSAGE_SUB_TYPE_RESULT:

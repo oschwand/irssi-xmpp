@@ -1,4 +1,4 @@
-/* $Id: xmpp.h,v 1.5 2007/12/05 16:47:18 cdidier Exp $ */
+/* $Id: xmpp.h,v 1.6 2007/12/08 16:51:34 cdidier Exp $ */
 
 #ifndef __XMPP_H
 #define __XMPP_H
@@ -13,6 +13,6 @@ typedef struct _XMPP_NICK_REC XMPP_NICK_REC;
 #define XMPP_PROTOCOL (chat_protocol_lookup("XMPP"))
 
 #define IRSSI_XMPP_PACKAGE "irssi-xmpp"
-#define IRSSI_XMPP_VERSION "0.20-dev"
+#define IRSSI_XMPP_VERSION "1.0-dev"
 
 #endif
