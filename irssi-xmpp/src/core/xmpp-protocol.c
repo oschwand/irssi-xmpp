@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.39 2007/12/08 16:51:34 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.40 2007/12/09 15:23:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -334,7 +334,7 @@ handle_message(LmMessageHandler *handler, LmConnection *connection,
 		stamp = get_timestamp(msg->node);
 
 		child = lm_message_node_get_child(msg->node, "subject");
-		if (child != NULL) {
+		if (child != NULL && child->value != NULL) {
 			text = xmpp_recode_in(child->value);
 			signal_emit("message private", 4, server, text,
 			    jid, jid);
@@ -342,7 +342,7 @@ handle_message(LmMessageHandler *handler, LmConnection *connection,
 		}
 
 		child = lm_message_node_get_child(msg->node, "body");
-		if (child != NULL) {
+		if (child != NULL && child->value != NULL) {
 			text = xmpp_recode_in(child->value);
 
 			if (g_ascii_strncasecmp(text, "/me ", 4) == 0)
@@ -385,7 +385,7 @@ handle_message(LmMessageHandler *handler, LmConnection *connection,
 		}
 		
 		child = lm_message_node_get_child(msg->node, "body");
-		if (child != NULL) {
+		if (child != NULL && child->value != NULL) {
 			XMPP_CHANNEL_REC *channel;
 			char *channel_name, *nick;
 
