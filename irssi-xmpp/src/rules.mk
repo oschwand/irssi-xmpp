@@ -1,4 +1,4 @@
-# $Id: rules.mk,v 1.2 2007/12/06 11:18:35 cdidier Exp $
+# $Id: rules.mk,v 1.3 2007/12/13 11:55:43 cdidier Exp $
 
 include ../../config.mk
 
@@ -21,7 +21,7 @@ clean:
 install: all
 	@echo installing the module lib$(LIB).so to ${DESTDIR}${IRSSI_LIB}/modules
 	@install -d ${DESTDIR}${IRSSI_LIB}/modules
-	@install -S lib$(LIB).so ${DESTDIR}${IRSSI_LIB}/modules
+	@install lib$(LIB).so ${DESTDIR}${IRSSI_LIB}/modules
 
 uninstall:
 	@echo deinstalling the module lib$(LIB).so from ${DESTDIR}${IRSSI_LIB}/modules
