@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.30 2007/12/08 16:51:34 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.31 2007/12/19 16:12:09 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -729,7 +729,7 @@ cmd_me(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 	target = window_item_get_target(item);
 	type = IS_CHANNEL(item) ? SEND_TARGET_CHANNEL : SEND_TARGET_NICK;
 
-	signal_emit("message xmpp own_action", 3, server, data, target,
+	signal_emit("message xmpp own_action", 4, server, data, target,
 	    GINT_TO_POINTER(type));
 
 	text = g_strconcat(settings_get_str("cmdchars"), "me ", data, NULL);
