@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-nicklist.c,v 1.2 2007/11/19 13:14:26 cdidier Exp $
+ * $Id: xmpp-nicklist.c,v 1.3 2007/12/21 17:08:24 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -64,12 +64,6 @@ xmpp_nicklist_insert(XMPP_CHANNEL_REC *channel, const char *nick_name,
 	rec->role = XMPP_NICKLIST_ROLE_NONE;
 
 	nicklist_insert(CHANNEL(channel), (NICK_REC *)rec);
-
-	if (strcmp(rec->nick, channel->nick) == 0) {
-		nicklist_set_own(CHANNEL(channel), NICK(rec));
-		channel->chanop = channel->ownnick->op;
-	}
-
 	return rec;
 }
 
