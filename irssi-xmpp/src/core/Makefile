@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.12 2007/12/05 16:47:18 cdidier Exp $
+# $Id: Makefile,v 1.13 2007/12/21 17:03:35 cdidier Exp $
 
 LIB= xmpp_core
 SRCS=	loudmouth-tools.c \
@@ -16,5 +16,7 @@ SRCS=	loudmouth-tools.c \
 	xmpp-session.c \
 	xmpp-settings.c \
 	xmpp-tools.c
+
+LIB_LIBS = `pkg-config --libs loudmouth-1.0`
 
 include ../rules.mk

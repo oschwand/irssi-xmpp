@@ -1,6 +1,9 @@
-# $Id: Makefile,v 1.5 2007/12/05 16:47:18 cdidier Exp $
+# $Id: Makefile,v 1.6 2007/12/21 17:03:35 cdidier Exp $
 
 LIB= text_xmpp
 SRCS= text-xmpp.c text-xmpp-composing.c text-xmpp-nick.c
+
+LIB_INCS = -I../../src/fe-text/include/irssi/src/fe-text
+LIB_LIBS = `pkg-config --libs glib-2.0`
 
 include ../rules.mk
