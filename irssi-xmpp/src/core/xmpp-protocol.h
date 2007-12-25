@@ -1,4 +1,4 @@
-/* $Id: xmpp-protocol.h,v 1.15 2007/12/03 21:38:01 cdidier Exp $ */
+/* $Id: xmpp-protocol.h,v 1.16 2007/12/25 11:40:21 cdidier Exp $ */
 
 #ifndef __XMPP_PROTOCOL_H
 #define __XMPP_PROTOCOL_H
@@ -8,6 +8,7 @@
 #define XMLNS "xmlns"
 #define XMLNS_ROSTER "jabber:iq:roster"
 #define XMLNS_VERSION "jabber:iq:version"
+#define XMLNS_DATA "jabber:x:data"
 #define XMLNS_VCARD "vcard-temp"
 #define XMLNS_EVENT "jabber:x:event"
 #define XMLNS_PING "urn:xmpp:ping"
