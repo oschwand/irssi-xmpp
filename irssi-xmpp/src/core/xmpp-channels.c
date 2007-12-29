@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.27 2007/12/25 11:39:33 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.28 2007/12/29 22:21:47 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -757,7 +757,7 @@ sig_event_connected(SERVER_REC *server)
 	CHANNEL_SETUP_REC *channel_setup;
 
 	if (!IS_XMPP_SERVER(server)
-	    && !server->connrec->no_autojoin_channels)
+	    || server->connrec->no_autojoin_channels)
 		return;
 
 	/* autojoin channels */
