@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.43 2007/12/29 00:41:48 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.44 2007/12/29 00:52:37 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -340,7 +340,7 @@ handle_message(LmMessageHandler *handler, LmConnection *connection,
 			text = xmpp_recode_in(child->value);
 
 			if (stamp != NULL)
-				signal_emit("message xmpp archive", 6,
+				signal_emit("message xmpp history", 6,
 				    server, text, jid, jid, stamp,
 				    GINT_TO_POINTER(SEND_TARGET_NICK));
 			else
@@ -358,11 +358,11 @@ handle_message(LmMessageHandler *handler, LmConnection *connection,
 			if (stamp != NULL) {
 				if (g_ascii_strncasecmp(text, "/me ", 4) == 0)
 					signal_emit(
-					    "message xmpp archive action", 6,
+					    "message xmpp history action", 6,
 					    server, text+4, jid, jid, stamp,
 					    GINT_TO_POINTER(SEND_TARGET_NICK));
 				else
-					signal_emit("message xmpp archive", 6,
+					signal_emit("message xmpp history", 6,
 					    server, text, jid, jid, stamp,
 					    GINT_TO_POINTER(SEND_TARGET_NICK));
 			} else {
@@ -432,12 +432,12 @@ handle_message(LmMessageHandler *handler, LmConnection *connection,
 			if (stamp != NULL) {
 				if (g_ascii_strncasecmp(text, "/me ", 4) == 0)
 					signal_emit(
-					    "message xmpp archive action", 6,
+					    "message xmpp history action", 6,
 					    server, text+4, nick, channel_name,
 					    stamp,
 					    GINT_TO_POINTER(SEND_TARGET_CHANNEL));
 				else
-					signal_emit("message xmpp archive", 6,
+					signal_emit("message xmpp history", 6,
 					    server, text, nick, channel_name,
 					    stamp,
 					    GINT_TO_POINTER(SEND_TARGET_CHANNEL));
