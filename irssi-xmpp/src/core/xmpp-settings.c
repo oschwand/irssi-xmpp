@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-settings.c,v 1.10 2007/11/26 12:55:07 cdidier Exp $
+ * $Id: xmpp-settings.c,v 1.11 2007/12/29 22:39:16 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -64,6 +64,11 @@ read_settings(void)
 				server->nickname = g_strdup(server->jid);
 			}
 		}
+
+		if (settings_get_bool("xmpp_raw_window"))
+			signal_emit("xmpp register raw handler", 1, server);
+		else
+			signal_emit("xmpp unregister raw handler", 1, server);
 	}
 
 	/* check validity */
