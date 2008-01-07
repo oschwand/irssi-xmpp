@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-composing.c,v 1.10 2007/11/20 17:10:22 cdidier Exp $
+ * $Id: fe-xmpp-composing.c,v 1.11 2008/01/07 07:29:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -120,7 +120,6 @@ out:
 static void
 sig_window_changed(WINDOW_REC *new_window, WINDOW_REC *old_window)
 {
-	GSList *list;
 	XMPP_SERVER_REC *server;
 	XMPP_QUERY_REC *query;
 

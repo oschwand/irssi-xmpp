@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.28 2007/12/29 22:21:47 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.29 2008/01/07 07:29:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -242,6 +242,12 @@ void
 xmpp_channels_join_automatic(XMPP_SERVER_REC *server, const char *data)
 {
 	channel_join(server, data, TRUE);
+}
+
+void
+xmpp_channels_invite(XMPP_SERVER_REC *server, const char *channame,
+    const char *dest)
+{
 }
 
 static void

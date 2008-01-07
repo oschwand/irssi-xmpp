@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-rosters.c,v 1.19 2007/11/26 12:55:07 cdidier Exp $
+ * $Id: xmpp-rosters.c,v 1.20 2008/01/07 07:29:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -476,7 +476,6 @@ static void
 sig_presence_unavailable(XMPP_SERVER_REC *server, const char *full_jid,
     const char *status)
 {
-	GSList *list;
 	XMPP_ROSTER_USER_REC *user;
 	XMPP_ROSTER_RESOURCE_REC *resource;
 	char *jid, *res;

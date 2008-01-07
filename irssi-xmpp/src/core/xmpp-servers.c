@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.38 2007/12/06 11:18:35 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.39 2008/01/07 07:29:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -215,7 +215,6 @@ lm_close_cb(LmConnection *connection, LmDisconnectReason reason,
     gpointer user_data)
 {
 	XMPP_SERVER_REC *server;
-	const char *msg;
 
 	server = XMPP_SERVER(user_data);
 	if (server == NULL || !server->connected)

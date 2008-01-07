@@ -1,4 +1,4 @@
-/* $Id: xmpp-protocol.h,v 1.16 2007/12/25 11:40:21 cdidier Exp $ */
+/* $Id: xmpp-protocol.h,v 1.17 2008/01/07 07:29:13 cdidier Exp $ */
 
 #ifndef __XMPP_PROTOCOL_H
 #define __XMPP_PROTOCOL_H
@@ -12,6 +12,7 @@
 #define XMLNS_VCARD "vcard-temp"
 #define XMLNS_EVENT "jabber:x:event"
 #define XMLNS_PING "urn:xmpp:ping"
+#define XMLNS_STANZAS "urn:ietf:params:xml:ns:xmpp-stanzas"
 #define XMLNS_DISCO_INFO "http://jabber.org/protocol/disco#info"
 #define XMLNS_MUC "http://jabber.org/protocol/muc"
 #define XMLNS_MUC_USER "http://jabber.org/protocol/muc#user"
