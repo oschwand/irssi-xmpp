@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.48 2008/01/28 19:04:27 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.49 2008/01/28 19:30:09 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -445,10 +445,11 @@ handle_message(LmMessageHandler *handler, LmConnection *connection,
 			channel = xmpp_channel_find(server, channel_name);
 			own = channel != NULL
 			    && strcmp(nick, channel->nick) == 0 ? TRUE : FALSE;
+
+			text = xmpp_recode_in(child->value);
 			action = g_ascii_strncasecmp(text, "/me ", 4) == 0 ?
 			    TRUE : FALSE;
 			stamp = get_timestamp(msg->node);
-			text = xmpp_recode_in(child->value);
 
 			if (stamp != NULL) {
 				if (action)
