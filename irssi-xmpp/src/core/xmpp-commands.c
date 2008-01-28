@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.32 2008/01/07 07:29:13 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.33 2008/01/28 16:59:59 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -734,7 +734,6 @@ cmd_me(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 	int type;
 
 	CMD_XMPP_SERVER(server);
-
 	if (!IS_XMPP_ITEM(item))
 		return;
 
@@ -745,10 +744,11 @@ cmd_me(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 	target = window_item_get_target(item);
 	type = IS_CHANNEL(item) ? SEND_TARGET_CHANNEL : SEND_TARGET_NICK;
 
-	signal_emit("message xmpp own_action", 4, server, data, target,
-	    GINT_TO_POINTER(type));
+	if (type == SEND_TARGET_NICK)
+		signal_emit("message xmpp own_action", 4, server, data, target,
+		    SEND_TARGET_NICK);
 
-	text = g_strconcat(settings_get_str("cmdchars"), "me ", data, NULL);
+	text = g_strconcat("/me ", data, NULL);
 
 	recoded = recode_out(SERVER(server), text, target);
 	g_free(text);
