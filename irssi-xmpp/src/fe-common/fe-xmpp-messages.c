@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-messages.c,v 1.15 2008/02/25 17:36:50 cdidier Exp $
+ * $Id: fe-xmpp-messages.c,v 1.16 2008/02/25 20:08:29 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -346,9 +346,10 @@ sig_message_own_private(XMPP_SERVER_REC *server, char *msg, char *target,
 }
 
 static void
-sig_message_ignore(void)
+sig_message_ignore(XMPP_SERVER_REC *server)
 {
-	signal_stop();
+	if (IS_XMPP_SERVER(server))
+		signal_stop();
 }
 
 void
