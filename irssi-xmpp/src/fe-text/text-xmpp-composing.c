@@ -1,5 +1,5 @@
 /*
- * $Id: text-xmpp-composing.c,v 1.3 2007/10/08 15:38:13 cdidier Exp $
+ * $Id: text-xmpp-composing.c,v 1.4 2008/02/26 23:07:34 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -36,12 +36,10 @@ item_xmpp_composing(SBAR_ITEM_REC *item, int get_size_only)
 {
 	XMPP_SERVER_REC *server;
 	XMPP_QUERY_REC *query;
-	char *str;
-
-	str = NULL;
+	char *str = NULL;
 
 	server = XMPP_SERVER(active_win->active_server);
-	if (server == NULL)
+	if (server == NULL || !IS_XMPP_SERVER(server))
 		goto out;
 
 	query = XMPP_QUERY(active_win->active);
