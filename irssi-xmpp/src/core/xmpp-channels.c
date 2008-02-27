@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-channels.c,v 1.29 2008/01/07 07:29:13 cdidier Exp $
+ * $Id: xmpp-channels.c,v 1.30 2008/02/27 19:51:55 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -245,9 +245,37 @@ xmpp_channels_join_automatic(XMPP_SERVER_REC *server, const char *data)
 }
 
 void
-xmpp_channels_invite(XMPP_SERVER_REC *server, const char *channame,
+xmpp_channels_invite(XMPP_SERVER_REC *server, const char *room,
     const char *dest)
 {
+	XMPP_CHANNEL_REC *channel;
+	LmMessage *msg;
+	LmMessageNode *child, *invite;
+	char *room_recoded, *dest_recoded;
+
+	g_return_if_fail(IS_XMPP_SERVER(server));
+	g_return_if_fail(room != NULL);
+	g_return_if_fail(dest != NULL);
+	
+	dest_recoded = xmpp_recode_out(dest);
+	msg = lm_message_new(dest_recoded, LM_MESSAGE_TYPE_MESSAGE);
+	g_free(dest_recoded);
+	
+	child = lm_message_node_add_child(msg->node, "x", NULL);
+	lm_message_node_set_attribute(child, "xmlns", XMLNS_MUC);
+
+	invite = lm_message_node_add_child(child, "invite", NULL);
+	room_recoded = xmpp_recode_out(room);
+	lm_message_node_set_attribute(invite, "to", room_recoded);
+	g_free(room_recoded);
+
+	if ((channel = xmpp_channel_find(server, room)) != NULL &&
+	    channel->key != NULL)
+		lm_message_node_add_child(child, "password",
+		    channel->key);
+
+	lm_send(server, msg, NULL);
+	lm_message_unref(msg);
 }
 
 static void
