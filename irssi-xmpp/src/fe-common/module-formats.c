@@ -1,5 +1,5 @@
 /*
- * $Id: module-formats.c,v 1.14 2008/03/01 17:57:21 cdidier Exp $
+ * $Id: module-formats.c,v 1.15 2008/03/02 20:02:06 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -48,7 +48,7 @@ FORMAT_REC fecommon_xmpp_formats[] = {
 	/* ---- */
 	{ NULL, "Message", 0, { 0 } },
 
-	{ "message_event", "{nick $0}: $1", 2,  { 0, 0} },
+	{ "message_event", "{nick $0}$2: $1", 3,  { 0, 0, 0 } },
 	{ "message_not_delivered", "{nick $0}: cannot deliver message {comment $1}", 2,  { 0, 0 } },
 	{ "message_timestamp", "[{timestamp $0}] $1", 2, { 0, 0 } },
 

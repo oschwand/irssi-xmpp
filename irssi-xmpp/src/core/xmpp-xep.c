@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-xep.c,v 1.3 2008/03/01 17:57:21 cdidier Exp $
+ * $Id: xmpp-xep.c,v 1.4 2008/03/02 20:02:05 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -231,16 +231,16 @@ xep_version_handle(XMPP_SERVER_REC *server, const char *jid,
 		if (child->value == NULL)
 			continue;
 
-		if (name == NULL && strcmp(child->value, "name") == 0)
+		if (name == NULL && strcmp(child->name, "name") == 0)
 			name = xmpp_recode_in(child->value);
 		else if (version == NULL
-		    && strcmp(child->value, "version") == 0)
+		    && strcmp(child->name, "version") == 0)
 			version = xmpp_recode_in(child->value);
-		else if (os  == NULL && strcmp(child->value, "os") == 0)
+		else if (os  == NULL && strcmp(child->name, "os") == 0)
 			os = xmpp_recode_in(child->value);
 	}
 
-	signal_emit("xmpp version", 2, server, jid, name, version, os);
+	signal_emit("xmpp version", 5, server, jid, name, version, os);
 
 	g_free(name);
 	g_free(version);
