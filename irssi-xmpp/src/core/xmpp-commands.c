@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.36 2008/03/01 17:57:21 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.37 2008/03/05 16:00:54 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -737,9 +737,11 @@ cmd_me(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 	if (!IS_XMPP_ITEM(item))
 		return;
 
+	if (*data == '\0')
+		return;
 	g_strstrip((char *)data);
 	if (*data == '\0')
-		cmd_return_error(CMDERR_NOT_ENOUGH_PARAMS);
+		return;
 
 	target = window_item_get_target(item);
 	type = IS_CHANNEL(item) ? SEND_TARGET_CHANNEL : SEND_TARGET_NICK;
