@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.37 2008/03/05 16:00:54 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.38 2008/03/05 16:34:05 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -240,6 +240,8 @@ cmd_quote(const char *data, XMPP_SERVER_REC *server)
 
 	CMD_XMPP_SERVER(server);
 
+	if (*data == '\0')
+		cmd_return_error(CMDERR_NOT_ENOUGH_PARAMS);
 	g_strstrip((char *)data);
 	if (*data == '\0')
 		cmd_return_error(CMDERR_NOT_ENOUGH_PARAMS);
