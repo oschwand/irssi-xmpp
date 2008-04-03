@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.38 2008/03/05 16:34:05 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.39 2008/04/03 10:09:38 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -20,6 +20,7 @@
 #include <stdlib.h>
 
 #include "module.h"
+#include "nicklist.h"
 #include "recode.h"
 #include "settings.h"
 #include "signals.h"
@@ -640,28 +641,29 @@ cmd_whois(const char *data, XMPP_SERVER_REC *server)
 
 /* SYNTAX: VER [[<jid>[/<resource>]]|[<name]] */
 static void
-cmd_ver(const char *data, XMPP_SERVER_REC *server)
+cmd_ver(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 {
+	NICK_REC *nick;
 	LmMessage *msg;
 	LmMessageNode *node;
-	char *jid, *jid_recoded;
+	char *dest, *jid = NULL, *jid_recoded;
 	void *free_arg;
 
 	CMD_XMPP_SERVER(server);
 
-	if (!cmd_get_params(data, &free_arg, 1, &jid))
+	if (!cmd_get_params(data, &free_arg, 1, &dest))
 		return;
 
-	jid = *jid == '\0' ?
-	    g_strconcat(server->jid, "/", server->resource, NULL) :
-	    xmpp_rosters_resolve_name(server, data);
+	if (*dest == '\0')
+		dest = jid = g_strconcat(server->jid, "/", server->resource,
+		    NULL);
+	else if (IS_XMPP_CHANNEL(item)
+	    && (nick = nicklist_find(CHANNEL(item), dest)) != NULL)
+		dest = jid = g_strdup(nick->host);
+	else if ((jid = xmpp_rosters_resolve_name(server, dest)) != NULL)
+		dest = jid;
 
-	if (!xmpp_have_resource(jid)) {
-		g_free(jid);
-		cmd_params_free(free_arg);	
-	}
-	
-	jid_recoded = xmpp_recode_out((jid != NULL) ? jid : data);
+	jid_recoded = xmpp_recode_out(dest);
 	msg = lm_message_new_with_sub_type(jid_recoded,
 	    LM_MESSAGE_TYPE_IQ, LM_MESSAGE_SUB_TYPE_GET);
 	g_free(jid_recoded);
@@ -672,25 +674,31 @@ cmd_ver(const char *data, XMPP_SERVER_REC *server)
 
 	lm_send(server, msg, NULL);
 	lm_message_unref(msg);
+
+	g_free(jid);
+	cmd_params_free(free_arg);
 }
 
 /* SYNTAX: PING [[<jid>[/<resource>]]|[<name]] */
 static void
-cmd_ping(const char *data, XMPP_SERVER_REC *server)
+cmd_ping(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 {
-	char *dest, *jid;
+	NICK_REC *nick;
+	char *dest, *jid = NULL;
 	void *free_arg;
 
 	CMD_XMPP_SERVER(server);
 
-	if (!cmd_get_params(data, &free_arg, 1, &dest))
+	if (!cmd_get_params(data, &free_arg, 2, &dest))
 		return;
 
 	if (*dest == '\0')
 		cmd_param_error(CMDERR_NOT_ENOUGH_PARAMS);
-
-	if ((jid = xmpp_rosters_resolve_name(server, dest)) != NULL)
-		 dest = jid;
+	if (IS_XMPP_CHANNEL(item)
+	    && (nick = nicklist_find(CHANNEL(item), dest)) != NULL)
+		dest = jid = g_strdup(nick->host);
+	else if ((jid = xmpp_rosters_resolve_name(server, dest)) != NULL)
+		dest = jid;
 
 	xmpp_ping_send(server, dest);
 
