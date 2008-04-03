@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.40 2008/04/03 10:41:42 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.41 2008/04/03 11:08:19 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -615,7 +615,7 @@ cmd_whois(const char *data, XMPP_SERVER_REC *server, WI_ITEM_REC *item)
 
 	CMD_XMPP_SERVER(server);
 
-	if (!cmd_get_params(data, &free_arg, 1, &jid))
+	if (!cmd_get_params(data, &free_arg, 1, &dest))
 		return;
 
 	if (*dest == '\0')
