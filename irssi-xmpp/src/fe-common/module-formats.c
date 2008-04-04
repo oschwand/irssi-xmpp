@@ -1,5 +1,5 @@
 /*
- * $Id: module-formats.c,v 1.15 2008/03/02 20:02:06 cdidier Exp $
+ * $Id: module-formats.c,v 1.16 2008/04/04 20:27:19 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -65,8 +65,8 @@ FORMAT_REC fecommon_xmpp_formats[] = {
 	/* ---- */
 	{ NULL, "Presence", 0, { 0 } },
 
-	{ "presence_change", "{nick $0}: is now $1", 2, { 0, 0 } },
-	{ "presence_change_reason", "{nick $0}: is now $1 {comment $2}", 3, { 0, 0, 0 } },
+	{ "presence_change", "{nick $0}$1: is now $2", 3, { 0, 0, 0 } },
+	{ "presence_change_reason", "{nick $0}$1: is now $2 {comment $3}", 4, { 0, 0, 0, 0 } },
 
 	/* ---- */
 	{ NULL, "Misc", 0, { 0 } },
