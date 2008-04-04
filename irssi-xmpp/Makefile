@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.5 2008/02/25 19:58:24 cdidier Exp $
+# $Id: Makefile,v 1.6 2008/04/04 16:02:15 cdidier Exp $
 
 include config.mk
 
@@ -24,7 +24,7 @@ doc-uninstall:
 help-install:
 	@echo installing command help files to ${DESTDIR}${IRSSI_HELP}
 	@install -d ${DESTDIR}${IRSSI_HELP}
-	@install roster xmppconnect xmppserver ${DESTDIR}${IRSSI_HELP}
+	@cd help/ && install roster xmppconnect xmppserver ${DESTDIR}${IRSSI_HELP}
 
 help-uninstall:
 	@echo uninstalling command help files from ${DESTDIR}${IRSSI_HELP}
