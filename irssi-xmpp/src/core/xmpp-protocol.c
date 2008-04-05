@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-protocol.c,v 1.52 2008/03/01 17:57:21 cdidier Exp $
+ * $Id: xmpp-protocol.c,v 1.53 2008/04/05 19:30:28 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -67,12 +67,12 @@ xmpp_send_message(XMPP_SERVER_REC *server, const char *dest,
 	if (user == NULL)
 		goto send;
 
-	res = xmpp_strip_resource(jid);
+	res = xmpp_extract_resource(jid);
 	resource = xmpp_rosters_find_resource(user, res);
 	if (resource == NULL)
 		goto send;
 	g_free(res);
-	
+
 	/* stop composing */
 	if (resource->composing_id != NULL) {
 		child = lm_message_node_add_child(msg->node, "x", NULL);
