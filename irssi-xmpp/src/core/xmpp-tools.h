@@ -1,4 +1,4 @@
-/* $Id: xmpp-tools.h,v 1.4 2007/11/26 12:55:07 cdidier Exp $ */
+/* $Id: xmpp-tools.h,v 1.5 2008/04/05 20:50:45 cdidier Exp $ */
 
 #ifndef __XMPP_TOOLS_H
 #define __XMPP_TOOLS_H
@@ -13,6 +13,7 @@ __BEGIN_DECLS
 char	*xmpp_recode_out(const char *);
 char	*xmpp_recode_in(const char *);
 
+char	*xmpp_find_resource_sep(const char *);
 char	*xmpp_extract_resource(const char *);
 char	*xmpp_strip_resource(const char *);
 char	*xmpp_extract_user(const char *);

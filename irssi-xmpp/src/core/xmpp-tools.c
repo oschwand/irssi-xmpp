@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-tools.c,v 1.6 2008/03/01 17:57:21 cdidier Exp $
+ * $Id: xmpp-tools.c,v 1.7 2008/04/05 20:50:45 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -80,13 +80,18 @@ xmpp_recode_in(const char *str)
 }
 
 char *
+xmpp_find_resource_sep(const char *jid) {
+	return g_utf8_strchr(jid, -1, '/');
+}
+
+char *
 xmpp_extract_resource(const char *jid)
 {
         char *pos;
 
         g_return_val_if_fail(jid != NULL, NULL);
 
-        pos = g_utf8_strchr(jid, -1, '/');
+        pos = xmpp_find_resource_sep(jid);
 	return (pos != NULL) ? g_strdup(pos + 1) : NULL;
 }
 
@@ -97,7 +102,7 @@ xmpp_strip_resource(const char *jid)
 
         g_return_val_if_fail(jid != NULL, NULL);
 
-        pos = g_utf8_strchr(jid, -1, '/');
+        pos = xmpp_find_resource_sep(jid);
 	return (pos != NULL) ? g_strndup(jid, pos - jid) : g_strdup(jid);
 }
 
@@ -119,7 +124,7 @@ xmpp_extract_host(const char *jid)
 	char *pos1, *pos2;
 
 	pos1 = g_utf8_strchr(jid, -1, '@');
-	pos2 = g_utf8_strchr(jid, -1, '/');
+	pos2 = xmpp_find_resource_sep(jid);
 
 	if (pos1 == NULL)
 		return NULL;
@@ -149,7 +154,7 @@ xmpp_have_resource(const char *jid)
 
         g_return_val_if_fail(jid != NULL, FALSE);
 
-	pos = g_utf8_strchr(jid, -1, '/');
+	pos = xmpp_find_resource_sep(jid);
         return (pos != NULL && *(pos+1) != '\0');
 }
 
