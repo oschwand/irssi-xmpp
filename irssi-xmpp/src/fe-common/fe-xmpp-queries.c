@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-queries.c,v 1.13 2008/03/01 17:57:21 cdidier Exp $
+ * $Id: fe-xmpp-queries.c,v 1.14 2008/04/05 19:44:44 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -34,7 +34,9 @@ sig_presence_changed(XMPP_SERVER_REC *server, const char *full_jid,
     int show, const char *status)
 {
 	XMPP_QUERY_REC *rec;
+	XMPP_ROSTER_USER_REC *user;
 	const char *msg;
+	char *name;
 
 	g_return_if_fail(server != NULL);
 	g_return_if_fail(full_jid != NULL);
@@ -46,12 +48,19 @@ sig_presence_changed(XMPP_SERVER_REC *server, const char *full_jid,
 
 	msg = fe_xmpp_presence_show[show];
 
+	user = xmpp_rosters_find_user(server->roster, full_jid, NULL);
+	name = user != NULL && user->name != NULL ?
+	    format_get_text(MODULE_NAME, NULL, server, NULL,
+		XMPPTXT_FORMAT_NAME, user->name, full_jid) :
+	    format_get_text(MODULE_NAME, NULL, server, NULL,
+		XMPPTXT_FORMAT_JID, full_jid);
+
 	if (status != NULL)
 		printformat_module(MODULE_NAME, server, full_jid, MSGLEVEL_CRAP,
-		    XMPPTXT_PRESENCE_CHANGE_REASON, full_jid, msg, status);
+		    XMPPTXT_PRESENCE_CHANGE_REASON, name, msg, status);
 	else
 		printformat_module(MODULE_NAME, server, full_jid, MSGLEVEL_CRAP,
-		    XMPPTXT_PRESENCE_CHANGE, full_jid, msg);
+		    XMPPTXT_PRESENCE_CHANGE, name, msg);
 }
 
 static void
