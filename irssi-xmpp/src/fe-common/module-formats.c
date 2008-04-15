@@ -1,5 +1,5 @@
 /*
- * $Id: module-formats.c,v 1.18 2008/04/05 19:44:44 cdidier Exp $
+ * $Id: module-formats.c,v 1.19 2008/04/15 18:41:17 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -36,9 +36,9 @@ FORMAT_REC fecommon_xmpp_formats[] = {
 	/* ---- */
 	{ NULL, "Roster", 0, { 0 } },
 
-	{ "roster_group", "{hilight $0}:", 1, { 0 } },
-	{ "roster_contact", "  ({hilight $0}) $1 $2 $3", 4, { 0, 0, 0, 0 } },
-	{ "begin_of_roster", "ROSTER: {nick $0} $1 $2\n", 3, { 0, 0, 0 } },
+	{ "roster_group", " {hilight $0}:", 1, { 0 } },
+	{ "roster_contact", "   ({hilight $0}) $1 $2 $3", 4, { 0, 0, 0, 0 } },
+	{ "begin_of_roster", "ROSTER: {nick $0} $1 $2", 3, { 0, 0, 0 } },
 	{ "end_of_roster", "End of ROSTER", 0, { 0 } },
 	{ "not_in_roster", "{nick $0}: not in the roster", 1, { 0 } },
 
