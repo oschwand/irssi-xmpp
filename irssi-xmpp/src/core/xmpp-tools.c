@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-tools.c,v 1.7 2008/04/05 20:50:45 cdidier Exp $
+ * $Id: xmpp-tools.c,v 1.8 2008/04/15 18:39:55 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -81,7 +81,7 @@ xmpp_recode_in(const char *str)
 
 char *
 xmpp_find_resource_sep(const char *jid) {
-	return g_utf8_strchr(jid, -1, '/');
+	return jid == NULL ? NULL : g_utf8_strchr(jid, -1, '/');
 }
 
 char *
