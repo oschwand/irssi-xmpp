@@ -1,4 +1,4 @@
-/* $Id: module-formats.h,v 1.12 2008/04/05 19:21:59 cdidier Exp $ */
+/* $Id: module-formats.h,v 1.13 2008/05/25 17:23:23 cdidier Exp $ */
 
 #include "formats.h"
 
@@ -57,6 +57,9 @@ enum {
 
 	XMPPTXT_FILL_9,
 
+	XMPPTXT_RAW_IN_HEADER,
+	XMPPTXT_RAW_OUT_HEADER,
+	XMPPTXT_RAW_MESSAGE,
 	XMPPTXT_DEFAULT_EVENT,
 	XMPPTXT_DEFAULT_ERROR
 };
