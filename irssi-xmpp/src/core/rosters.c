@@ -1,5 +1,5 @@
 /*
- * $Id: rosters.c,v 1.1 2008/08/15 00:25:21 cdidier Exp $
+ * $Id: rosters.c,v 1.2 2008/08/15 00:54:51 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -496,6 +496,9 @@ rosters_init(void)
 	signal_add_first("server disconnected", roster_cleanup);
 	signal_add("xmpp recv presence", sig_recv_presence);
 	signal_add("xmpp recv iq", sig_recv_iq);
+
+	settings_add_str("xmpp_roster", "roster_service_name",
+	    "Agents/Services");
 }
 
 void
