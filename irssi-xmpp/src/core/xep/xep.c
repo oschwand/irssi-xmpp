@@ -1,5 +1,5 @@
 /*
- * $Id: xep.c,v 1.1 2008/08/15 00:25:21 cdidier Exp $
+ * $Id: xep.c,v 1.2 2008/08/15 20:25:36 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -19,16 +19,16 @@
 
 #include "module.h"
 
-#include "features.h"
+#include "disco.h"
 
 void
 xep_init(void)
 {
-	features_init();
+	disco_init();
 }
 
 void
 xep_deinit(void)
 {
-	features_deinit();
+	disco_deinit();
 }

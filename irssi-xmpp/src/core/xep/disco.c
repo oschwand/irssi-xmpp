@@ -1,5 +1,5 @@
 /*
- * $Id: features.c,v 1.1 2008/08/15 00:25:21 cdidier Exp $
+ * $Id: disco.c,v 1.1 2008/08/15 20:25:36 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -104,7 +104,7 @@ sig_disconnected(XMPP_SERVER_REC *server)
 }
 
 void
-features_init(void)
+disco_init(void)
 {
 	signal_add("server connected", sig_connected);
 	signal_add("server disconnected", sig_disconnected);
@@ -112,7 +112,7 @@ features_init(void)
 }
 
 void
-features_deinit(void)
+disco_deinit(void)
 {
 	signal_remove("server connected", sig_connected);
 	signal_add("server disconnected", sig_disconnected);

@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.15 2008/08/15 00:25:21 cdidier Exp $
+# $Id: Makefile,v 1.16 2008/08/15 20:25:36 cdidier Exp $
 
 LIB= xmpp_core
 SRCS=	xmpp-commands.c \
@@ -14,7 +14,7 @@ SRCS=	xmpp-commands.c \
 	rosters-tools.c \
 	stanzas.c \
 	tools.c \
-	xep/features.c \
+	xep/disco.c \
 	xep/xep.c
 
 LIB_LIBS = `pkg-config --libs loudmouth-1.0`
