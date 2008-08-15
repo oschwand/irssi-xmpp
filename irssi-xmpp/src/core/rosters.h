@@ -1,11 +1,11 @@
-/* $Id: rosters.h,v 1.1 2008/08/15 00:25:21 cdidier Exp $ */
+/* $Id: rosters.h,v 1.2 2008/08/15 18:18:41 cdidier Exp $ */
 
 #ifndef __ROSTER_H
 #define __ROSTER_H
 
 enum {
-	XMPP_PRESENCE_ERROR,
 	XMPP_PRESENCE_UNAVAILABLE,
+	XMPP_PRESENCE_ERROR,
 	XMPP_PRESENCE_XA,
 	XMPP_PRESENCE_DND,
 	XMPP_PRESENCE_AWAY,
