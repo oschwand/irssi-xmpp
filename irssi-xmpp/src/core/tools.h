@@ -1,7 +1,7 @@
-/* $Id: xmpp-tools.h,v 1.5 2008/04/05 20:50:45 cdidier Exp $ */
+/* $Id: tools.h,v 1.1 2008/08/15 00:25:21 cdidier Exp $ */
 
-#ifndef __XMPP_TOOLS_H
-#define __XMPP_TOOLS_H
+#ifndef __TOOLS_H
+#define __TOOLS_H
 
 #define xmpp_extract_nick(jid)						\
 	xmpp_extract_resource(jid)

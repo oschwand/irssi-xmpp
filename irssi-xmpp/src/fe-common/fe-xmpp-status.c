@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-status.c,v 1.7 2008/04/05 20:50:45 cdidier Exp $
+ * $Id: fe-xmpp-status.c,v 1.8 2008/08/15 00:25:21 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -28,8 +28,7 @@
 #include "window-items.h"
 
 #include "xmpp-servers.h"
-#include "xmpp-rosters.h"
-#include "xmpp-rosters-tools.h"
+#include "rosters-tools.h"
 
 const char *fe_xmpp_presence_show[] = {
 	"error",
@@ -107,7 +106,7 @@ sig_presence_changed(XMPP_SERVER_REC *server, const char *full_jid,
 
 	msg = fe_xmpp_presence_show[show];
 
-	user = xmpp_rosters_find_user(server->roster, full_jid, NULL, NULL);
+	user = rosters_find_user(server->roster, full_jid, NULL, NULL);
 	name = user != NULL && user->name != NULL ?
 	    format_get_text(MODULE_NAME, NULL, server, NULL,
 		XMPPTXT_FORMAT_NAME, user->name, full_jid) :

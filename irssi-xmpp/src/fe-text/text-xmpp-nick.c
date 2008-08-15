@@ -1,5 +1,5 @@
 /*
- * $Id: text-xmpp-nick.c,v 1.6 2008/03/01 17:57:21 cdidier Exp $
+ * $Id: text-xmpp-nick.c,v 1.7 2008/08/15 00:25:21 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -25,7 +25,7 @@
 #include "statusbar.h"
 
 #include "xmpp-servers.h"
-#include "xmpp-channels.h"
+/*#include "xmpp-channels.h"*/
 
 static void
 update_nick_statusbar(XMPP_SERVER_REC *server, XMPP_CHANNEL_REC *channel,

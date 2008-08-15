@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.16 2007/12/29 22:23:34 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.17 2008/08/15 00:25:21 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -31,12 +31,7 @@ struct _XMPP_SERVER_CONNECT_REC {
 	GSList		*channels_list;
 	int		 show;
 	int		 priority;
-	gboolean	 default_priority;
 };
-
-typedef enum {
-	XMPP_SERVERS_FEATURE_PING				= 1 << 0
-} XMPP_SERVERS_FEATURES;
 
 #define STRUCT_SERVER_CONNECT_REC XMPP_SERVER_CONNECT_REC
 struct _XMPP_SERVER_REC {
@@ -51,17 +46,14 @@ struct _XMPP_SERVER_REC {
 
 	int		 show;
 	int		 priority;
-	gboolean	 default_priority;
 	char		*ping_id;
-	XMPP_SERVERS_FEATURES features;
-	GSList		*resources;
+	GSList		*server_features;
+	GSList		*my_features;
+	GSList		*my_resources;
 	GSList		*roster;
 
 	LmConnection	 *lmconn;
-	LmMessageHandler *hmessage;
-	LmMessageHandler *hpresence;
-	LmMessageHandler *hiq;
-	LmMessageHandler *hraw;
+	GSList		 *msg_handlers;
 };
 
 __BEGIN_DECLS

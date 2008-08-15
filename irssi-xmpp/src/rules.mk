@@ -1,4 +1,4 @@
-# $Id: rules.mk,v 1.5 2008/01/28 19:04:27 cdidier Exp $
+# $Id: rules.mk,v 1.6 2008/08/15 00:25:21 cdidier Exp $
 
 include ../../config.mk
 
@@ -8,7 +8,7 @@ all: ${LIB}
 
 .c.o:
 	@echo ${CC} -c $<
-	@${CC} -c $< ${CFLAGS}
+	@${CC} -c $< -o $@ ${CFLAGS}
 
 ${LIB}: ${OBJS}
 	@echo ${CC} -o lib$@.so
