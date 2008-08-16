@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.41 2008/08/15 00:25:21 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.42 2008/08/16 21:54:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -126,7 +126,6 @@ xmpp_server_init_connect(SERVER_CONNECT_REC *conn)
 		server->priority = 0;
 	server->ping_id = NULL;
 	server->server_features = NULL;
-	server->my_features = NULL;
 	server->my_resources = NULL;
 	server->roster = NULL;
 	server->msg_handlers = NULL;

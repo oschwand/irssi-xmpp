@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.17 2008/08/15 00:25:21 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.18 2008/08/16 21:54:40 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -48,7 +48,6 @@ struct _XMPP_SERVER_REC {
 	int		 priority;
 	char		*ping_id;
 	GSList		*server_features;
-	GSList		*my_features;
 	GSList		*my_resources;
 	GSList		*roster;
 
