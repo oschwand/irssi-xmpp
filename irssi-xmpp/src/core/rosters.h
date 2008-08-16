@@ -1,4 +1,4 @@
-/* $Id: rosters.h,v 1.2 2008/08/15 18:18:41 cdidier Exp $ */
+/* $Id: rosters.h,v 1.3 2008/08/16 14:31:03 cdidier Exp $ */
 
 #ifndef __ROSTER_H
 #define __ROSTER_H
@@ -48,8 +48,8 @@ typedef struct _XMPP_ROSTER_GROUP_REC {
 } XMPP_ROSTER_GROUP_REC;
 
 __BEGIN_DECLS
-void xmpp_rosters_init(void);
-void xmpp_rosters_deinit(void);
+void rosters_init(void);
+void rosters_deinit(void);
 __END_DECLS
 
 #endif
