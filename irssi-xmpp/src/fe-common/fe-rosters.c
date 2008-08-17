@@ -1,5 +1,5 @@
 /*
- * $Id: fe-rosters.c,v 1.3 2008/08/17 14:49:29 cdidier Exp $
+ * $Id: fe-rosters.c,v 1.4 2008/08/17 15:35:47 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -39,7 +39,8 @@ user_is_shown(XMPP_ROSTER_USER_REC *user)
 	    || (user->subscription == XMPP_SUBSCRIPTION_BOTH
 	    && settings_get_bool("roster_show_offline"))
 	    || (user->subscription != XMPP_SUBSCRIPTION_BOTH
-	    && settings_get_bool("roster_show_unsuscribed"));
+	    && (settings_get_bool("roster_show_unsuscribed")
+	    || settings_get_bool("roster_show_offline")));
 }
 
 static void
