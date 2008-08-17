@@ -1,5 +1,5 @@
 /*
- * $Id: version.c,v 1.2 2008/08/17 18:07:32 cdidier Exp $
+ * $Id: version.c,v 1.3 2008/08/17 21:15:38 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -48,8 +48,6 @@ send_version(XMPP_SERVER_REC *server, const char *dest,
 	struct utsname u;
 	char *recoded;
 
-	g_return_if_fail(IS_XMPP_SERVER(server));
-	g_return_if_fail(dest != NULL);
 	recoded = xmpp_recode_out(dest);
 	lmsg = lm_message_new_with_sub_type(recoded, LM_MESSAGE_TYPE_IQ,
 	    LM_MESSAGE_SUB_TYPE_RESULT);
