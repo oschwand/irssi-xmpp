@@ -1,5 +1,5 @@
 /*
- * $Id: version.c,v 1.1 2008/08/17 18:05:54 cdidier Exp $
+ * $Id: version.c,v 1.2 2008/08/17 18:07:32 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -143,34 +143,6 @@ sig_recv_iq(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 	    && (node = lm_find_node(lmsg->node,"query", "xmlns",
 	    XMLNS_VERSION)) != NULL)
 		send_version(server, from, id);
-}
-
-void
-xep_version_handle(XMPP_SERVER_REC *server, const char *jid,
-    LmMessageNode *node)
-{
-	LmMessageNode *child;
-	char *name, *version, *os;
-
-	g_return_if_fail(IS_XMPP_SERVER(server));
-	g_return_if_fail(jid != NULL);
-	g_return_if_fail(node != NULL);
-	name = version = os = NULL;
-	for(child = node->children; child != NULL; child = child->next) {
-		if (child->value == NULL)
-			continue;
-		if (name == NULL && strcmp(child->name, "name") == 0)
-			name = xmpp_recode_in(child->value);
-		else if (version == NULL
-		    && strcmp(child->name, "version") == 0)
-			version = xmpp_recode_in(child->value);
-		else if (os  == NULL && strcmp(child->name, "os") == 0)
-			os = xmpp_recode_in(child->value);
-	}
-	signal_emit("xmpp version", 5, server, jid, name, version, os);
-	g_free(name);
-	g_free(version);
-	g_free(os);
 }
 
 void
