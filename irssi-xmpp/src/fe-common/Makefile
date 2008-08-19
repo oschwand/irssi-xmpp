@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.19 2008/08/19 22:26:16 cdidier Exp $
+# $Id: Makefile,v 1.20 2008/08/19 23:49:50 cdidier Exp $
 
 LIB= fe_xmpp
 SRCS=	fe-xmpp-messages.c \
@@ -14,6 +14,7 @@ SRCS=	fe-xmpp-messages.c \
 	xep/fe-composing.c
 
 
+LIB_INCS = -I../../src/fe-common 
 LIB_LIBS = `pkg-config --libs glib-2.0`
 
 include ../rules.mk
