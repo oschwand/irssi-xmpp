@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-core.c,v 1.16 2008/08/15 00:25:21 cdidier Exp $
+ * $Id: xmpp-core.c,v 1.17 2008/08/19 02:56:35 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -33,6 +33,7 @@
 #include "xmpp-session.h"
 #include "xmpp-settings.h"
 #include "protocol.h"
+#include "register.h"
 #include "rosters.h"
 #include "stanzas.h"
 #include "xep/xep.h"
@@ -101,6 +102,7 @@ xmpp_core_init(void)
 	xmpp_session_init();
 	xmpp_settings_init();
 	protocol_init();
+	register_init();
 	rosters_init();
 	stanzas_init();
 	xep_init();
@@ -119,6 +121,7 @@ xmpp_core_deinit(void)
 	xmpp_session_deinit();
 	xmpp_settings_deinit();
 	protocol_deinit();
+	register_deinit();
 	rosters_deinit();
 	stanzas_deinit();
 
