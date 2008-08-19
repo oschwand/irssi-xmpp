@@ -1,7 +1,7 @@
-# $Id: Makefile,v 1.7 2008/08/19 21:54:00 cdidier Exp $
+# $Id: Makefile,v 1.8 2008/08/19 21:59:38 cdidier Exp $
 
 LIB= text_xmpp
-SRCS=	text-core.c \
+SRCS=	text-xmpp-core.c \
 	text-composing.c
 
 LIB_INCS = -I../../src/fe-text/include/irssi/src/fe-text

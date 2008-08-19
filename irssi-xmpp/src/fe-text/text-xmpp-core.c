@@ -1,5 +1,5 @@
 /*
- * $Id: text-core.c,v 1.1 2008/08/19 21:54:00 cdidier Exp $
+ * $Id: text-xmpp-core.c,v 1.1 2008/08/19 21:59:39 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
