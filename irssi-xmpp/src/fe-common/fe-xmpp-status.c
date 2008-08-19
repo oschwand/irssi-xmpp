@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-status.c,v 1.9 2008/08/19 14:57:55 cdidier Exp $
+ * $Id: fe-xmpp-status.c,v 1.10 2008/08/19 21:56:18 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -31,8 +31,8 @@
 #include "rosters-tools.h"
 
 const char *fe_xmpp_presence_show[] = {
-	"error",
 	"Offline",
+	"error",
 	"Not Available",
 	"Busy",
 	"Away",
