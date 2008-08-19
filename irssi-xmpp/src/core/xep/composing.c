@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.4 2008/08/19 22:49:41 cdidier Exp $
+ * $Id: composing.c,v 1.5 2008/08/19 22:54:53 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -184,7 +184,6 @@ sig_recv_message(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 		return;
 	node = lm_find_node(lmsg->node, "x", "xmlns", XMLNS_EVENT);
 	if (node == NULL) {
-		remove_cd(server, from);
 		signal_emit("xmpp composing hide", 2, server, from);
 		return;
 	}
