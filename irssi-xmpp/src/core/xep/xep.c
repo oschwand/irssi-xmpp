@@ -1,5 +1,5 @@
 /*
- * $Id: xep.c,v 1.6 2008/08/17 21:38:22 cdidier Exp $
+ * $Id: xep.c,v 1.7 2008/08/19 22:58:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -19,6 +19,7 @@
 
 #include "module.h"
 
+#include "chatstates.h"
 #include "composing.h"
 #include "disco.h"
 #include "ping.h"
@@ -28,6 +29,7 @@
 void
 xep_init(void)
 {
+	chatstates_init();
 	composing_init();
 	disco_init();
 	ping_init();
@@ -38,6 +40,7 @@ xep_init(void)
 void
 xep_deinit(void)
 {
+	chatstates_deinit();
 	composing_deinit();
 	disco_deinit();
 	ping_deinit();
