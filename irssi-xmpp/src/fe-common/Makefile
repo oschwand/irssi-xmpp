@@ -1,8 +1,10 @@
-# $Id: Makefile,v 1.16 2008/08/15 00:25:21 cdidier Exp $
+# $Id: Makefile,v 1.17 2008/08/19 14:51:57 cdidier Exp $
 
 LIB= fe_xmpp
-SRCS=	fe-xmpp-queries.c \
+SRCS=	fe-xmpp-messages.c \
+	fe-xmpp-queries.c \
 	fe-xmpp-status.c \
+	fe-xmpp-windows.c \
 	fe-rosters.c \
 	fe-stanzas.c \
 	fe-xmpp-core.c \
