@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xep.c,v 1.2 2008/08/19 22:26:16 cdidier Exp $
+ * $Id: fe-xep.c,v 1.3 2008/08/19 23:57:15 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -20,15 +20,21 @@
 #include "module.h"
 
 #include "fe-composing.h"
+#include "fe-vcard.h"
+#include "fe-version.h"
 
 void
 fe_xep_init(void)
 {
 	fe_composing_init();
+	fe_vcard_init();
+	fe_version_init();
 }
 
 void
 fe_xep_deinit(void)
 {
 	fe_composing_deinit();
+	fe_vcard_deinit();
+	fe_version_deinit();
 }
