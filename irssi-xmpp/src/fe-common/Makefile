@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.17 2008/08/19 14:51:57 cdidier Exp $
+# $Id: Makefile,v 1.18 2008/08/19 15:02:40 cdidier Exp $
 
 LIB= fe_xmpp
 SRCS=	fe-xmpp-messages.c \
@@ -9,7 +9,8 @@ SRCS=	fe-xmpp-messages.c \
 	fe-stanzas.c \
 	fe-xmpp-core.c \
 	module-formats.c \
-	xmpp-completion.c
+	xmpp-completion.c \
+	xep/fe-xep.c
 
 LIB_LIBS = `pkg-config --libs glib-2.0`
 

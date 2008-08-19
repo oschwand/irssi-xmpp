@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-core.c,v 1.2 2008/08/19 14:51:57 cdidier Exp $
+ * $Id: fe-xmpp-core.c,v 1.3 2008/08/19 15:02:40 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -34,6 +34,7 @@
 #include "fe-rosters.h"
 #include "fe-stanzas.h"
 #include "xmpp-completion.h"
+#include "xep/fe-xep.h"
 
 static void
 sig_server_status(SERVER_REC *server, const char *msg)
@@ -69,6 +70,7 @@ fe_xmpp_init(void)
 	fe_rosters_init();
 	fe_stanzas_init();
 	xmpp_completion_init();
+	fe_xep_init();
 
 	module_register("xmpp", "fe");
 
@@ -94,6 +96,7 @@ fe_xmpp_deinit(void)
 	fe_rosters_deinit();
 	fe_stanzas_deinit();
 	xmpp_completion_deinit();
+	fe_xep_deinit();
 
 	theme_unregister();
 }
