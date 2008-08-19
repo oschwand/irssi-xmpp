@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-core.c,v 1.3 2008/08/19 15:02:40 cdidier Exp $
+ * $Id: fe-xmpp-core.c,v 1.4 2008/08/19 21:58:04 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -75,12 +75,12 @@ fe_xmpp_init(void)
 	module_register("xmpp", "fe");
 
 	/* load irssi-xmpp's fe-text submodule */
-/*	if (irssi_gui == IRSSI_GUI_TEXT) {
+	if (irssi_gui == IRSSI_GUI_TEXT) {
 		char *cmd_line = g_strconcat(settings_get_str("cmdchars"),
 		    "load xmpp text", NULL);
 		signal_emit("send command", 1, cmd_line);
 		g_free(cmd_line);
-	}*/
+	}
 }
 
 void
