@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.2 2008/08/19 22:26:15 cdidier Exp $
+ * $Id: composing.c,v 1.3 2008/08/19 22:32:29 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -30,6 +30,7 @@
 #include "xmpp-queries.h"
 #include "rosters-tools.h"
 #include "tools.h"
+#include "disco.h"
 
 #define XMLNS_EVENT "jabber:x:event"
 
@@ -243,6 +244,7 @@ void
 composing_init(void)
 {
 	composings = NULL;
+	xmpp_add_feature(XMLNS_EVENT);
 
 	signal_add("xmpp composing start", sig_composing_start);
 	signal_add("xmpp composing stop", sig_composing_stop);
