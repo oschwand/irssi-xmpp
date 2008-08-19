@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.3 2008/08/19 22:32:29 cdidier Exp $
+ * $Id: composing.c,v 1.4 2008/08/19 22:49:41 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -28,7 +28,6 @@
 
 #include "xmpp-servers.h"
 #include "xmpp-queries.h"
-#include "rosters-tools.h"
 #include "tools.h"
 #include "disco.h"
 
