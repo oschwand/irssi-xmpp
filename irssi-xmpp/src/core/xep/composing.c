@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.5 2008/08/19 22:54:53 cdidier Exp $
+ * $Id: composing.c,v 1.6 2008/08/20 00:03:22 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -232,9 +232,8 @@ sig_offline(XMPP_SERVER_REC *server, const char *jid)
 static void
 sig_disconnected(XMPP_SERVER_REC *server)
 {
-	if (!IS_XMPP_SERVER(server))
-		return;
-	cleanup_composings(server);
+	if (IS_XMPP_SERVER(server))
+		cleanup_composings(server);
 }
 
 

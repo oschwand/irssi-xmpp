@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.43 2008/08/18 21:13:14 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.44 2008/08/20 00:06:44 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -386,6 +386,8 @@ sig_connected_last(XMPP_SERVER_REC *server)
 	LmMessage *lmsg;
 	char *str;
 
+	if (!IS_XMPP_SERVER(server))
+		return;
 	/* set presence available */
 	lmsg = lm_message_new_with_sub_type(NULL, LM_MESSAGE_TYPE_PRESENCE,
 	    LM_MESSAGE_SUB_TYPE_AVAILABLE);

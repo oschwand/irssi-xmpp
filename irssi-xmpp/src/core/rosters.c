@@ -1,5 +1,5 @@
 /*
- * $Id: rosters.c,v 1.5 2008/08/19 22:19:33 cdidier Exp $
+ * $Id: rosters.c,v 1.6 2008/08/20 00:03:22 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -544,6 +544,8 @@ sig_connected(XMPP_SERVER_REC *server)
 	LmMessage *lmsg;
 	LmMessageNode *node;
 
+	if (!IS_XMPP_SERVER(server))
+		return;
 	signal_emit("xmpp server status", 2, server, "Requesting the roster.");
 	lmsg = lm_message_new_with_sub_type(NULL, LM_MESSAGE_TYPE_IQ,
 	    LM_MESSAGE_SUB_TYPE_GET);

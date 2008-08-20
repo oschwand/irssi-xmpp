@@ -1,5 +1,5 @@
 /*
- * $Id: disco.c,v 1.3 2008/08/16 21:54:40 cdidier Exp $
+ * $Id: disco.c,v 1.4 2008/08/20 00:03:22 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -109,14 +109,15 @@ send_disco(XMPP_SERVER_REC *server, const char *dest)
 static void
 sig_connected(XMPP_SERVER_REC *server)
 {
-	g_return_if_fail(IS_XMPP_SERVER(server));
-	send_disco(server, server->host);
+	if (IS_XMPP_SERVER(server))
+		send_disco(server, server->host);
 }
 
 static void
 sig_disconnected(XMPP_SERVER_REC *server)
 {
-	g_return_if_fail(IS_XMPP_SERVER(server));
+	if (!IS_XMPP_SERVER(server))
+		return;
 	cleanup_features(server->server_features);
 	server->server_features = NULL;
 }
