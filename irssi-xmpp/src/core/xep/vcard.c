@@ -1,5 +1,5 @@
 /*
- * $Id: vcard.c,v 1.1 2008/08/17 21:28:32 cdidier Exp $
+ * $Id: vcard.c,v 1.2 2008/08/21 13:36:39 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -27,6 +27,7 @@
 #include "xmpp-commands.h"
 #include "rosters-tools.h"
 #include "tools.h"
+#include "disco.h"
 
 #define XMLNS_VCARD "vcard-temp"
 
@@ -140,6 +141,7 @@ sig_recv_iq(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 void
 vcard_init(void)
 {
+	xmpp_add_feature(XMLNS_VCARD);
 	command_bind_xmpp("vcard", NULL, (SIGNAL_FUNC)cmd_vcard);
 	command_bind_xmpp("whois", NULL, (SIGNAL_FUNC)cmd_vcard);
 	signal_add("xmpp recv iq", sig_recv_iq);

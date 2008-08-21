@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.6 2008/08/20 00:03:22 cdidier Exp $
+ * $Id: composing.c,v 1.7 2008/08/21 13:36:39 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -242,7 +242,6 @@ composing_init(void)
 {
 	composings = NULL;
 	xmpp_add_feature(XMLNS_EVENT);
-
 	signal_add("xmpp composing start", sig_composing_start);
 	signal_add("xmpp composing stop", sig_composing_stop);
 	signal_add("xmpp composing show", sig_composing_show);
@@ -264,6 +263,5 @@ composing_deinit(void)
 	signal_remove("xmpp send message", sig_send_message);
 	signal_remove("xmpp presence offline", sig_offline);
 	signal_remove("server disconnected", sig_disconnected);
-
 	cleanup_composings(NULL);
 }
