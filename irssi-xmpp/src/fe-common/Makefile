@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.22 2008/08/21 17:50:03 cdidier Exp $
+# $Id: Makefile,v 1.23 2008/08/21 22:43:27 cdidier Exp $
 
 LIB= fe_xmpp
 SRCS=	fe-xmpp-messages.c \
@@ -10,6 +10,7 @@ SRCS=	fe-xmpp-messages.c \
 	fe-xmpp-core.c \
 	module-formats.c \
 	xmpp-completion.c \
+	xmpp-formats.c \
 	xep/fe-composing.c \
 	xep/fe-ping.c \
 	xep/fe-vcard.c \
