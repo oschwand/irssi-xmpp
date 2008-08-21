@@ -1,5 +1,5 @@
 /*
- * $Id: disco.c,v 1.5 2008/08/21 15:06:20 cdidier Exp $
+ * $Id: disco.c,v 1.6 2008/08/21 15:19:46 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -35,7 +35,8 @@ void
 xmpp_add_feature(char *feature)
 {
 	g_return_if_fail(feature != NULL && *feature != '\0');
-	my_features = g_slist_prepend(my_features, feature);
+	my_features = g_slist_insert_sorted(my_features, feature,
+	    (GCompareFunc)strcmp);
 }
 
 gboolean
