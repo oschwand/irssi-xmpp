@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.8 2008/08/21 16:35:15 cdidier Exp $
+ * $Id: composing.c,v 1.9 2008/08/21 17:22:19 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -34,7 +34,7 @@
 
 #define XMLNS_EVENT "jabber:x:event"
 
-DATALIST *composings;
+static DATALIST *composings;
 
 #define send_start(server, dest, id) \
 	send_composing_event(server, dest, id, TRUE)
