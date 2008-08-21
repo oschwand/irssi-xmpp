@@ -1,5 +1,5 @@
 /*
- * $Id: xep.c,v 1.7 2008/08/19 22:58:01 cdidier Exp $
+ * $Id: xep.c,v 1.8 2008/08/21 14:06:22 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -22,6 +22,7 @@
 #include "chatstates.h"
 #include "composing.h"
 #include "disco.h"
+#include "oob.h"
 #include "ping.h"
 #include "vcard.h"
 #include "version.h"
@@ -32,6 +33,7 @@ xep_init(void)
 	chatstates_init();
 	composing_init();
 	disco_init();
+	oob_init();
 	ping_init();
 	vcard_init();
 	version_init();
@@ -43,6 +45,7 @@ xep_deinit(void)
 	chatstates_deinit();
 	composing_deinit();
 	disco_deinit();
+	oob_deinit();
 	ping_deinit();
 	vcard_deinit();
 	version_deinit();
