@@ -1,5 +1,5 @@
 /*
- * $Id: vcard.c,v 1.3 2008/08/21 17:21:26 cdidier Exp $
+ * $Id: vcard.c,v 1.4 2008/08/23 13:50:16 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -126,7 +126,7 @@ sig_recv_iq(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 void
 vcard_init(void)
 {
-	xmpp_add_feature(XMLNS_VCARD);
+	disco_add_feature(XMLNS_VCARD);
 	command_bind_xmpp("vcard", NULL, (SIGNAL_FUNC)cmd_vcard);
 	command_bind_xmpp("whois", NULL, (SIGNAL_FUNC)cmd_vcard);
 	signal_add("xmpp recv iq", sig_recv_iq);

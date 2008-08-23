@@ -1,5 +1,5 @@
 /*
- * $Id: xep.c,v 1.8 2008/08/21 14:06:22 cdidier Exp $
+ * $Id: xep.c,v 1.9 2008/08/23 13:54:20 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -30,9 +30,9 @@
 void
 xep_init(void)
 {
+	disco_init(); /* init sevice discovery first */
 	chatstates_init();
 	composing_init();
-	disco_init();
 	oob_init();
 	ping_init();
 	vcard_init();
@@ -42,9 +42,9 @@ xep_init(void)
 void
 xep_deinit(void)
 {
+	disco_deinit();
 	chatstates_deinit();
 	composing_deinit();
-	disco_deinit();
 	oob_deinit();
 	ping_deinit();
 	vcard_deinit();

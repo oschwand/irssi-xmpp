@@ -1,5 +1,5 @@
 /*
- * $Id: chatstates.c,v 1.2 2008/08/21 13:36:39 cdidier Exp $
+ * $Id: chatstates.c,v 1.3 2008/08/23 13:50:16 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -53,7 +53,7 @@ sig_recv_message(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 void
 chatstates_init(void)
 {
-	xmpp_add_feature(XMLNS_CHATSTATES);
+	disco_add_feature(XMLNS_CHATSTATES);
 	signal_add("xmpp recv message", sig_recv_message);
 }
 

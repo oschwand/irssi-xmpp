@@ -1,5 +1,5 @@
 /*
- * $Id: oob.c,v 1.1 2008/08/21 14:06:22 cdidier Exp $
+ * $Id: oob.c,v 1.2 2008/08/23 13:50:16 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -63,7 +63,7 @@ sig_recv_x(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 void
 oob_init(void)
 {
-	xmpp_add_feature(XMLNS_OOB_X);
+	disco_add_feature(XMLNS_OOB_X);
 	signal_add("xmpp recv message", sig_recv_x);
 	signal_add("xmpp recv presence", sig_recv_x);
 }

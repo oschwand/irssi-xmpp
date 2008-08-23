@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.9 2008/08/21 17:22:19 cdidier Exp $
+ * $Id: composing.c,v 1.10 2008/08/23 13:50:16 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -178,7 +178,7 @@ void
 composing_init(void)
 {
 	composings = datalist_new(freedata_func);
-	xmpp_add_feature(XMLNS_EVENT);
+	disco_add_feature(XMLNS_EVENT);
 	signal_add("xmpp composing start", sig_composing_start);
 	signal_add("xmpp composing stop", sig_composing_stop);
 	signal_add("xmpp composing show", sig_composing_show);
