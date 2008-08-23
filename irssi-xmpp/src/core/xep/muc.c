@@ -1,5 +1,5 @@
 /*
- * $Id: muc.c,v 1.1 2008/08/23 14:15:29 cdidier Exp $
+ * $Id: muc.c,v 1.2 2008/08/23 14:16:23 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -312,7 +312,6 @@ muc_init(void)
 	muc_events_init();
 	muc_nicklist_init();
 	muc_reconnect_init();
-	muc_session_init();
 
 	signal_add("xmpp features", sig_features);
 	signal_add("channel created", sig_channel_created);
