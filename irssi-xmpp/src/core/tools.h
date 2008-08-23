@@ -1,13 +1,7 @@
-/* $Id: tools.h,v 1.1 2008/08/15 00:25:21 cdidier Exp $ */
+/* $Id: tools.h,v 1.2 2008/08/23 13:58:44 cdidier Exp $ */
 
 #ifndef __TOOLS_H
 #define __TOOLS_H
-
-#define xmpp_extract_nick(jid)						\
-	xmpp_extract_resource(jid)
-
-#define xmpp_extract_channel(jid)					\
-	xmpp_strip_resource(jid)
 
 __BEGIN_DECLS
 char	*xmpp_recode_out(const char *);
