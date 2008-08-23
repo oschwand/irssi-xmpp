@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.25 2008/08/23 13:58:44 cdidier Exp $
+# $Id: Makefile,v 1.26 2008/08/23 14:15:29 cdidier Exp $
 
 LIB= xmpp_core
 SRCS=	xmpp-commands.c \
@@ -18,6 +18,11 @@ SRCS=	xmpp-commands.c \
 	xep/composing.c \
 	xep/datalist.c \
 	xep/disco.c \
+	xep/muc-commands.c \
+	xep/muc-events.c \
+	xep/muc-nicklist.c \
+	xep/muc-reconnect.c \
+	xep/muc.c \
 	xep/oob.c \
 	xep/ping.c \
 	xep/vcard.c \
