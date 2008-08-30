@@ -1,4 +1,4 @@
-/* $Id: text-composing.h,v 1.1 2008/08/19 21:54:00 cdidier Exp $ */
+/* $Id: text-composing.h,v 1.1 2008/08/30 17:08:02 cdidier Exp $ */
 
 #ifndef __TEXT_COMPOSING_H
 #define __TEXT_COMPOSING_H
