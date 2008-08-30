@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.10 2008/08/23 13:50:16 cdidier Exp $
+ * $Id: composing.c,v 1.11 2008/08/30 16:54:09 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -109,10 +109,11 @@ sig_recv_message(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 {
 	LmMessageNode *node;
 
-	if (type != LM_MESSAGE_SUB_TYPE_NOT_SET
+	if ((type != LM_MESSAGE_SUB_TYPE_NOT_SET
 	    && type != LM_MESSAGE_SUB_TYPE_HEADLINE
 	    && type != LM_MESSAGE_SUB_TYPE_NORMAL
 	    && type != LM_MESSAGE_SUB_TYPE_CHAT)
+	    || server->ischannel(SERVER(server), from))
 		return;
 	node = lm_find_node(lmsg->node, "x", "xmlns", XMLNS_EVENT);
 	if (node == NULL) {

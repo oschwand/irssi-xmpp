@@ -1,5 +1,5 @@
 /*
- * $Id: protocol.c,v 1.4 2008/08/23 13:58:44 cdidier Exp $
+ * $Id: protocol.c,v 1.5 2008/08/30 16:54:09 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -67,10 +67,11 @@ sig_recv_message(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 	LmMessageNode *node;
 	char *str, *subject;
 	
-	if (type != LM_MESSAGE_SUB_TYPE_NOT_SET
+	if ((type != LM_MESSAGE_SUB_TYPE_NOT_SET
 	    && type != LM_MESSAGE_SUB_TYPE_HEADLINE
 	    && type != LM_MESSAGE_SUB_TYPE_NORMAL
 	    && type != LM_MESSAGE_SUB_TYPE_CHAT)
+	    || server->ischannel(SERVER(server), from))
 		return;
 	/* TODO: get timestamp */
 	node = lm_message_node_get_child(lmsg->node, "subject");

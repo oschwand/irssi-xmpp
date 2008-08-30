@@ -1,5 +1,5 @@
 /*
- * $Id: rosters.c,v 1.6 2008/08/20 00:03:22 cdidier Exp $
+ * $Id: rosters.c,v 1.7 2008/08/30 16:54:09 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -484,6 +484,8 @@ sig_recv_presence(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 	LmMessageNode *node, *node_show, *node_priority;
 	char *status;
 
+	if (server->ischannel(SERVER(server), from))
+		return;
 	switch(type) {
 	case LM_MESSAGE_SUB_TYPE_AVAILABLE:
 		node_show = lm_message_node_get_child(lmsg->node, "show");

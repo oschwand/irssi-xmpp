@@ -1,5 +1,5 @@
 /*
- * $Id: muc.c,v 1.2 2008/08/23 14:16:23 cdidier Exp $
+ * $Id: muc.c,v 1.3 2008/08/30 16:54:09 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -270,7 +270,13 @@ channels_join_func(SERVER_REC *server, const char *data, int automatic)
 static int
 ischannel_func(SERVER_REC *server, const char *data)
 {
-	return muc_find(server, data) != NULL ? TRUE : FALSE;
+	char *str;
+	gboolean r;
+
+	str = muc_extract_channel(data);
+	r = muc_find(server, data) != NULL ? TRUE : FALSE;
+	g_free(str);
+	return r;
 }
 
 static void
