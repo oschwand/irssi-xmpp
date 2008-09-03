@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.48 2008/08/21 17:21:26 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.49 2008/09/03 11:01:59 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -196,10 +196,10 @@ set_away(XMPP_SERVER_REC *server, const char *data)
 
 	if (!IS_XMPP_SERVER(server))
 		return;
-	g_strstrip((char *)data);
 	tmp = g_strsplit(data, " ", 2);
 	if (*data == '\0') {
 		show = XMPP_PRESENCE_AVAILABLE;
+		reason = NULL;
 	} else {
 		show = xmpp_get_show(tmp[0]);
 		if (show == XMPP_PRESENCE_AVAILABLE && g_ascii_strcasecmp(
