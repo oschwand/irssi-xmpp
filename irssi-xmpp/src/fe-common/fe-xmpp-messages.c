@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-messages.c,v 1.19 2008/08/19 14:51:57 cdidier Exp $
+ * $Id: fe-xmpp-messages.c,v 1.20 2008/09/03 16:37:16 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -35,6 +35,7 @@
 #include "irssi-version.h"
 
 #include "xmpp-servers.h"
+#include "xep/muc.h"
 
 static void
 sig_history(SERVER_REC *server, const char *msg, const char *nick,
@@ -225,9 +226,7 @@ sig_message_own_public(SERVER_REC *server, char *msg, char *target)
 	channel = channel_find(server, target);
 	if (channel == NULL)
 		return;
-	/* TODO: MUC support ! */
-	/*nick = (XMPP_CHANNEL_REC *)channel->nick;*/
-	nick = server->nick;
+	nick = ((MUC_REC *)channel)->nick;
 #if IRSSI_VERSION_DATE >= 20071006
 	nickmode = channel_get_nickmode(CHANNEL(channel), nick);
 #else
