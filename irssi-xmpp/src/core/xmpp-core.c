@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-core.c,v 1.18 2008/08/23 13:58:44 cdidier Exp $
+ * $Id: xmpp-core.c,v 1.19 2008/09/03 10:46:01 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -52,7 +52,11 @@ create_server_setup(void)
 static SERVER_CONNECT_REC *
 create_server_connect(void)
 {
-	return (SERVER_CONNECT_REC *)g_new0(XMPP_SERVER_CONNECT_REC, 1);
+	XMPP_SERVER_CONNECT_REC *conn;
+
+	conn = g_new0(XMPP_SERVER_CONNECT_REC, 1);
+	conn->channels_list = NULL;
+	return (SERVER_CONNECT_REC *)conn;
 }
 
 static CHANNEL_SETUP_REC *
