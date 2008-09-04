@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-settings.c,v 1.13 2008/08/15 00:25:21 cdidier Exp $
+ * $Id: xmpp-settings.c,v 1.14 2008/09/04 15:39:39 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -43,18 +43,14 @@ read_settings(void)
 			    settings_get_int("xmpp_priority"));
 		/* update nick */
 		if (settings_get_bool("xmpp_set_nick_as_username")) {
-			if (strcmp(server->nickname, server->user) != 0) {
+			if (strcmp(server->nick, server->user) != 0) {
 				g_free(server->nick);
-				g_free(server->nickname);
 				server->nick = g_strdup(server->user);
-				server->nickname = g_strdup(server->user);
 			}
 		} else {
-			if (strcmp(server->nickname, server->jid) != 0) {
+			if (strcmp(server->nick, server->jid) != 0) {
 				g_free(server->nick);
-				g_free(server->nickname);
 				server->nick = g_strdup(server->jid);
-				server->nickname = g_strdup(server->jid);
 			}
 		}
 	}
