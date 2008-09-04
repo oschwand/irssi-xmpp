@@ -1,5 +1,5 @@
 /*
- * $Id: muc-events.c,v 1.2 2008/08/30 16:54:09 cdidier Exp $
+ * $Id: muc-events.c,v 1.3 2008/09/04 14:39:32 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -362,8 +362,7 @@ unavailable(MUC_REC *channel, const char *nick, LmMessage *lmsg)
 	if (status_code != NULL) {
 		switch (atoi(status_code)) {
 		case 303: /* <status code='303'/> */
-			signal_emit("xmpp channel nick", 5, channel, nick,
-			    item_nick);
+			nick_changed(channel, nick, item_nick);
 			break;
 		case 307: /* kick: <status code='307'/> */
 			nick_kicked(channel, nick, actor, reason);
