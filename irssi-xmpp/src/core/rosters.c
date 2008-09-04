@@ -1,5 +1,5 @@
 /*
- * $Id: rosters.c,v 1.8 2008/09/04 13:53:41 cdidier Exp $
+ * $Id: rosters.c,v 1.9 2008/09/04 14:05:38 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -319,12 +319,15 @@ update_user(XMPP_SERVER_REC *server, const char *jid, const char *subscription,
 	if (user == NULL)
 		user = add_user(server, jid, name, group_name, &group);
 	else {
-		/* move to another group */
+		/* move to another group and sort it */
 		if ((group->name == NULL && group_name != NULL)
 		    || (group->name != NULL && group_name == NULL)
 		    || (group->name != NULL && group_name != NULL
-		    && strcmp(group->name, group_name) != 0))
+		    && strcmp(group->name, group_name) != 0)) {
 			group = move_user(server, user, group, group_name);
+			group->users = g_slist_sort(group->users,
+			    func_sort_user);
+		}
 		/* change name */
 		if ((user->name == NULL && name != NULL)
 		    || (user->name != NULL && name == NULL)
