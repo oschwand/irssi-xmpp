@@ -1,4 +1,4 @@
-/* $Id: xmpp-commands.h,v 1.8 2008/08/21 17:21:26 cdidier Exp $ */
+/* $Id: xmpp-commands.h,v 1.9 2008/09/28 06:39:29 cdidier Exp $ */
 
 #ifndef __XMPP_COMMANDS_H
 #define __XMPP_COMMANDS_H
@@ -9,21 +9,27 @@ enum {
 	XMPP_COMMAND_AWAY,
 	XMPP_COMMAND_QUOTE,
 	XMPP_COMMAND_ROSTER,
-	XMPP_COMMAND_WHOIS
+	XMPP_COMMAND_WHOIS,
+	XMPP_COMMAND_PRESENCE
 };
 extern const char *xmpp_commands[];
 
 enum {
+	XMPP_COMMAND_ROSTER_PARAM_FULL,
 	XMPP_COMMAND_ROSTER_PARAM_ADD,
 	XMPP_COMMAND_ROSTER_PARAM_REMOVE,
 	XMPP_COMMAND_ROSTER_PARAM_NAME,
 	XMPP_COMMAND_ROSTER_PARAM_GROUP,
+};
+extern const char *xmpp_command_roster[];
+
+enum {
 	XMPP_COMMAND_ROSTER_PARAM_ACCEPT,
 	XMPP_COMMAND_ROSTER_PARAM_DENY,
 	XMPP_COMMAND_ROSTER_PARAM_SUBSCRIBE,
 	XMPP_COMMAND_ROSTER_PARAM_UNSUBSCRIBE,
 };
-extern const char *xmpp_command_roster[];
+extern const char *xmpp_command_presence[];
 
 #define command_bind_xmpp(cmd, section, signal)				\
 	command_bind_proto(cmd, XMPP_PROTOCOL, section, signal)		
