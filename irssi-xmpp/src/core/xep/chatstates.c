@@ -1,5 +1,5 @@
 /*
- * $Id: chatstates.c,v 1.4 2008/08/30 16:54:09 cdidier Exp $
+ * $Id: chatstates.c,v 1.5 2008/10/29 05:41:57 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -18,7 +18,7 @@
  */
 
 /*
- * XEP-0022: Message Events
+ * XEP-0085: Chat State Notifications
  */
 
 #include "module.h"
