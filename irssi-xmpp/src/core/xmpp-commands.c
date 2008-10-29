@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.52 2008/10/29 05:26:00 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.53 2008/10/29 05:48:38 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -30,7 +30,6 @@
 #include "xmpp-commands.h"
 #include "xmpp-queries.h"
 #include "xmpp-servers.h"
-#include "register.h"
 #include "rosters-tools.h"
 #include "tools.h"
 
