@@ -1,5 +1,5 @@
 /*
- * $Id: composing.c,v 1.11 2008/08/30 16:54:09 cdidier Exp $
+ * $Id: composing.c,v 1.12 2008/10/29 07:14:43 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -29,7 +29,7 @@
 #include "xmpp-servers.h"
 #include "xmpp-queries.h"
 #include "tools.h"
-#include "datalist.h"
+#include "tool_datalist.h"
 #include "disco.h"
 
 #define XMLNS_EVENT "jabber:x:event"

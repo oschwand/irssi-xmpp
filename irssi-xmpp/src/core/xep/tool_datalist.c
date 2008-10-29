@@ -1,5 +1,5 @@
 /*
- * $Id: datalist.c,v 1.1 2008/08/21 16:35:15 cdidier Exp $
+ * $Id: tool_datalist.c,v 1.1 2008/10/29 07:14:43 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -21,7 +21,7 @@
 
 #include "module.h"
 
-#include "datalist.h"
+#include "tool_datalist.h"
 
 DATALIST_REC *
 datalist_find(DATALIST *dl, XMPP_SERVER_REC *server, const char *jid)

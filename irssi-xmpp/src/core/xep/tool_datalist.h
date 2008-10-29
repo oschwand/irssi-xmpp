@@ -1,7 +1,7 @@
-/* $Id: datalist.h,v 1.1 2008/08/21 16:35:15 cdidier Exp $ */
+/* $Id: tool_datalist.h,v 1.1 2008/10/29 07:14:43 cdidier Exp $ */
 
-#ifndef __DATALIST_H
-#define __DATALIST_H
+#ifndef __TOOL_DATALIST_H
+#define __TOOL_DATALIST_H
 
 #include "xmpp-servers.h"
 

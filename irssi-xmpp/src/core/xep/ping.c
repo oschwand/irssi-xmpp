@@ -1,5 +1,5 @@
 /*
- * $Id: ping.c,v 1.7 2008/10/29 04:07:05 cdidier Exp $
+ * $Id: ping.c,v 1.8 2008/10/29 07:14:43 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -32,7 +32,7 @@
 
 #include "xmpp-servers.h"
 #include "xmpp-commands.h"
-#include "datalist.h"
+#include "tool_datalist.h"
 #include "disco.h"
 #include "tools.h"
 
