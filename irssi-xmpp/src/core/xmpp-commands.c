@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.53 2008/10/29 05:48:38 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.54 2008/10/29 06:57:59 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -550,8 +550,8 @@ xmpp_commands_init(void)
 {
 	command_set_options("connect", "+xmppnet");
 	command_set_options("server add", "-xmppnet");
-	command_set_options("xmppconnect", "ssl -network -host @port");
 	command_bind("xmppconnect", NULL, (SIGNAL_FUNC)cmd_xmppconnect);
+	command_set_options("xmppconnect", "ssl -network -host @port");
 	command_bind("xmppserver", NULL, (SIGNAL_FUNC)cmd_xmppserver);
 	command_bind_xmpp("away", NULL, (SIGNAL_FUNC)cmd_away);
 	command_bind_xmpp("quote", NULL, (SIGNAL_FUNC)cmd_quote);

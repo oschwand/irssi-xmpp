@@ -1,5 +1,5 @@
 /*
- * $Id: muc-commands.c,v 1.1 2008/08/23 14:15:29 cdidier Exp $
+ * $Id: muc-commands.c,v 1.2 2008/10/29 06:57:59 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -161,10 +161,10 @@ void
 muc_commands_init(void)
 {
 	command_bind_xmpp("invite", NULL, (SIGNAL_FUNC)cmd_invite);
+	command_set_options("invite", "yes");
 	command_bind_xmpp("part", NULL, (SIGNAL_FUNC)cmd_part);
 	command_bind_xmpp("nick", NULL, (SIGNAL_FUNC)cmd_nick);
 	command_bind_xmpp("topic", NULL, (SIGNAL_FUNC)cmd_topic);
-	command_set_options("invite", "yes");
 }
 
 void
