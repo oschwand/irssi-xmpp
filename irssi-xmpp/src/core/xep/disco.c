@@ -1,5 +1,5 @@
 /*
- * $Id: disco.c,v 1.7 2008/08/23 13:54:20 cdidier Exp $
+ * $Id: disco.c,v 1.8 2008/12/06 18:33:39 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -127,7 +127,7 @@ sig_recv_iq(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 			}
 		}
 		signal_emit("xmpp features", 3, server, from, features);
-		if (strcmp(from, server->host) == 0) {
+		if (strcmp(from, server->domain) == 0) {
 			cleanup_features(server->server_features);
 			server->server_features = features;
 			signal_emit("xmpp server features", 1, server);
@@ -144,7 +144,7 @@ static void
 sig_connected(XMPP_SERVER_REC *server)
 {
 	if (IS_XMPP_SERVER(server))
-		disco_request(server, server->host);
+		disco_request(server, server->domain);
 }
 
 static void

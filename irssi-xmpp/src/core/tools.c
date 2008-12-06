@@ -1,5 +1,5 @@
 /*
- * $Id: tools.c,v 1.2 2008/08/21 23:16:22 cdidier Exp $
+ * $Id: tools.c,v 1.3 2008/12/06 18:33:38 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -115,7 +115,7 @@ xmpp_extract_user(const char *jid)
 }
 
 char *
-xmpp_extract_host(const char *jid)
+xmpp_extract_domain(const char *jid)
 {
 	char *pos1, *pos2;
 
@@ -130,7 +130,7 @@ xmpp_extract_host(const char *jid)
 }
 
 gboolean
-xmpp_have_host(const char *jid)
+xmpp_have_domain(const char *jid)
 {
 	char *pos;
 
