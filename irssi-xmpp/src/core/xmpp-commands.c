@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.54 2008/10/29 06:57:59 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.55 2008/12/06 18:12:34 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -59,7 +59,7 @@ const char *xmpp_command_presene[] = {
 	NULL
 };
 
-char *
+static char *
 cmd_connect_get_line(const char *data)
 {
 	GHashTable *optlist;
