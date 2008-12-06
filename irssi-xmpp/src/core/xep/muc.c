@@ -1,5 +1,5 @@
 /*
- * $Id: muc.c,v 1.3 2008/08/30 16:54:09 cdidier Exp $
+ * $Id: muc.c,v 1.4 2008/12/06 15:33:18 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -107,7 +107,6 @@ send_join(MUC_REC *channel)
 	g_return_if_fail(IS_MUC(channel));
 	if (!channel->server->connected)
 		return;
-	disco_request(channel->server, channel->name);
 	muc_nick(channel, channel->nick);
 }
 
