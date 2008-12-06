@@ -1,5 +1,5 @@
 /*
- * $Id: fe-muc.c,v 1.1 2008/08/23 14:15:29 cdidier Exp $
+ * $Id: fe-muc.c,v 1.2 2008/12/06 16:11:04 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -31,12 +31,12 @@
 #include "xep/muc-nicklist.h"
 
 static void
-sig_joinerror(MUC_REC *channel, int error)
+sig_joinerror(MUC_REC *channel, gpointer error)
 {
 	char *reason;
 
 	g_return_if_fail(IS_MUC(channel));
-	switch(error) {
+	switch(GPOINTER_TO_INT(error)) {
 	case MUC_ERROR_PASSWORD_INVALID_OR_MISSING:
 		reason = "Password required";
 		break;
