@@ -1,5 +1,5 @@
 /*
- * $Id: muc-events.c,v 1.4 2008/12/06 15:20:54 cdidier Exp $
+ * $Id: muc-events.c,v 1.5 2008/12/06 15:40:11 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -263,13 +263,9 @@ error_join(MUC_REC *channel, const char *code)
 static void
 error_presence(MUC_REC *channel, const char *code, const char *nick)
 {
-	int error;
-
-	error = atoi(code);
 	switch (atoi(code)) {
 	case 409:
-		signal_emit("message xmpp channel nick in use", 2, channel,
-			channel, nick);
+		signal_emit("message xmpp channel nick in use", 2, channel, nick);
 		break;
 	}
 }
