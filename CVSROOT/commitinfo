@@ -1,1 +1,1 @@
-DEFAULT $CVSROOT/CVSROOT/activitymail -l
+ALL	cvsreport -e 'mail text irssi-xmpp-commits@cybione.org'
