@@ -1,4 +1,4 @@
-/* $Id: module-formats.h,v 1.13 2008/05/25 17:23:23 cdidier Exp $ */
+/* $Id: module-formats.h,v 1.14 2008/12/08 11:16:19 cdidier Exp $ */
 
 #include "formats.h"
 
@@ -61,7 +61,13 @@ enum {
 	XMPPTXT_RAW_OUT_HEADER,
 	XMPPTXT_RAW_MESSAGE,
 	XMPPTXT_DEFAULT_EVENT,
-	XMPPTXT_DEFAULT_ERROR
+	XMPPTXT_DEFAULT_ERROR,
+
+	XMPPTXT_FILL_10,
+
+	XMPPTXT_REGISTRATION_STARTED,
+	XMPPTXT_REGISTRATION_SUCCEED,
+	XMPPTXT_REGISTRATION_FAILED,
 };
 
 extern FORMAT_REC fecommon_xmpp_formats[];

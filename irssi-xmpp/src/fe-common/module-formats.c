@@ -1,5 +1,5 @@
 /*
- * $Id: module-formats.c,v 1.23 2008/09/28 07:36:43 cdidier Exp $
+ * $Id: module-formats.c,v 1.24 2008/12/08 11:16:19 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -89,6 +89,12 @@ FORMAT_REC fecommon_xmpp_formats[] = {
 	{ "raw_message", "$0", 1, { 0 } },
 	{ "default_event", "$1 $2", 3, { 0, 0, 0 } },
 	{ "default_error", "ERROR $1 $2", 3, { 0, 0, 0 } },
+
+	{ NULL, "Regisration", 0, { 0 } },
+
+	{ "xmpp_registration_started", "Registering {nick $0@$1}...", 2, { 0, 0 } },
+	{ "xmpp_registration_succeed", "Registration of {nick $0@$1} succeeded", 2, { 0, 0 } },
+	{ "xmpp_registration_failed", "Registration of {nick $0@$1} failed {comment $2}", 3, { 0, 0, 0 } },
 
 	{ NULL, NULL, 0, { 0 } }
 };
