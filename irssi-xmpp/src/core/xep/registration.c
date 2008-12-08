@@ -1,5 +1,5 @@
 /*
- * $Id: registration.c,v 1.4 2008/12/06 18:33:39 cdidier Exp $
+ * $Id: registration.c,v 1.5 2008/12/08 08:23:51 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -96,8 +96,8 @@ handle_register(LmMessageHandler *handler, LmConnection *connection,
 	id = lm_message_node_get_attribute(lmsg->node, "id");
 	if (id == NULL || (id != NULL && strcmp(id, rd->id) != 0))
 		return LM_HANDLER_RESULT_REMOVE_MESSAGE;
-	if ((node = lm_message_node_get_child (lmsg->node, "error")) != NULL) {
-		switch (atoi(lm_message_node_get_attribute (node, "code"))) {
+	if ((node = lm_message_node_get_child(lmsg->node, "error")) != NULL) {
+		switch (atoi(lm_message_node_get_attribute(node, "code"))) {
 		case 401: /* Not Authorized */
 		case 407: /* Registration Required */
 			reason = REGISTER_FAIL_UNAUTHORIZED;
