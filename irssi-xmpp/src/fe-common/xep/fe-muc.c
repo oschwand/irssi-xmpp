@@ -1,5 +1,5 @@
 /*
- * $Id: fe-muc.c,v 1.2 2008/12/06 16:11:04 cdidier Exp $
+ * $Id: fe-muc.c,v 1.3 2008/12/08 10:06:50 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -29,6 +29,18 @@
 #include "xmpp-servers.h"
 #include "xep/muc.h"
 #include "xep/muc-nicklist.h"
+
+static void
+sig_invite(XMPP_SERVER_REC *server, const char *from, const char *channame)
+{
+	char *name;
+
+	name = rosters_get_name(server, from);
+	if (name == NULL)
+		name = from;
+	printformat_module(CORE_MODULE_NAME, server, from, MSGLEVEL_INVITES,
+	    TXT_INVITE, name, channame, from);
+}
 
 static void
 sig_joinerror(MUC_REC *channel, gpointer error)
@@ -156,20 +168,22 @@ sig_mode(MUC_REC *channel, const char *nick, int affiliation,
 void
 fe_muc_init(void)
 {
-	signal_add("xmpp channel joinerror", sig_joinerror);
-	signal_add("message xmpp channel nick", sig_nick);
-	signal_add("message xmpp channel own_nick", sig_own_nick);
-	signal_add("message xmpp channel nick in use", sig_nick_in_use);
-	signal_add("message xmpp channel mode", sig_mode);
+	signal_add("xmpp invite", sig_invite);
+	signal_add("xmpp muc joinerror", sig_joinerror);
+	signal_add("message xmpp muc nick", sig_nick);
+	signal_add("message xmpp muc own_nick", sig_own_nick);
+	signal_add("message xmpp muc nick in use", sig_nick_in_use);
+	signal_add("message xmpp muc mode", sig_mode);
 }
 
 void
 fe_muc_deinit(void)
 {
-	signal_remove("xmpp channel joinerror", sig_joinerror);
-	signal_remove("message xmpp channel nick", sig_nick);
-	signal_remove("message xmpp channel own_nick", sig_own_nick);
-	signal_remove("message xmpp channel nick in use", sig_nick_in_use);
-	signal_remove("message xmpp channel mode", sig_mode);
+	signal_remove("xmpp invite", sig_invite);
+	signal_remove("xmpp muc joinerror", sig_joinerror);
+	signal_remove("message xmpp muc nick", sig_nick);
+	signal_remove("message xmpp muc own_nick", sig_own_nick);
+	signal_remove("message xmpp muc nick in use", sig_nick_in_use);
+	signal_remove("message xmpp muc mode", sig_mode);
 }
 
