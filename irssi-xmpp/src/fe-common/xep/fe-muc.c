@@ -1,5 +1,5 @@
 /*
- * $Id: fe-muc.c,v 1.3 2008/12/08 10:06:50 cdidier Exp $
+ * $Id: fe-muc.c,v 1.4 2008/12/08 11:21:34 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -27,13 +27,14 @@
 #include "fe-common/irc/module-formats.h"
 
 #include "xmpp-servers.h"
+#include "rosters-tools.h"
 #include "xep/muc.h"
 #include "xep/muc-nicklist.h"
 
 static void
 sig_invite(XMPP_SERVER_REC *server, const char *from, const char *channame)
 {
-	char *name;
+	const char *name;
 
 	name = rosters_get_name(server, from);
 	if (name == NULL)
