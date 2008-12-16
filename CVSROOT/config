@@ -12,4 +12,4 @@
 
 # Set LogHistory to AMRT
 # (log only modifications)
-LogHistory=AMRT
+#LogHistory=AMRT
