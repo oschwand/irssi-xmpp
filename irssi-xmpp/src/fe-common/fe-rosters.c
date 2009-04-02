@@ -1,5 +1,5 @@
 /*
- * $Id: fe-rosters.c,v 1.8 2009/04/02 09:37:15 cdidier Exp $
+ * $Id: fe-rosters.c,v 1.9 2009/04/02 10:05:34 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -101,7 +101,8 @@ get_resources(XMPP_SERVER_REC *server, GSList *list)
 		        XMPPTXT_FORMAT_RESOURCE_SHOW,
 		        xmpp_presence_show[resource->show]);
 		status_str = g_strdup(resource->status);
-		stroneline(status_str);
+		if (status_str != NULL)
+			stroneline(status_str);
 		status = (resource->status == NULL) ? NULL :
 		    format_get_text(MODULE_NAME, NULL, server, NULL,
 		        XMPPTXT_FORMAT_RESOURCE_STATUS, status_str);
