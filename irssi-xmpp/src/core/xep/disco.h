@@ -1,4 +1,4 @@
-/* $Id: disco.h,v 1.3 2008/08/23 13:54:20 cdidier Exp $ */
+/* $Id: disco.h,v 1.4 2009/04/03 11:21:35 cdidier Exp $ */
 
 #ifndef __DISCO_H
 #define __DISCO_H
@@ -11,5 +11,7 @@ void		disco_request(XMPP_SERVER_REC *, const char *);
 void disco_init(void);
 void disco_deinit(void);
 __END_DECLS
+
+#define XMLNS "xmlns"
 
 #endif
