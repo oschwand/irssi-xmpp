@@ -1,5 +1,5 @@
 /*
- * $Id: datetime.c,v 1.1 2009/04/05 14:15:35 cdidier Exp $
+ * $Id: datetime.c,v 1.2 2009/04/05 17:04:59 cdidier Exp $
  *
  * Copyright (C) 2009 Colin DIDIER
  *
@@ -22,6 +22,8 @@
  */
 
 #include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 #define FORMAT  "%Y-%m-%dT%T"
@@ -84,6 +86,6 @@ xep82_datetime(const char *stamp)
 	if (*s++ == '.')
 		while (isdigit(*s++));
 	tm.tm_isdst = -1;
-	tm.tm_gmtoff = offset = *s != '\0' ? parse_timezone(s) : 0;
+	offset = *s != '\0' ? parse_timezone(s) : 0;
 	return mktime(&tm) - offset;
 }
