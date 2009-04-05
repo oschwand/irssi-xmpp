@@ -1,5 +1,5 @@
 /*
- * $Id: muc.c,v 1.5 2009/04/03 11:21:35 cdidier Exp $
+ * $Id: muc.c,v 1.6 2009/04/05 14:15:35 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -276,6 +276,18 @@ ischannel_func(SERVER_REC *server, const char *data)
 	r = muc_find(server, data) != NULL ? TRUE : FALSE;
 	g_free(str);
 	return r;
+}
+
+MUC_REC *
+get_muc(XMPP_SERVER_REC *server, const char *data)
+{
+	MUC_REC *channel;
+	char *str;
+
+	str = muc_extract_channel(data);
+	channel = muc_find(server, str);
+	g_free(str);
+	return channel;
 }
 
 static void

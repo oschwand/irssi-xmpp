@@ -1,4 +1,4 @@
-/* $Id: muc.h,v 1.2 2008/08/30 16:54:09 cdidier Exp $ */
+/* $Id: muc.h,v 1.3 2009/04/05 14:15:35 cdidier Exp $ */
 
 #ifndef __MUC_H
 #define __MUC_H
@@ -55,6 +55,7 @@ __BEGIN_DECLS
 void muc_join(XMPP_SERVER_REC *, const char *, gboolean);
 void muc_part(MUC_REC *, const char *);
 void muc_nick(MUC_REC *, const char *);
+MUC_REC	*get_muc(XMPP_SERVER_REC *, const char *);
 
 void muc_init(void);
 void muc_deinit(void);
