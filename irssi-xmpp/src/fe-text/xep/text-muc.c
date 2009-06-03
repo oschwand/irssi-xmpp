@@ -1,5 +1,5 @@
 /*
- * $Id: text-muc.c,v 1.2 2008/09/04 15:39:39 cdidier Exp $
+ * $Id: text-muc.c,v 1.3 2009/06/03 16:35:36 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -20,10 +20,8 @@
 #include "module.h"
 #include "settings.h"
 #include "signals.h"
+#include "statusbar-item.h"
 #include "window-items.h"
-
-/* in include/irssi/src/fe-text */
-#include "statusbar.h"
 
 #include "xmpp-servers.h"
 #include "xep/muc.h"
@@ -37,7 +35,7 @@ update_nick_statusbar(XMPP_SERVER_REC *server, MUC_REC *channel,
 	    : settings_get_bool("xmpp_set_nick_as_username") ?
 	    server->user : server->jid);
 	if (redraw)
-		statusbar_redraw(NULL, TRUE);
+		statusbar_items_redraw("user");
 }
 
 static void
