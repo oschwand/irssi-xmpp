@@ -1,5 +1,5 @@
 /*
- * $Id: muc-nicklist.c,v 1.2 2009/03/31 17:35:35 cdidier Exp $
+ * $Id: muc-nicklist.c,v 1.3 2009/06/03 15:18:17 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -179,15 +179,15 @@ xmpp_nicklist_set_modes(XMPP_NICK_REC *nick, int affiliation, int role)
 	switch (affiliation) {
 	case XMPP_NICKLIST_AFFILIATION_OWNER:
 		nick->prefixes[0] = '&';
-		nick->prefixes[1] = NULL;
+		nick->prefixes[1] = '\0';
 		nick->op = TRUE;
 		break;
 	case XMPP_NICKLIST_AFFILIATION_ADMIN:
-		nick->prefixes[0] = NULL;
+		nick->prefixes[0] = '\0';
 		nick->op = TRUE;
 		break;
 	default:
-		nick->prefixes[0] = NULL;
+		nick->prefixes[0] = '\0';
 		nick->op = FALSE;
 	}
 	switch (role) {
