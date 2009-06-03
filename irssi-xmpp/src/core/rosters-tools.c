@@ -1,5 +1,5 @@
 /*
- * $Id: rosters-tools.c,v 1.4 2008/12/08 10:05:41 cdidier Exp $
+ * $Id: rosters-tools.c,v 1.5 2009/06/03 15:31:18 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -85,7 +85,7 @@ rosters_find_user(GSList *groups, const char *jid,
 
 	if ((pos = xmpp_find_resource_sep(jid)) != NULL)
 		*pos = '\0';
-	ul = NULL;
+	group_tmp = ul = NULL;
 	for (gl = groups; ul == NULL && gl != NULL;
 	    gl = gl->next) {
 		ul = g_slist_find_custom(
