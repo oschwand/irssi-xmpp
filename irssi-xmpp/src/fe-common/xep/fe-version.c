@@ -1,5 +1,5 @@
 /*
- * $Id: fe-version.c,v 1.1 2008/08/19 23:57:15 cdidier Exp $
+ * $Id: fe-version.c,v 1.2 2009/06/03 15:32:28 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -34,7 +34,7 @@ sig_version(XMPP_SERVER_REC *server, const char *jid, const char *client,
 	char *name, *str;
 
 	g_return_if_fail(jid != NULL);
-	if (name == NULL && version == NULL && os == NULL)
+	if (client == NULL && version == NULL && os == NULL)
 		return;
 	str = g_strconcat("is running ",
 	    client != NULL ? client : "",
