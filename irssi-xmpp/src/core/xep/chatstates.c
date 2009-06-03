@@ -1,5 +1,5 @@
 /*
- * $Id: chatstates.c,v 1.6 2009/04/03 11:21:35 cdidier Exp $
+ * $Id: chatstates.c,v 1.7 2009/06/03 15:53:33 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -33,8 +33,6 @@ static void
 sig_recv_message(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
     const char *id, const char *from, const char *to)
 {
-	LmMessageNode *node;
-
 	if ((type != LM_MESSAGE_SUB_TYPE_NOT_SET
 	    && type != LM_MESSAGE_SUB_TYPE_HEADLINE
 	    && type != LM_MESSAGE_SUB_TYPE_NORMAL
