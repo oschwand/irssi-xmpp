@@ -1,5 +1,5 @@
 /*
- * $Id: oob.c,v 1.3 2009/04/03 11:21:35 cdidier Exp $
+ * $Id: oob.c,v 1.4 2009/06/03 15:22:16 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -50,7 +50,7 @@ sig_recv_x(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 		url_recoded = xmpp_recode_in(url);
 		if (desc != NULL) {
 			desc_recoded = xmpp_recode_in(desc);
-			str = g_strconcat(desc_recoded, ": ", url_recoded);
+			str = g_strconcat(desc_recoded, ": ", url_recoded, NULL);
 			g_free(url_recoded);
 			g_free(desc_recoded);
 		} else
