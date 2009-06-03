@@ -1,5 +1,5 @@
 /*
- * $Id: rosters.c,v 1.10 2008/09/04 14:10:41 cdidier Exp $
+ * $Id: rosters.c,v 1.11 2009/06/03 16:47:29 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -21,7 +21,6 @@
 #include <string.h>
 
 #include "module.h"
-#include "settings.h"
 #include "signals.h"
 
 #include "xmpp-servers.h"
