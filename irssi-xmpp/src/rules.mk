@@ -1,4 +1,4 @@
-# $Id: rules.mk,v 1.7 2009/06/03 15:10:11 cdidier Exp $
+# $Id: rules.mk,v 1.8 2009/06/03 15:15:54 cdidier Exp $
 
 include ../../config.mk
 
@@ -7,10 +7,10 @@ OBJS = ${SRCS:.c=.o}
 all: ${LIB}
 
 .c.o:
-	${CC} -c $< -o $@ ${CFLAGS}
+	${CC} ${CFLAGS} -o $@ -c $<
 
 ${LIB}: ${OBJS}
-	${CC} -o lib$@.so ${OBJS} ${LDFLAGS}
+	${CC} ${LDFLAGS} -o lib$@.so ${OBJS}
 
 clean:
 	rm -f lib${LIB}.so ${OBJS}
