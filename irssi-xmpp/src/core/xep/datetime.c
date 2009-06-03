@@ -1,5 +1,5 @@
 /*
- * $Id: datetime.c,v 1.2 2009/04/05 17:04:59 cdidier Exp $
+ * $Id: datetime.c,v 1.3 2009/06/03 15:14:15 cdidier Exp $
  *
  * Copyright (C) 2009 Colin DIDIER
  *
@@ -20,6 +20,10 @@
 /*
  * XEP-0082: XMPP Date and Time Profiles
  */
+
+#ifdef __linux__
+#define _XOPEN_SOURCE 
+#endif
 
 #include <ctype.h>
 #include <stdlib.h>
