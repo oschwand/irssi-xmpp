@@ -1,5 +1,5 @@
 /*
- * $Id: text-muc.c,v 1.4 2009/06/04 07:06:43 cdidier Exp $
+ * $Id: text-muc.c,v 1.5 2009/06/17 17:36:03 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -47,7 +47,6 @@ static void
 sig_window_changed(WINDOW_REC *window, WINDOW_REC *oldwindow)
 {
 	XMPP_SERVER_REC *server;
-	MUC_REC *channel;
 
 	g_return_if_fail(window != NULL);
 	if ((server = XMPP_SERVER(window->active_server)) == NULL)
