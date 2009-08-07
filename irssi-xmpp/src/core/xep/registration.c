@@ -1,5 +1,5 @@
 /*
- * $Id: registration.c,v 1.7 2009/04/03 11:21:35 cdidier Exp $
+ * $Id: registration.c,v 1.8 2009/08/07 14:12:21 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -97,9 +97,9 @@ handle_register(LmMessageHandler *handler, LmConnection *connection,
 		signal_emit("xmpp registration succeed", 2, rd->username,
 		    rd->domain);
 		cmd = g_strdup_printf(
-		    "%sXMPPCONNECT %s -host %s -port %d %s@%s %s",
+		    "%sXMPPCONNECT %s-host %s -port %d %s@%s %s",
 		    settings_get_str("cmdchars"),
-		    rd->use_ssl ? "-ssl" : "", rd->address, rd->port,
+		    rd->use_ssl ? "-ssl " : "", rd->address, rd->port,
 		    rd->username, rd->domain, rd->password);
 		signal_emit("send command", 3, cmd, NULL, NULL);
 		g_free(cmd);
