@@ -1,5 +1,5 @@
 /*
- * $Id: muc-reconnect.c,v 1.2 2008/09/03 10:46:01 cdidier Exp $
+ * $Id: muc-reconnect.c,v 1.3 2009/08/10 17:32:20 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -118,7 +118,7 @@ muc_reconnect_init(void)
 	signal_add_last("server connect copy", sig_conn_copy);
 	signal_add("server reconnect remove", sig_conn_remove);
 	signal_add("server reconnect save status", sig_save_status);
-	signal_add("event connected", sig_connected);
+	signal_add("server connected", sig_connected);
 }
 
 void
@@ -127,5 +127,5 @@ muc_reconnect_deinit(void)
 	signal_remove("server connect copy", sig_conn_copy);
 	signal_remove("server reconnect remove", sig_conn_remove);
 	signal_remove("server reconnect save status", sig_save_status);
-	signal_remove("event connected", sig_connected);
+	signal_remove("server connected", sig_connected);
 }
