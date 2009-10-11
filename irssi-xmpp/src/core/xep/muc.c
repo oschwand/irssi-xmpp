@@ -1,5 +1,5 @@
 /*
- * $Id: muc.c,v 1.8 2009/10/11 15:25:17 cdidier Exp $
+ * $Id: muc.c,v 1.9 2009/10/11 15:45:20 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -63,7 +63,7 @@ muc_create(XMPP_SERVER_REC *server, const char *name,
 	  settings_get_str("nick") : server->user);
 	channel_init((CHANNEL_REC *)rec, SERVER(server), name, visible_name,
 	    automatic);
-	rec->get_join_data = get_join_data;
+	rec->get_join_data = (char *(*)(CHANNEL_REC *))get_join_data;
 	return (CHANNEL_REC *)rec;
 }
 
