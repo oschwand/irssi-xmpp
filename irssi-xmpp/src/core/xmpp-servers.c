@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.57 2009/10/11 15:27:35 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.58 2009/10/11 15:42:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -355,6 +355,8 @@ check_connection_timeout(XMPP_SERVER_REC *server)
 	if (g_slist_find(lookup_servers, server) == NULL)
 		return FALSE;
 	if (!server->connected) {
+		g_warning("%s: no response from server",
+		    server->connrec->address);
 		server->connection_lost = TRUE;
 		server_disconnect(SERVER(server));
 	}
