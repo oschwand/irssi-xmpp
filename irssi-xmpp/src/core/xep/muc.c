@@ -1,5 +1,5 @@
 /*
- * $Id: muc.c,v 1.7 2009/08/06 17:20:59 cdidier Exp $
+ * $Id: muc.c,v 1.8 2009/10/11 15:25:17 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -37,6 +37,17 @@
 #include "muc-nicklist.h"
 #include "muc-reconnect.h"
 
+static char *
+get_join_data(MUC_REC *channel)
+{
+	if (channel->key != NULL)
+		return g_strdup_printf("\"%s/%s\" \"%s\"",
+		    channel->name, channel->nick, channel->key);
+	else
+		return g_strdup_printf("\"%s/%s\"",
+		    channel->name, channel->nick);
+}
+
 CHANNEL_REC *
 muc_create(XMPP_SERVER_REC *server, const char *name,
     const char *visible_name, int automatic, const char *nick)
@@ -52,6 +63,7 @@ muc_create(XMPP_SERVER_REC *server, const char *name,
 	  settings_get_str("nick") : server->user);
 	channel_init((CHANNEL_REC *)rec, SERVER(server), name, visible_name,
 	    automatic);
+	rec->get_join_data = get_join_data;
 	return (CHANNEL_REC *)rec;
 }
 
