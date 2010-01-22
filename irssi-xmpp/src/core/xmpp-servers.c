@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.58 2009/10/11 15:42:13 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.59 2010/01/22 18:41:14 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -477,13 +477,10 @@ static void
 sig_recv_iq(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
     const char *id, const char *from, const char *to)
 {
-	if (!server->connected && type != LM_MESSAGE_SUB_TYPE_RESULT)
+	if (server->connected)
 		return;
-	if (lm_find_node(lmsg->node, "session", "xmlns",
-	    "urn:ietf:params:xml:ns:xmpp-session")) {
-		/* we are fully connected when we receive the first iq stanza:
-		 * <iq><session xmlns="urn:ietf:params:xml:ns:xmpp-session"></iq>
-		 */
+	if (type == LM_MESSAGE_SUB_TYPE_RESULT) {
+		/* we are fully connected when we receive the first iq stanza */
 		lookup_servers = g_slist_remove(lookup_servers, server);
 		g_source_remove(server->connect_tag);
 		server->connect_tag = -1;
