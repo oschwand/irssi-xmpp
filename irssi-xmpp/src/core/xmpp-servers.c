@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.60 2010/05/14 09:50:29 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.61 2010/05/14 14:22:48 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -251,7 +251,7 @@ get_password()
 	char input[2048], *ret = NULL;
 	int fd;
 
-#if 1 /* defined(HAVE_TERMIOS_H), let's assume termios.h for now */
+#ifndef DISABLE_TERMIOS
 	struct termios to;
 	struct termios to_old;
 
@@ -294,7 +294,7 @@ get_password()
 
 	ret = strdup(input);
 	memset(input, 0, sizeof(input));
-#endif /* HAVE_TERMIOS_H */
+#endif /* DISABLE_TERMIOS */
 	return ret;
 }
 
