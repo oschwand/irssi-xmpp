@@ -1,5 +1,5 @@
 /*
- * $Id: stanzas.c,v 1.4 2009/08/10 16:09:02 cdidier Exp $
+ * $Id: stanzas.c,v 1.5 2010/05/14 14:15:06 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -62,8 +62,14 @@ handle_stanza(LmMessageHandler *handler, LmConnection *connection,
 	g_free(raw);
 	type = lm_message_get_sub_type(lmsg);
 	id = lm_message_node_get_attribute(lmsg->node, "id");
+	if (id == NULL)
+		id = "";
 	from = xmpp_recode_in(lm_message_node_get_attribute(lmsg->node, "from"));
+	if (from == NULL)
+		from = g_strdup("");
 	to = xmpp_recode_in(lm_message_node_get_attribute(lmsg->node, "to"));
+	if (to == NULL)
+		to = g_strdup("");
 	switch(lm_message_get_type(lmsg)) {
 	case LM_MESSAGE_TYPE_MESSAGE:
 		signal_emit("xmpp recv message", 6,
