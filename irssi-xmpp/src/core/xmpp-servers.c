@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.61 2010/05/14 14:22:48 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.62 2010/06/10 08:09:36 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -292,7 +292,7 @@ get_password()
 	tcsetattr(fd, TCSANOW, &to_old);
 	signal(SIGINT, SIG_DFL);
 
-	ret = strdup(input);
+	ret = g_strdup(input);
 	memset(input, 0, sizeof(input));
 #endif /* DISABLE_TERMIOS */
 	return ret;
