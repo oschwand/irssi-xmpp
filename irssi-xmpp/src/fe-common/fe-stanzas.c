@@ -1,5 +1,5 @@
 /*
- * $Id: fe-stanzas.c,v 1.2 2009/06/17 17:20:48 cdidier Exp $
+ * $Id: fe-stanzas.c,v 1.3 2010/06/10 08:20:17 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -79,7 +79,7 @@ sig_xml_out(XMPP_SERVER_REC *server, const char *msg)
 	g_return_if_fail(IS_XMPP_SERVER(server));
 	g_return_if_fail(msg != NULL);
 	if ((window = get_console(server)) != NULL) {
-		len = g_strdup_printf("%lu", strlen(msg));
+		len = g_strdup_printf("%lu", (unsigned long)strlen(msg));
 		printformat_module_window(MODULE_NAME, window, MSGLEVEL_CRAP,
 		    XMPPTXT_RAW_OUT_HEADER, len);
 		g_free(len);
