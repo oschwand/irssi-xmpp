@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-settings.c,v 1.15 2009/06/03 15:59:44 cdidier Exp $
+ * $Id: xmpp-settings.c,v 1.16 2010/07/14 15:54:08 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -37,10 +37,17 @@ read_settings(void)
 		if ((server = XMPP_SERVER(tmp->data)) == NULL)
 			continue;
 		/* update priority */
-		if (server->priority != settings_get_int("xmpp_priority"))
-			signal_emit("xmpp set presence", 4, server,
-			    server->show, server->away_reason,
-			    settings_get_int("xmpp_priority"));
+		if (server->show == XMPP_PRESENCE_AWAY) {
+			if (server->priority != settings_get_int("xmpp_priority_away"))
+				signal_emit("xmpp set presence", 4, server,
+				    server->show, server->away_reason,
+				    settings_get_int("xmpp_priority_away"));
+		} else {
+			if (server->priority != settings_get_int("xmpp_priority"))
+				signal_emit("xmpp set presence", 4, server,
+				    server->show, server->away_reason,
+				    settings_get_int("xmpp_priority"));
+		}
 		/* update nick */
 		if (settings_get_bool("xmpp_set_nick_as_username")) {
 			if (strcmp(server->nick, server->user) != 0) {

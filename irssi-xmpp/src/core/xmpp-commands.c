@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-commands.c,v 1.59 2010/05/14 09:50:29 cdidier Exp $
+ * $Id: xmpp-commands.c,v 1.60 2010/07/14 15:54:08 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -139,10 +139,11 @@ set_away(XMPP_SERVER_REC *server, const char *data)
 {
 	char **tmp;
 	const char *reason;
-	int show;
+	int show, priority;
 
 	if (!IS_XMPP_SERVER(server))
 		return;
+	priority = settings_get_int("xmpp_priority");
 	tmp = g_strsplit(data, " ", 2);
 	if (*data == '\0') {
 		show = XMPP_PRESENCE_AVAILABLE;
@@ -156,9 +157,11 @@ set_away(XMPP_SERVER_REC *server, const char *data)
 			reason = data;
 		} else
 			reason = tmp[1];
+		if (show == XMPP_PRESENCE_AWAY)
+			priority = settings_get_int("xmpp_priority_away");
 	}
 	signal_emit("xmpp set presence", 4, server, show, reason,
-	    server->priority);
+	    priority);
 	g_strfreev(tmp);
 }
 
