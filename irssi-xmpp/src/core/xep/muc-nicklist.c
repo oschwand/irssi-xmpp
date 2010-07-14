@@ -1,5 +1,5 @@
 /*
- * $Id: muc-nicklist.c,v 1.3 2009/06/03 15:18:17 cdidier Exp $
+ * $Id: muc-nicklist.c,v 1.4 2010/07/14 16:07:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -53,7 +53,7 @@ xmpp_nicklist_insert(MUC_REC *channel, const char *nickname,
 	rec = g_new0(XMPP_NICK_REC, 1);
 	rec->nick = g_strdup(nickname);
 	rec->host = (full_jid != NULL) ?
-	    g_strdup(full_jid) : g_strconcat(channel->name, "/", rec->nick, NULL);
+	    g_strdup(full_jid) : g_strconcat(channel->name, "/", rec->nick, (void *)NULL);
 	rec->show = XMPP_PRESENCE_AVAILABLE;
 	rec->status = NULL;
 	rec->affiliation = XMPP_NICKLIST_AFFILIATION_NONE;

@@ -1,5 +1,5 @@
 /*
- * $Id: fe-version.c,v 1.2 2009/06/03 15:32:28 cdidier Exp $
+ * $Id: fe-version.c,v 1.3 2010/07/14 16:07:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -42,7 +42,7 @@ sig_version(XMPP_SERVER_REC *server, const char *jid, const char *client,
 	    version != NULL ? version : "",
 	    (client != NULL || version != NULL) && os != NULL ? " - " : "",
 	    os != NULL ? "on " : "",
-	    os != NULL ? os : "", NULL);
+	    os != NULL ? os : "", (void *)NULL);
 	user = rosters_find_user(server->roster, jid, NULL, NULL);
 	name = user != NULL && user->name != NULL ?
 	    format_get_text(MODULE_NAME, NULL, server, NULL,

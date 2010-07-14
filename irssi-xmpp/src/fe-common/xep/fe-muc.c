@@ -1,5 +1,5 @@
 /*
- * $Id: fe-muc.c,v 1.8 2009/10/11 15:50:38 cdidier Exp $
+ * $Id: fe-muc.c,v 1.9 2010/07/14 16:07:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -161,7 +161,7 @@ sig_mode(MUC_REC *channel, const char *nick, int affiliation,
 	}
 	if (*affiliation_str == '\0' && *role_str == '\0')
 		return;
-	mode = g_strconcat("+", affiliation_str, role_str, " ", nick,  NULL);
+	mode = g_strconcat("+", affiliation_str, role_str, " ", nick,  (void *)NULL);
 	printformat_module(IRC_MODULE_NAME, channel->server, channel->name,
 	    MSGLEVEL_MODES, IRCTXT_CHANMODE_CHANGE, channel->name, mode,
 	    channel->name);

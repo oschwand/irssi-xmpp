@@ -1,5 +1,5 @@
 /*
- * $Id: rosters-tools.c,v 1.6 2009/06/03 16:47:29 cdidier Exp $
+ * $Id: rosters-tools.c,v 1.7 2010/07/14 16:07:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -169,12 +169,12 @@ rosters_resolve_name(XMPP_SERVER_REC *server, const char *name)
 				resource = user->resources->data;
 				if (resource->name != NULL)
 					return g_strconcat(user->jid, "/",
-					    resource->name, NULL);
+					    resource->name, (void *)NULL);
 			}
 			return g_strdup(user->jid);
 		}
 		res = xmpp_extract_resource(name);
-		str = g_strconcat(user->jid, "/", res, NULL);
+		str = g_strconcat(user->jid, "/", res, (void *)NULL);
 		g_free(res);
 		return str;
 	}

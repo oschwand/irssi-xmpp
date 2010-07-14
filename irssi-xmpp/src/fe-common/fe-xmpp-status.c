@@ -1,5 +1,5 @@
 /*
- * $Id: fe-xmpp-status.c,v 1.10 2008/08/19 21:56:18 cdidier Exp $
+ * $Id: fe-xmpp-status.c,v 1.11 2010/07/14 16:07:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -46,7 +46,7 @@ get_window_name(XMPP_SERVER_REC *server)
 	g_return_val_if_fail(IS_XMPP_SERVER(server), NULL);
 	return g_strconcat("(", (server->connrec->chatnet == NULL ||
 	    *server->connrec->chatnet == '\0') ? server->jid :
-	    server->connrec->chatnet, ")", NULL);
+	    server->connrec->chatnet, ")", (void *)NULL);
 }
 
 char *

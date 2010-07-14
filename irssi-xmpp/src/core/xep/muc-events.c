@@ -1,5 +1,5 @@
 /*
- * $Id: muc-events.c,v 1.14 2010/05/14 14:43:22 cdidier Exp $
+ * $Id: muc-events.c,v 1.15 2010/07/14 16:07:13 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -58,7 +58,7 @@ topic(MUC_REC *channel, const char *topic, const char *nickname)
 		    channel->topic_by, "");
 	else {
 		char *data = g_strconcat(" ", channel->name, " :",
-		    (channel->topic != NULL) ? channel->topic : "", NULL);
+		    (channel->topic != NULL) ? channel->topic : "", (void *)NULL);
 		signal_emit("event 332", 2, channel->server, data);
 		g_free(data);
 	}
@@ -315,7 +315,7 @@ available(MUC_REC *channel, const char *from, LmMessage *lmsg)
 		char str[MAX_LONG_STRLEN], *data;
 
 		g_snprintf(str, sizeof(str), "%ld", (long)time(NULL));
-		data = g_strconcat("_ ", channel->name, " ", str, NULL);
+		data = g_strconcat("_ ", channel->name, " ", str, (void *)NULL);
 		/* muc created */
 		signal_emit("event 329", 2, channel->server, data);
 		g_free(data);
@@ -419,9 +419,9 @@ invite(XMPP_SERVER_REC *server, const char *from, LmMessageNode *node)
 			if (setup != NULL && setup->autojoin
 			    && settings_get_bool("join_auto_chans_on_invite")) {
 				joindata = password == NULL ?
-				    g_strconcat("\"", channame, "\"", NULL)
+				    g_strconcat("\"", channame, "\"", (void *)NULL)
 				    : g_strconcat("\"", channame, "\" ",
-					password, NULL);
+					password, (void *)NULL);
 				muc_join(server, joindata, TRUE);
 				g_free(joindata);
 			}

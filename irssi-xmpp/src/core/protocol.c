@@ -1,5 +1,5 @@
 /*
- * $Id: protocol.c,v 1.7 2009/08/06 17:20:59 cdidier Exp $
+ * $Id: protocol.c,v 1.8 2010/07/14 16:07:13 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -78,7 +78,7 @@ sig_recv_message(XMPP_SERVER_REC *server, LmMessage *lmsg, const int type,
 	node = lm_message_node_get_child(lmsg->node, "subject");
 	if (node != NULL && node->value != NULL && *node->value != '\0') {
 		str = xmpp_recode_in(node->value);
-		subject = g_strconcat("Subject: ", str, NULL);
+		subject = g_strconcat("Subject: ", str, (void *)NULL);
 		g_free(str);
 		signal_emit("message private", 4, server, subject, from, from);
 		g_free(subject);

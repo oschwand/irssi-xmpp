@@ -1,5 +1,5 @@
 /*
- * $Id: tools.c,v 1.3 2008/12/06 18:33:38 cdidier Exp $
+ * $Id: tools.c,v 1.4 2010/07/14 16:07:13 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -70,7 +70,7 @@ xmpp_recode_in(const char *str)
 		return g_strdup(str);
 	if (settings_get_bool("recode_transliterate") &&
 	    g_ascii_strcasecmp(charset, "//TRANSLIT") != 0)
-		charset = to = g_strconcat(charset ,"//TRANSLIT", NULL);
+		charset = to = g_strconcat(charset ,"//TRANSLIT", (void *)NULL);
 	recoded = g_convert_with_fallback(str, -1, charset, utf8_charset, NULL,
 	    NULL, NULL, NULL);
 	g_free(to);
