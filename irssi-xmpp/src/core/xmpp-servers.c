@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.62 2010/06/10 08:09:36 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.63 2010/07/14 13:32:31 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -19,6 +19,7 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <signal.h>
 #include <string.h>
 #include <termios.h>
 
