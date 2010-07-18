@@ -1,5 +1,5 @@
 /*
- * $Id: fe-registration.c,v 1.1 2008/12/08 11:16:19 cdidier Exp $
+ * $Id: fe-registration.c,v 1.2 2010/07/18 15:50:19 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -53,8 +53,8 @@ sig_failed(const char *username, const char *domain, gpointer error)
 	case REGISTRATION_ERROR_CONNECTION:
 		reason = "Cannot open connection";
 		break;
-	case REGISTRATION_ERROR_INFOS:
-		reason = "Cannot send informations";
+	case REGISTRATION_ERROR_INFO:
+		reason = "Cannot send registration information";
 		break;
 	default:
 		reason = "Cannot register account";

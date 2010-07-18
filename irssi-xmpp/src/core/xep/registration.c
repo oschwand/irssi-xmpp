@@ -1,5 +1,5 @@
 /*
- * $Id: registration.c,v 1.8 2009/08/07 14:12:21 cdidier Exp $
+ * $Id: registration.c,v 1.9 2010/07/18 15:50:19 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -129,7 +129,7 @@ send_register(struct register_data *rd)
 	if (!lm_connection_send_with_reply(rd->lmconn, lmsg, rd->handler,
 	    NULL)) {
 		signal_emit("xmpp registration failed", 3, rd->username,
-		    rd->domain, REGISTRATION_ERROR_INFOS);
+		    rd->domain, REGISTRATION_ERROR_INFO);
 		rd_cleanup(rd);
 	}
 	lm_message_unref(lmsg);
