@@ -1,5 +1,5 @@
 /*
- * $Id: fe-rosters.c,v 1.10 2009/06/03 16:47:29 cdidier Exp $
+ * $Id: fe-rosters.c,v 1.11 2010/07/25 16:29:53 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -60,7 +60,7 @@ user_is_shown(XMPP_ROSTER_USER_REC *user)
 	    || (user->subscription == XMPP_SUBSCRIPTION_BOTH
 	    && settings_get_bool("xmpp_roster_show_offline"))
 	    || (user->subscription != XMPP_SUBSCRIPTION_BOTH
-	    && (settings_get_bool("xmpp_roster_show_unsuscribed")
+	    && (settings_get_bool("xmpp_roster_show_unsubscribed")
 	    || settings_get_bool("xmpp_roster_show_offline")));
 }
 
@@ -328,7 +328,7 @@ fe_rosters_init(void)
 	settings_add_str("xmpp_roster", "xmpp_roster_service_name",
 	    "Agents/Services");
 	settings_add_bool("xmpp_roster", "xmpp_roster_show_offline", TRUE);
-	settings_add_bool("xmpp_roster", "xmpp_roster_show_unsuscribed", TRUE);
+	settings_add_bool("xmpp_roster", "xmpp_roster_show_unsubscribed", TRUE);
 }
 
 void
