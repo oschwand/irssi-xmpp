@@ -1,5 +1,5 @@
 /*
- * $Id: fe-muc.c,v 1.9 2010/07/14 16:07:13 cdidier Exp $
+ * $Id: fe-muc.c,v 1.10 2010/08/09 20:45:44 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -123,13 +123,16 @@ sig_nick_in_use(MUC_REC *channel, const char *nick)
 }
 
 static void
-sig_mode(MUC_REC *channel, const char *nick, int affiliation,
+sig_mode(MUC_REC *channel, const char *nickname, int affiliation,
     int role)
 {
+	XMPP_NICK_REC *nick;
 	char *mode, *affiliation_str, *role_str;
 
 	g_return_if_fail(IS_MUC(channel));
-	g_return_if_fail(nick != NULL);
+	g_return_if_fail(nickname != NULL);
+	if ((nick = xmpp_nicklist_find(channel, nickname)) == NULL)
+		return;
 	switch (affiliation) {
 	case XMPP_NICKLIST_AFFILIATION_OWNER:
 		affiliation_str = "O";
@@ -161,11 +164,15 @@ sig_mode(MUC_REC *channel, const char *nick, int affiliation,
 	}
 	if (*affiliation_str == '\0' && *role_str == '\0')
 		return;
-	mode = g_strconcat("+", affiliation_str, role_str, " ", nick,  (void *)NULL);
+	mode = g_strconcat("+", affiliation_str, role_str, " ", nickname,
+	    (void *)NULL);
+	if (ignore_check(SERVER(channel->server), nickname, nick->host,
+	    channel->name, mode, MSGLEVEL_MODES))
+		goto out;
 	printformat_module(IRC_MODULE_NAME, channel->server, channel->name,
 	    MSGLEVEL_MODES, IRCTXT_CHANMODE_CHANGE, channel->name, mode,
 	    channel->name);
-	g_free(mode);
+out:	g_free(mode);
 }
 
 struct cycle_data {
