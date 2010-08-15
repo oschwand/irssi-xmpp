@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.66 2010/08/15 21:46:07 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.67 2010/08/15 21:56:31 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -295,7 +295,6 @@ get_password()
 
 	ret = g_strdup(input);
 	memset(input, 0, sizeof(input));
-	signal_emit("send command", 1, "redraw");
 #endif /* DISABLE_TERMIOS */
 	return ret;
 }
@@ -337,6 +336,7 @@ lm_open_cb(LmConnection *connection, gboolean success,
 	    || *(server->connrec->password) == '\r') {
 		g_free_not_null(server->connrec->password);
 		server->connrec->prompted_password = get_password();
+		signal_emit("send command", 1, "redraw");
 		if (server->connrec->prompted_password != NULL)
 			server->connrec->password =
 			    g_strdup(server->connrec->prompted_password);
