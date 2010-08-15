@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-core.c,v 1.20 2008/10/29 05:26:00 cdidier Exp $
+ * $Id: xmpp-core.c,v 1.21 2010/08/15 21:46:07 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -55,6 +55,7 @@ create_server_connect(void)
 
 	conn = g_new0(XMPP_SERVER_CONNECT_REC, 1);
 	conn->channels_list = NULL;
+	conn->prompted_password = NULL;
 	return (SERVER_CONNECT_REC *)conn;
 }
 
@@ -65,8 +66,9 @@ create_channel_setup(void)
 }
 
 static void
-destroy_server_connect(SERVER_CONNECT_REC *conn)
+destroy_server_connect(XMPP_SERVER_CONNECT_REC *conn)
 {
+	g_free_not_null(conn->prompted_password);
 }
 
 static CHANNEL_REC *
@@ -90,7 +92,8 @@ xmpp_core_init(void)
 	rec->create_server_setup = create_server_setup;
 	rec->create_server_connect = create_server_connect;
 	rec->create_channel_setup = create_channel_setup;
-	rec->destroy_server_connect = destroy_server_connect;
+	rec->destroy_server_connect =
+	    (void (*)(SERVER_CONNECT_REC *))destroy_server_connect;
 	rec->server_init_connect = xmpp_server_init_connect;
 	rec->server_connect = (void (*)(SERVER_REC *))xmpp_server_connect;
 	rec->channel_create = channel_create;

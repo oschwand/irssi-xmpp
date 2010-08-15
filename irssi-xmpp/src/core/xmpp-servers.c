@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.65 2010/07/14 16:07:13 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.66 2010/08/15 21:46:07 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -295,6 +295,7 @@ get_password()
 
 	ret = g_strdup(input);
 	memset(input, 0, sizeof(input));
+	signal_emit("send command", 1, "redraw");
 #endif /* DISABLE_TERMIOS */
 	return ret;
 }
@@ -326,15 +327,23 @@ lm_open_cb(LmConnection *connection, gboolean success,
 		    "Using STARTTLS encryption.");
 	recoded_user = xmpp_recode_out(server->user);
 
-	if (server->connrec->password == NULL
+	/* prompt for password or re-use typed password */
+	if (server->connrec->prompted_password != NULL) {
+		g_free_not_null(server->connrec->password);
+		server->connrec->password =
+		    g_strdup(server->connrec->prompted_password);
+	} else if (server->connrec->password == NULL
 	    || *(server->connrec->password) == '\0'
 	    || *(server->connrec->password) == '\r') {
-		if (server->connrec->password != NULL)
-			g_free(server->connrec->password);
-		server->connrec->password = get_password();
-		if (server->connrec->password == NULL)
-			server->connrec->password = g_strdup(" ");
+		g_free_not_null(server->connrec->password);
+		server->connrec->prompted_password = get_password();
+		if (server->connrec->prompted_password != NULL)
+			server->connrec->password =
+			    g_strdup(server->connrec->prompted_password);
+		else
+			server->connrec->password = g_strdup("");
 	}
+
 	recoded_password = xmpp_recode_out(server->connrec->password);
 	recoded_resource = xmpp_recode_out(server->resource);
 	lm_connection_authenticate(connection, recoded_user,

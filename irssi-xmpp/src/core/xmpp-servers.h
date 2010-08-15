@@ -1,4 +1,4 @@
-/* $Id: xmpp-servers.h,v 1.21 2009/10/11 15:27:35 cdidier Exp $ */
+/* $Id: xmpp-servers.h,v 1.22 2010/08/15 21:46:07 cdidier Exp $ */
 
 #ifndef __XMPP_SERVERS_H
 #define __XMPP_SERVERS_H
@@ -31,6 +31,7 @@ struct _XMPP_SERVER_CONNECT_REC {
 	GSList		*channels_list;
 	int		 show;
 	int		 priority;
+	char		*prompted_password;
 };
 
 #define STRUCT_SERVER_CONNECT_REC XMPP_SERVER_CONNECT_REC
