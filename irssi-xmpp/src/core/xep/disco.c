@@ -1,5 +1,5 @@
 /*
- * $Id: disco.c,v 1.9 2009/04/03 11:21:35 cdidier Exp $
+ * $Id: disco.c,v 1.10 2011/01/14 17:30:57 cdidier Exp $
  *
  * Copyright (C) 2007,2008,2009 Colin DIDIER
  *
@@ -171,7 +171,7 @@ void
 disco_deinit(void)
 {
 	signal_remove("server connected", sig_connected);
-	signal_add("server disconnected", sig_disconnected);
+	signal_remove("server disconnected", sig_disconnected);
 	signal_remove("xmpp recv iq", sig_recv_iq);
 	g_slist_free(my_features);
 }
