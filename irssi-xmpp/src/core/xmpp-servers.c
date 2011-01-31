@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.67 2010/08/15 21:56:31 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.68 2011/01/31 14:34:58 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -109,9 +109,10 @@ server_cleanup(XMPP_SERVER_REC *server)
 }
 
 SERVER_REC *
-xmpp_server_init_connect(SERVER_CONNECT_REC *conn)
+xmpp_server_init_connect(SERVER_CONNECT_REC *connrec)
 {
 	XMPP_SERVER_REC *server;
+	XMPP_SERVER_CONNECT_REC *conn = (XMPP_SERVER_CONNECT_REC *)connrec;
 	char *recoded;
 
 	if (conn->address == NULL || conn->address[0] == '\0')
@@ -145,7 +146,7 @@ xmpp_server_init_connect(SERVER_CONNECT_REC *conn)
 	server->get_nick_flags = get_nick_flags;
 	server->send_message = send_message;
 	server->connrec = (XMPP_SERVER_CONNECT_REC *)conn;
-	server_connect_ref(conn);
+	server_connect_ref(connrec);
 
 	/* don't use irssi's sockets */
 	server->connrec->no_connect = TRUE;
@@ -155,7 +156,10 @@ xmpp_server_init_connect(SERVER_CONNECT_REC *conn)
 		server->connrec->port = (server->connrec->use_ssl) ?
 		    LM_CONNECTION_DEFAULT_PORT_SSL : LM_CONNECTION_DEFAULT_PORT;
 
-	g_free(conn->nick);
+	if (conn->real_jid == NULL)
+		conn->real_jid = conn->nick;
+	else
+		g_free(conn->nick);
 	conn->nick = g_strdup(settings_get_bool("xmpp_set_nick_as_username") ?
 	    server->user : server->jid);
 
