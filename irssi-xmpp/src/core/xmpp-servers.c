@@ -1,5 +1,5 @@
 /*
- * $Id: xmpp-servers.c,v 1.68 2011/01/31 14:34:58 cdidier Exp $
+ * $Id: xmpp-servers.c,v 1.69 2011/01/31 15:10:43 cdidier Exp $
  *
  * Copyright (C) 2007 Colin DIDIER
  *
@@ -442,8 +442,8 @@ check_connection_timeout(XMPP_SERVER_REC *server)
 		    server->connrec->address);
 		server->connection_lost = TRUE;
 		server_disconnect(SERVER(server));
-	}
-	server->timeout_tag = 0;
+	} else
+		server->timeout_tag = 0;
 	return FALSE;
 }
 
