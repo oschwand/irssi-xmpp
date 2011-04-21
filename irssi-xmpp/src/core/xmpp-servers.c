@@ -250,8 +250,8 @@ lm_auth_cb(LmConnection *connection, gboolean success,
  * Displays input prompt on command line and takes input data from user
  * From irssi-silc (silc-client/lib/silcutil/silcutil.c)
  */
-static char *
-get_password()
+char *
+get_password(char *prompt)
 {
 	char input[2048], *ret = NULL;
 	int fd;
@@ -276,7 +276,7 @@ get_password()
 	to.c_cc[VMIN] = 255;
 	tcsetattr(fd, TCSANOW, &to);
 
-	printf("\tXMPP Password: ");
+	printf("\n\n%s", prompt);
 	fflush(stdout);
 
 	memset(input, 0, sizeof(input));
@@ -300,6 +300,7 @@ get_password()
 	ret = g_strdup(input);
 	memset(input, 0, sizeof(input));
 #endif /* DISABLE_TERMIOS */
+	signal_emit("send command", 1, "redraw");
 	return ret;
 }
 
@@ -339,8 +340,7 @@ lm_open_cb(LmConnection *connection, gboolean success,
 	    || *(server->connrec->password) == '\0'
 	    || *(server->connrec->password) == '\r') {
 		g_free_not_null(server->connrec->password);
-		server->connrec->prompted_password = get_password();
-		signal_emit("send command", 1, "redraw");
+		server->connrec->prompted_password = get_password("XMPP Password: ");
 		if (server->connrec->prompted_password != NULL)
 			server->connrec->password =
 			    g_strdup(server->connrec->prompted_password);
