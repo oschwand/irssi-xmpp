@@ -33,6 +33,7 @@ typedef struct _XMPP_ROSTER_RESOURCE_REC {
 	char	*status;
 	char	*composing_id;
 	char	*pgp_keyid;
+	int	pgp_encrypt;
 } XMPP_ROSTER_RESOURCE_REC;
 
 typedef struct _XMPP_ROSTER_USER_REC {
